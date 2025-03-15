@@ -376,6 +376,14 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
         }
     };
 
+    private boolean isUpdateAvailable(UpdateInfo update) {
+        long updateTimestamp = update.getTimestamp();
+        long buildTimestamp = BuildInfoUtils.getBuildDateTimestamp();
+        long buildTimestampSeconds = buildTimestamp / 1000;
+    
+        return updateTimestamp > buildTimestampSeconds;
+    }
+
     private void loadUpdatesList(File jsonFile, boolean manualRefresh)
             throws IOException, JSONException {
         Log.d(TAG, "Adding remote updates");
@@ -385,8 +393,10 @@ public class UpdatesActivity extends UpdatesListActivity implements UpdateImport
         List<UpdateInfo> updates = Utils.parseJson(jsonFile, true);
         List<String> updatesOnline = new ArrayList<>();
         for (UpdateInfo update : updates) {
-            newUpdates |= controller.addUpdate(update);
-            updatesOnline.add(update.getDownloadId());
+            if (isUpdateAvailable(update)) {
+                newUpdates |= controller.addUpdate(update);
+                updatesOnline.add(update.getDownloadId());
+            }
         }
         controller.setUpdatesAvailableOnline(updatesOnline, true);
 
