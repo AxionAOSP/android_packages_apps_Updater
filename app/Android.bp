@@ -10,7 +10,10 @@ android_app {
     // Include SettingsLib and its dependencies
     defaults: ["SettingsLibDefaults"],
 
-    srcs: ["src/main/java/**/*.java"],
+    srcs: [
+        "src/main/java/**/*.java",
+        "src/main/java/**/*.kt"
+    ],
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
 
@@ -25,7 +28,6 @@ android_app {
     ],
 
     static_libs: [
-        // DO NOT EDIT THIS SECTION MANUALLY
         "androidx.core_core-ktx",
         "androidx.appcompat_appcompat",
         "androidx.cardview_cardview",
@@ -34,6 +36,23 @@ android_app {
         "androidx.preference_preference",
         "androidx.recyclerview_recyclerview",
         "com.google.android.material_material",
+        "androidx.activity_activity-compose",
+        "androidx.compose.animation_animation-core",
+        "androidx.compose.animation_animation-graphics",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.material3_material3",
+        "androidx.compose.material3_material3-window-size-class",
+        "androidx.compose.material_material-icons-core",
+        "androidx.compose.material_material-icons-extended",
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.ui_ui",
+        "kotlinx-coroutines-core",
+    ],
+
+    kotlincflags: [
+        "-Xjvm-default=all",
+        "-Xopt-in=kotlin.RequiresOptIn",
+        "-P plugin:androidx.compose.compiler.plugins.kotlin:sourceInformation=true",
     ],
 
     optimize: {

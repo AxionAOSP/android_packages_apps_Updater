@@ -48,6 +48,7 @@ public final class Constants {
     public static final String PROP_RELEASE_TYPE = "ro.lineage.releasetype";
     public static final String PROP_UPDATER_ALLOW_DOWNGRADING = "lineage.updater.allow_downgrading";
     public static final String PROP_UPDATER_URI = "lineage.updater.uri";
+    public static final String PROP_DISPLAY_VERSION = "ro.lineage.display.version";
 
     public static final String PREF_INSTALL_OLD_TIMESTAMP = "install_old_timestamp";
     public static final String PREF_INSTALL_NEW_TIMESTAMP = "install_new_timestamp";
@@ -60,4 +61,5 @@ public final class Constants {
 
     public static final String HAS_SEEN_INFO_DIALOG = "has_seen_info_dialog";
     public static final String HAS_SEEN_WELCOME_MESSAGE = "has_seen_welcome_message";
+    public static final String HAS_REQUESTED_NOTIFICATION_PERMISSION = "has_requested_notification_permission";
 }

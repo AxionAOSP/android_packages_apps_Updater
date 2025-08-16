@@ -165,7 +165,14 @@ public class Utils {
         String incrementalVersion = SystemProperties.get(Constants.PROP_BUILD_VERSION_INCREMENTAL);
         String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
                 SystemProperties.get(Constants.PROP_DEVICE));
-        String type = SystemProperties.get(Constants.PROP_RELEASE_TYPE).toLowerCase(Locale.ROOT);
+        String buildDisplayVersion = SystemProperties.get(Constants.PROP_DISPLAY_VERSION, "");
+        String variant;
+
+        if (buildDisplayVersion.toLowerCase().contains("vanilla")) {
+            variant = "VANILLA";
+        } else {
+            variant = "GMS";
+        }
 
         String serverUrl = SystemProperties.get(Constants.PROP_UPDATER_URI);
         if (serverUrl.trim().isEmpty()) {
@@ -173,8 +180,7 @@ public class Utils {
         }
 
         return serverUrl.replace("{device}", device)
-                .replace("{type}", type)
-                .replace("{incr}", incrementalVersion);
+                .replace("{variant}", variant);
     }
 
     public static String getUpgradeBlockedURL(Context context) {
