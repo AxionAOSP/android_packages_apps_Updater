@@ -48,6 +48,9 @@ public class UpdaterController {
     public static final String ACTION_UPDATE_REMOVED = "action_update_removed";
     public static final String ACTION_UPDATE_STATUS = "action_update_status_change";
     public static final String EXTRA_DOWNLOAD_ID = "extra_download_id";
+    public static final String EXTRA_PROGRESS = "extra_progress";
+    public static final String EXTRA_DOWNLOADED_BYTES = "extra_downloaded_bytes";
+    public static final String EXTRA_TOTAL_BYTES = "extra_total_bytes";
 
     private final String TAG = "UpdaterController";
 
@@ -114,9 +117,15 @@ public class UpdaterController {
     }
 
     void notifyDownloadProgress(String downloadId) {
+        DownloadEntry entry = mDownloads.get(downloadId);
+        if (entry == null) return;
+        Update update = entry.mUpdate;
         Intent intent = new Intent();
         intent.setAction(ACTION_DOWNLOAD_PROGRESS);
         intent.putExtra(EXTRA_DOWNLOAD_ID, downloadId);
+        intent.putExtra(EXTRA_PROGRESS, update.getProgress() / 100f);
+        intent.putExtra(EXTRA_DOWNLOADED_BYTES, update.getFile() != null ? update.getFile().length() : 0L);
+        intent.putExtra(EXTRA_TOTAL_BYTES, update.getFileSize());
         mBroadcastManager.sendBroadcast(intent);
     }
 
