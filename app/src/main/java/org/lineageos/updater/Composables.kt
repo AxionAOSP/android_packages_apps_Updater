@@ -98,7 +98,7 @@ fun HomeScreen(
     callbacks: UpdaterCallbacks,
     changelog: String
 ) {
-    val maintainer = SystemProperties.get("persist.sys.axion_maintainer", "Unknown")
+    val maintainer = SystemProperties.get("persist.sys.axion_maintainer", "Unknown").replace("_", " ")
     val version = SystemProperties.get("ro.axion.build.version", "2.0")
     val deviceModel = SystemProperties.get("ro.product.model", "Unknown Device")
     val updated = uiState.latestUpdate == null
@@ -108,7 +108,7 @@ fun HomeScreen(
     Scaffold(
         topBar = {
             UpdaterTopBar(
-                title = "Software update",
+                title = stringResource(R.string.system_updates),
                 onBack = callbacks.onFinish,
                 onPreferences = callbacks.onShowPreferences
             )
@@ -157,7 +157,7 @@ fun UpdateScreen(
     Scaffold(
         topBar = {
             UpdaterTopBar(
-                title = "Updates",
+                title = stringResource(R.string.updates_title),
                 onBack = { callbacks.onScreenChange("Home") }
             )
         }
@@ -218,7 +218,7 @@ fun UpdaterTopBar(
                     onDismissRequest = { menuExpanded = false }
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Preferences") },
+                        text = { Text(stringResource(R.string.menu_preferences)) },
                         onClick = {
                             menuExpanded = false
                             onPreferences()
@@ -304,10 +304,12 @@ fun VersionCard(
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 Text(
-                    text = if (updated) "Up-to-date" else "Update available",
+                    text = if (updated) stringResource(R.string.up_to_date) else stringResource(R.string.update_available),
                     style = MaterialTheme.typography.bodySmall,
-                    fontSize = 28.sp
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 36.sp
                 )
+                Spacer(Modifier.height(20.dp))
                 Text(
                     text = "AxionOS",
                     style = MaterialTheme.typography.bodyMedium,
@@ -316,9 +318,16 @@ fun VersionCard(
                     color = primaryColor
                 )
                 Text(
-                    text = "$deviceModel by $maintainer",
+                    text = "$deviceModel",
                     style = MaterialTheme.typography.bodySmall,
-                    fontSize = 16.sp
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 24.sp
+                )
+                Text(
+                    text = stringResource(R.string.build_specifier) + " $maintainer",
+                    style = MaterialTheme.typography.bodySmall,
+                    fontWeight = FontWeight.Medium,
+                    fontSize = 20.sp
                 )
             }
         }
@@ -397,7 +406,7 @@ fun ChangelogTrigger(onSwipeUp: () -> Unit) {
         ) {
             Icon(
                 imageVector = Icons.Default.KeyboardArrowUp,
-                contentDescription = "Swipe up to see changelog",
+                contentDescription = stringResource(R.string.changelog_guide),
                 modifier = Modifier
                     .size(48.dp)
                     .offset(y = arrowOffset.dp)
@@ -405,7 +414,7 @@ fun ChangelogTrigger(onSwipeUp: () -> Unit) {
                 tint = MaterialTheme.colorScheme.primary
             )
             Text(
-                text = "Swipe up to see what's new",
+                text = stringResource(R.string.changelog_guide),
                 style = MaterialTheme.typography.bodyLarge.copy(
                     fontStyle = FontStyle.Italic
                 ),
@@ -450,7 +459,7 @@ fun ChangelogScreen(
             .padding(bottom = 8.dp)
     ) {
         Text(
-            text = "What's New?",
+            text = stringResource(R.string.changelog_title),
             style = MaterialTheme.typography.headlineLarge.copy(
                 fontWeight = FontWeight.Bold
             ),
@@ -674,17 +683,22 @@ fun PreferencesDialog(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 var expanded by remember { mutableStateOf(false) }
-                val intervals = listOf("Never", "Daily", "Weekly", "Monthly")
+                val intervals = listOf(
+                        stringResource(R.string.menu_auto_updates_check_interval_never), 
+                        stringResource(R.string.menu_auto_updates_check_interval_daily), 
+                        stringResource(R.string.menu_auto_updates_check_interval_weekly), 
+                        stringResource(R.string.menu_auto_updates_check_interval_monthly)
+                    )
                 
                 ExposedDropdownMenuBox(
                     expanded = expanded,
                     onExpandedChange = { expanded = !expanded }
                 ) {
                     OutlinedTextField(
-                        value = intervals.getOrNull(autoCheckInterval) ?: "Never",
+                        value = intervals.getOrNull(autoCheckInterval) ?: stringResource(R.string.menu_auto_updates_check_interval_never),
                         onValueChange = { },
                         readOnly = true,
-                        label = { Text("Auto-check interval") },
+                        label = { Text(stringResource(R.string.menu_auto_updates_check)) },
                         trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                         modifier = Modifier.menuAnchor()
                     )
@@ -705,20 +719,20 @@ fun PreferencesDialog(
                 }
 
                 PreferenceSwitch(
-                    title = "Auto-delete updates",
+                    title = stringResource(R.string.menu_auto_delete_updates),
                     checked = autoDelete,
                     onCheckedChange = { autoDelete = it }
                 )
 
                 PreferenceSwitch(
-                    title = "Warn about metered networks",
+                    title = stringResource(R.string.menu_metered_network_warning),
                     checked = meteredNetworkWarning,
                     onCheckedChange = { meteredNetworkWarning = it }
                 )
 
                 if (Utils.isABDevice()) {
                     PreferenceSwitch(
-                        title = "A/B performance mode",
+                        title = stringResource(R.string.menu_ab_perf_mode),
                         checked = abPerfMode,
                         onCheckedChange = { abPerfMode = it }
                     )
@@ -726,7 +740,7 @@ fun PreferencesDialog(
 
                 if (!context.resources.getBoolean(R.bool.config_hideRecoveryUpdate)) {
                     PreferenceSwitch(
-                        title = "Update recovery",
+                        title = stringResource(R.string.menu_update_recovery),
                         checked = updateRecovery,
                         onCheckedChange = { 
                             if (Utils.isRecoveryUpdateExecPresent()) {
@@ -749,12 +763,12 @@ fun PreferencesDialog(
                     onDismiss()
                 }
             ) {
-                Text("Save")
+                Text(stringResource(R.string.pref_save))
             }
         },
         dismissButton = {
             TextButton(onClick = onDismiss) {
-                Text("Cancel")
+                Text(stringResource(R.string.pref_cancel))
             }
         }
     )
@@ -1028,7 +1042,7 @@ fun UpdateDropdownMenu(
         if (currentUpdate.getPersistentStatus() == UpdateStatus.Persistent.VERIFIED
             || currentProgress >= 1f) {
             DropdownMenuItem(
-                text = { Text("Export") },
+                text = { Text(stringResource(R.string.menu_export_update)) },
                 onClick = {
                     onDismiss()
                     callbacks.onExportUpdate(currentUpdate)
@@ -1038,7 +1052,7 @@ fun UpdateDropdownMenu(
 
         if (currentProgress > 0f) {
             DropdownMenuItem(
-                text = { Text("Delete") },
+                text = { Text(stringResource(R.string.menu_delete_update)) },
                 onClick = {
                     onDismiss()
                     callbacks.onDelete(currentUpdate)
@@ -1062,9 +1076,9 @@ private fun ActionButtons(
                 modifier = Modifier.fillMaxWidth(),
                 enabled = update.getAvailableOnline()
             ) {
-                Icon(Icons.Default.CloudDownload, contentDescription = "Download")
+                Icon(Icons.Default.CloudDownload, contentDescription = stringResource(R.string.action_download))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Download", fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.action_download), fontWeight = FontWeight.Bold)
             }
         }
         UpdateStatus.DOWNLOADING,
@@ -1073,9 +1087,9 @@ private fun ActionButtons(
                 onClick = { callbacks.onPause(update) },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Default.Pause, contentDescription = "Pause")
+                Icon(Icons.Default.Pause, contentDescription = stringResource(R.string.action_pause))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Pause", fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.action_pause), fontWeight = FontWeight.Bold)
             }
         }
         UpdateStatus.PAUSED -> {
@@ -1083,9 +1097,9 @@ private fun ActionButtons(
                 onClick = { callbacks.onResume(update) },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Default.PlayArrow, contentDescription = "Resume")
+                Icon(Icons.Default.PlayArrow, contentDescription = stringResource(R.string.action_resume))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Resume", fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.action_resume), fontWeight = FontWeight.Bold)
             }
         }
         UpdateStatus.INSTALLED -> {
@@ -1093,9 +1107,9 @@ private fun ActionButtons(
                 onClick = { callbacks.onInstalled(update) },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Default.RestartAlt, contentDescription = "Reboot")
+                Icon(Icons.Default.RestartAlt, contentDescription = stringResource(R.string.reboot))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Reboot", fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.reboot), fontWeight = FontWeight.Bold)
             }
         }
         UpdateStatus.VERIFIED -> {
@@ -1103,9 +1117,9 @@ private fun ActionButtons(
                 onClick = { callbacks.onVerified(update) },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Default.CheckCircle, contentDescription = "Install")
+                Icon(Icons.Default.CheckCircle, contentDescription = stringResource(R.string.action_install))
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Install", fontWeight = FontWeight.Bold)
+                Text(stringResource(R.string.action_install), fontWeight = FontWeight.Bold)
             }
         }
         else -> {
@@ -1114,7 +1128,7 @@ private fun ActionButtons(
                 enabled = false,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text("N/A")
+                Text(stringResource(R.string.action_na))
             }
         }
     }
@@ -1160,13 +1174,13 @@ fun EmptyScreenIllustration(callbacks: UpdaterCallbacks) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "No updates available",
+            text = stringResource(R.string.list_no_updates),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = callbacks.onRefresh) {
-            Text("Refresh updates")
+            Text(stringResource(R.string.menu_refresh))
         }
     }
 }
