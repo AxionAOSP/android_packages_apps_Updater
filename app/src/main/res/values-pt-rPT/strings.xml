@@ -1,133 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2017-2024 The LineageOS Project
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-
-          http://www.apache.org/licenses/LICENSE-2.0
-
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Atualizador</string>
-    <string name="display_name">Atualizador</string>
+<resources>
+    <string name="up_to_date">Atualizado</string>
+    <string name="app_name">Updater</string>
+    <string name="display_name">Updater</string>
+    <string name="changelog_guide">Deslizar para cima para ver o que \ é novo</string>
+    <string name="system_updates">Atualizações do sistema</string>
+    <string name="update_available">Atualização disponível</string>
+    <string name="updates_title">Atualizações</string>
+    <string name="pref_save">Salvar</string>
+    <string name="changelog_title">O que há de novo?</string>
+    <string name="build_specifier">Construção oficial por</string>
+    <string name="pref_cancel">Cancelar</string>
+    <string name="downloading_notification">Download</string>
+    <string name="verifying_download_notification">Verificando a atualização</string>
     <string name="verification_failed_notification">Verificação falhou</string>
-    <string name="verifying_download_notification">A verificar atualização</string>
-    <string name="downloading_notification">A transferir</string>
-    <string name="download_paused_notification">Transferência em pausa</string>
-    <string name="download_paused_error_notification">Erro na transferência</string>
-    <string name="download_completed_notification">Transferência concluída</string>
-    <string name="download_starting_notification">A iniciar a transferência</string>
-    <string name="update_failed_notification">A atualização falhou</string>
-    <string name="installation_suspended_notification">Instalação suspensa</string>
-    <string name="new_updates_found_title">Novas atualizações</string>
-    <string name="text_download_speed">%1$s, %2$s/s</string>
-    <string name="pause_button">Pausar</string>
-    <string name="resume_button">Continuar</string>
+    <string name="download_paused_error_notification">Erro de download</string>
+    <string name="download_paused_notification">Download pausado</string>
+    <string name="download_completed_notification">Download concluído</string>
+    <string name="pause_button">Pausa</string>
+    <string name="resume_button">Retomar</string>
     <string name="suspend_button">Suspender</string>
-    <string name="installing_update">A instalar o pacote de atualização</string>
-    <string name="installing_update_error">Erro de instalação</string>
-    <string name="installing_update_finished">Atualização instalada</string>
-    <string name="finalizing_package">A finalizar a instalação do pacote</string>
-    <string name="preparing_ota_first_boot">A preparar para a primeira inicialização</string>
+    <string name="new_updates_found_title">Novas atualizações</string>
+    <string name="update_failed_notification">Atualização falhou</string>
+    <string name="installing_update">Instalando o pacote de atualização</string>
+    <string name="download_starting_notification">Download inicial</string>
+    <string name="installation_suspended_notification">Instalação suspensa</string>
+    <string name="installing_update_error">Instale o erro</string>
     <string name="dialog_prepare_zip_message">Preparação preliminar de atualização</string>
-    <string name="dialog_battery_low_title">Bateria fraca</string>
-    <string name="dialog_battery_low_message_pct">O nível da bateria está demasiado baixo. Precisa de, pelo menos, <xliff:g id="percent_discharging">%1$d</xliff:g>%% de bateria para continuar, <xliff:g id="percent_charging">%2$d</xliff:g>%% se estiver a carregar.</string>
-    <string name="dialog_scratch_mounted_message"><![CDATA[        Por favor, execute os seguintes comandos e tente novamente a atualização:\n
-        • adb root\n
-        • adb enable-verity\n
-        • adb reboot
-        ]]></string>
-    <string name="dialog_scratch_mounted_title">Não é possível instalar a atualização com OverlayFS montado</string>
-    <string name="reboot">Reiniciar</string>
+    <string name="preparing_ota_first_boot">Preparando -se para a primeira inicialização</string>
+    <string name="finalizing_package">Finalizando a instalação do pacote</string>
+    <string name="installing_update_finished">Atualização instalada</string>
+    <string name="reboot">Reinício</string>
+    <string name="dialog_battery_low_title">Bateria baixa</string>
+    <string name="dialog_scratch_mounted_title">Não é possível instalar a atualização com o sobreposição montada</string>
     <string name="menu_refresh">Atualizar</string>
-    <string name="menu_preferences">Preferências</string>
-    <string name="menu_auto_updates_check">Verificação automática de atualizações</string>
-    <string name="menu_auto_updates_check_interval_daily">Uma vez por dia</string>
+    <string name="dialog_battery_low_message_pct">O nível da bateria é muito baixo, você precisa de pelo menos</string>
+    <string name="dialog_scratch_mounted_message">Por favor, execute os seguintes comandos e tente novamente a atualização: \ n
+        • raiz adb \ n
+        • ADB Habille-Verity \ n
+        • Reinicialização do ADB</string>
     <string name="menu_auto_updates_check_interval_weekly">Uma vez por semana</string>
+    <string name="menu_auto_updates_check">Atualizações automáticas Verifique</string>
+    <string name="menu_preferences">Preferências</string>
+    <string name="menu_auto_updates_check_interval_daily">Uma vez por dia</string>
     <string name="menu_auto_updates_check_interval_monthly">Uma vez por mês</string>
     <string name="menu_auto_updates_check_interval_never">Nunca</string>
-    <string name="menu_auto_delete_updates">Apagar atualizações depois de instaladas</string>
-    <string name="menu_delete_update">Apagar</string>
+    <string name="menu_delete_update">Excluir</string>
+    <string name="menu_show_changelog">Mostrar Changelog</string>
+    <string name="menu_ab_perf_mode">Priorize o processo de atualização</string>
+    <string name="menu_auto_delete_updates">Exclua atualizações quando instalado</string>
+    <string name="menu_export_update">Atualização de exportação</string>
     <string name="menu_copy_url">Copiar URL</string>
-    <string name="menu_export_update">Exportar atualização</string>
-    <string name="menu_show_changelog">Mostrar registo de alterações</string>
-    <string name="menu_ab_perf_mode">Priorizar o processo de atualização</string>
+    <string name="toast_forced_update_recovery">É impossível desativar as atualizações de recuperação de linhagem neste dispositivo.</string>
     <string name="menu_update_recovery">Atualizar recuperação</string>
-    <string name="toast_forced_update_recovery">Não é possível desativar as atualizações da recuperação Lineage neste dispositivo.</string>
-    <string name="snack_updates_found">Não foram encontradas atualizações</string>
-    <string name="snack_no_updates_found">Não foram encontradas novas atualizações</string>
-    <string name="snack_updates_check_failed">A verificação de atualizações falhou. Por favor, verifique a sua ligação à internet e tente novamente.</string>
-    <string name="snack_download_failed">A transferência falhou. Por favor, verifique a sua ligação à internet e tente novamente.</string>
+    <string name="snack_updates_found">Novas atualizações encontradas</string>
+    <string name="snack_updates_check_failed">A verificação de atualização falhou. Por favor, verifique sua conexão com a Internet e tente novamente mais tarde.</string>
+    <string name="snack_no_updates_found">Nenhuma nova atualização encontrada</string>
+    <string name="header_android_version">Android</string>
+    <string name="header_last_updates_check">Última verificação:</string>
+    <string name="snack_update_not_installable">Esta atualização não pode ser instalada na parte superior da compilação atual.</string>
     <string name="snack_download_verification_failed">A verificação da atualização falhou.</string>
-    <string name="snack_download_verified">Transferência concluída.</string>
-    <string name="snack_update_not_installable">Esta atualização não pode ser instalada por cima da compilação atual.</string>
-    <string name="header_title_text">LineageOS\n%1$s</string>
-    <string name="header_android_version">Android <xliff:g id="version" example="7.1.2">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Última verificação: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
-    <string name="list_build_version_date">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> de <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
-    <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> de <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
-    <string name="list_verifying_update">A verificar atualização</string>
-    <string name="list_no_updates">Não foram encontradas novas atualizações. Para verificar novas atualizações manualmente, use o botão Atualizar.</string>
-    <string name="action_download">Transferir</string>
-    <string name="action_pause">Pausar</string>
-    <string name="action_resume">Retomar</string>
+    <string name="list_download_progress_newer"/>
+    <string name="list_download_progress_eta_newer"/>
+    <string name="snack_download_verified">Download concluído.</string>
+    <string name="snack_download_failed">O download falhou. Por favor, verifique sua conexão com a Internet e tente novamente mais tarde.</string>
+    <string name="list_verifying_update">Verificando a atualização</string>
+    <string name="action_download">Download</string>
+    <string name="action_pause">Pausa</string>
     <string name="action_install">Instalar</string>
+    <string name="action_resume">Retomar</string>
+    <string name="action_delete">Excluir</string>
     <string name="action_info">Informações</string>
-    <string name="action_delete">Eliminar</string>
     <string name="action_cancel">Cancelar</string>
-    <string name="confirm_delete_dialog_title">Eliminar ficheiro</string>
-    <string name="confirm_delete_dialog_message">Deseja eliminar o ficheiro de atualizações selecionado?</string>
+    <string name="action_na">N / D</string>
+    <string name="list_no_updates">Nenhuma nova atualização encontrada. Para verificar manualmente novas atualizações, use o botão Atualizar.</string>
+    <string name="list_build_version_date">Lineageos</string>
+    <string name="list_build_version">Lineageos</string>
+    <string name="confirm_delete_dialog_title">Excluir arquivo</string>
+    <string name="apply_update_dialog_message_ab">Você está prestes a instalar</string>
     <string name="apply_update_dialog_title">Aplicar atualização</string>
-    <string name="apply_update_dialog_message">Está prestes a atualizar para <xliff:g id="update_name">%1$s</xliff:g>.\n\nSe carregar em<xliff:g id="ok">%2$s</xliff:g>, o dispositivo irá reiniciar no modo de recuperação para instalar a atualização.\n\nNota: É necessária uma Recuperação compatível, caso contrário as atualizações terão de ser instaladas manualmente.</string>
-    <string name="apply_update_dialog_message_ab">Está prestes a atualizar para <xliff:g id="update_name">%1$s</xliff:g>.\n\nSe selecionar <xliff:g id="ok">%2$s</xliff:g>, o dispositivo irá iniciar a instalação em segundo plano.\n\nUma vez concluída, ser-lhe-á pedido que reinicie o dispositivo.</string>
+    <string name="confirm_delete_dialog_message">Excluir o arquivo de atualização selecionado?</string>
+    <string name="apply_update_dialog_message">Você está prestes a instalar</string>
     <string name="cancel_installation_dialog_message">Cancelar a instalação?</string>
-    <string name="label_download_url">URL de transferência</string>
-    <string name="toast_download_url_copied">URL copiado</string>
-    <string name="dialog_export_title">A exportar a atualização</string>
+    <string name="label_download_url">Baixe URL</string>
+    <string name="dialog_export_title">Atualização de exportação</string>
     <string name="notification_export_success">Atualização exportada</string>
-    <string name="notification_export_fail">Erro de exportação</string>
-    <string name="toast_already_exporting">Já está a exportar uma atualização</string>
-    <string name="toast_export_started">Exportação iniciada</string>
-    <plurals name="eta_seconds">
-        <item quantity="one">1 segundo restante</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> segundos restantes</item>
-    </plurals>
-    <plurals name="eta_minutes">
-        <item quantity="one">1 minuto restante</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> minutos restantes</item>
-    </plurals>
-    <plurals name="eta_hours">
-        <item quantity="one">1 hora restante</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> horas restantes</item>
-    </plurals>
+    <string name="toast_download_url_copied">URL copiado</string>
     <string name="update_over_metered_network_title">Aviso</string>
-    <string name="update_over_metered_network_message">Está prestes a transferir uma atualização através de uma rede de acesso limitado, o que provavelmente irá resultar num elevado consumo de dados. Pretende continuar?</string>
-    <string name="checkbox_metered_network_warning">Não mostrar novamente</string>
-    <string name="menu_metered_network_warning">Aviso de rede de acesso limitado</string>
-    <string name="blocked_update_dialog_title">Atualização bloqueada</string>
-    <string name="blocked_update_dialog_message">Esta atualização não pode ser instalada usando a aplicação do atualizador.  Por favor, leia <xliff:g id="info_url">%1$s </xliff:g> para mais informações.</string>
-    <string name="export_channel_title">Conclusão da exportação</string>
+    <string name="checkbox_metered_network_warning">Não mostre de novo</string>
+    <string name="update_over_metered_network_message">Você está prestes a baixar um pacote de atualização em uma rede medida que provavelmente causará alto uso de dados. Você gostaria de prosseguir?</string>
+    <string name="notification_export_fail">Erro de exportação</string>
+    <string name="toast_export_started">A exportação começou</string>
+    <string name="toast_already_exporting">Já exportando uma atualização</string>
     <string name="new_updates_channel_title">Novas atualizações</string>
-    <string name="ongoing_channel_title">Transferências em curso</string>
-    <string name="update_failed_channel_title">A atualização falhou</string>
-    <string name="info_dialog_title">Sabias que?</string>
-    <string name="info_dialog_message">As atualizações do LineageOS são pacotes de instalação completa. Isso significa que podes  instalar apenas a última atualização, mesmo que tenhas ignorado alguns deles!</string>
+    <string name="export_channel_title">Conclusão de exportação</string>
+    <string name="update_failed_channel_title">Atualização falhou</string>
+    <string name="ongoing_channel_title">Downloads em andamento</string>
+    <string name="blocked_update_dialog_title">Atualização bloqueada</string>
+    <string name="blocked_update_dialog_message">Esta atualização não pode ser instalada usando o aplicativo Updater.  Por favor, leia</string>
+    <string name="menu_metered_network_warning">Aviso de rede medido</string>
+    <string name="info_dialog_title">Você sabia?</string>
     <string name="info_dialog_ok">Obrigado pela informação!</string>
     <string name="local_update_import">Atualização local</string>
-    <string name="local_update_import_progress">A importar a atualização local\u2026</string>
-    <string name="local_update_import_success">%1$s foi importada. Pretende instalar?</string>
-    <string name="local_update_import_failure">Falha ao importar a atualização local</string>
+    <string name="local_update_import_failure">Falhou em importar atualização local</string>
+    <string name="local_update_import_progress">Importação de atualização local \ u2026</string>
+    <string name="info_dialog_message">As atualizações do Lineageos são pacotes completos de instalação. Isso significa que você sempre pode instalar apenas a atualização mais recente, mesmo se você pulou um pouco!</string>
     <string name="local_update_import_install">Instalar</string>
     <string name="local_update_name">Atualização local</string>
     <string name="welcome_title">Bem-vindo</string>
-    <string name="welcome_message">Note que, quando há várias atualizações disponíveis, não há necessidade de instalá-las uma a uma. Pode sempre instalar a mais recente e eliminar as atualizações antigas para libertar espaço de armazenamento.</string>
+    <string name="welcome_message">Observe que, quando várias atualizações estiverem disponíveis, não há necessidade de atualizar a atualização, você sempre pode instalar o mais recente diretamente e excluir com segurança atualizações antigas para liberar o espaço de armazenamento.</string>
 </resources>
