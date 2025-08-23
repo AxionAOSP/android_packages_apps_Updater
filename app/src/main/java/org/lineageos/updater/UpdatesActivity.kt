@@ -66,6 +66,12 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
         result.data?.data?.let { exportUpdate(it) }
     }
 
+    private val mImportUpdate = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        mUpdateImporter?.onResult(9061, result.resultCode, result.data)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
@@ -123,7 +129,7 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 onScreenChange = { uiState.value = uiState.value.copy(currentScreen = it) },
                 onRefresh = { fetchList(true) },
                 onShowPreferences = { uiState.value = uiState.value.copy(showPreferencesDialog = true) },
-                onImportLocal = { mUpdateImporter?.openImportPicker() },
+                onImportLocal = { importUpdate() },
                 onExportUpdate = { exportUpdate(it) }
             )
 
@@ -173,6 +179,11 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
         }
 
         maybeShowWelcomeMessage()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        mUpdateImporter?.onResult(requestCode, resultCode, data)
     }
 
     override fun onStart() {
@@ -346,6 +357,14 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
             putExtra(Intent.EXTRA_TITLE, update.name)
         }
         mExportUpdate.launch(intent)
+    }
+
+    private fun importUpdate() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            addCategory(Intent.CATEGORY_OPENABLE)
+            type = "application/zip"
+        }
+        mImportUpdate.launch(intent)
     }
 
     private fun exportUpdate(uri: Uri) {
