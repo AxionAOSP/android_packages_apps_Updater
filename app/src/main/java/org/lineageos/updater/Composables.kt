@@ -15,6 +15,7 @@
  */
 package org.lineageos.updater
 
+import android.icu.text.SimpleDateFormat
 import android.os.SystemProperties
 import android.widget.Toast
 import androidx.compose.animation.*
@@ -28,7 +29,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.CloudDownload
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material.icons.filled.FileUpload
@@ -72,6 +72,8 @@ import org.lineageos.updater.model.Update
 import org.lineageos.updater.model.UpdateInfo
 import org.lineageos.updater.model.UpdateStatus
 import kotlin.math.*
+import java.util.Date
+import java.util.Locale
 
 @Composable
 fun UpdaterApp(
@@ -1035,21 +1037,22 @@ fun UpdateCard(
     val strokeWidthPx = with(LocalDensity.current) { 3.dp.toPx() }
     val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round)
 
+    val isLocalUpdate = update.getType() == null
+
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
         shape = MaterialTheme.shapes.medium
     ) {
         Column(
-            modifier = Modifier
-                .padding(20.dp)
+            modifier = Modifier.padding(20.dp)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 verticalAlignment = Alignment.Top
             ) {
                 Text(
-                    update.getName(),
+                    update.getName() ?: "Local update",
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp,
                     color = MaterialTheme.colorScheme.primary,
@@ -1072,35 +1075,64 @@ fun UpdateCard(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text("Version: ${update.getVersion()}", style = MaterialTheme.typography.bodyMedium)
+            Text(
+                "Version: ${update.getVersion() ?: "—"}",
+                style = MaterialTheme.typography.bodyMedium
+            )
             Spacer(modifier = Modifier.height(12.dp))
 
-            InfoRow(Icons.Default.Storage, "Size", formatFileSize(update.getFileSize()))
-            InfoRow(Icons.Default.DateRange, "Date", formatTimestamp(update.getTimestamp()))
-            InfoRow(Icons.Default.Info, "Type", update.getType())
+            InfoRow(Icons.Default.Storage, "Size", update.getFileSize()?.let { formatFileSize(it) } ?: "—")
 
-            Spacer(modifier = Modifier.height(12.dp))
+            InfoRow(
+                Icons.Default.DateRange,
+                "Date",
+                update.getTimestamp()?.let { formatTimestamp(it) }
+                    ?: SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
+            )
 
-            InfoRow(Icons.Default.CloudDownload, "Status", update.getStatus().toString())
-            InfoRow(Icons.Default.Timer, "ETA", if (update.getEta() > 0) "${update.getEta()}s" else "—")
-            InfoRow(Icons.Default.Speed, "Speed", if (update.getSpeed() > 0) "${update.getSpeed() / 1024} KB/s" else "—")
+            InfoRow(Icons.Default.Info, "Type", update.getType() ?: "Local update")
 
-            if (status == UpdateStatus.INSTALLING) {
-                Spacer(modifier = Modifier.height(8.dp))
-                LinearWavyProgressIndicator(
-                    modifier = Modifier.fillMaxWidth()
-                )
-            } else if (progress > 0f) {
-                Spacer(modifier = Modifier.height(8.dp))
-                LinearWavyProgressIndicator(
-                    progress = { progress },
-                    modifier = Modifier.fillMaxWidth(),
-                    trackColor = MaterialTheme.colorScheme.primary.copy(0.7f),
-                    stroke = stroke,
-                    amplitude = { 0.8f },
-                    wavelength = 20.dp,
-                    waveSpeed = 20.dp
-                )
+            InfoRow(Icons.Default.CloudDownload, "Status", status.toString())
+
+            if (!isLocalUpdate) {
+                Spacer(modifier = Modifier.height(12.dp))
+
+                InfoRow(Icons.Default.Timer, "ETA", update.getEta()?.takeIf { it > 0 }?.let { "${it}s" } ?: "—")
+                InfoRow(Icons.Default.Speed, "Speed", update.getSpeed()?.takeIf { it > 0 }?.let { "${it / 1024} KB/s" } ?: "—")
+
+                if (status == UpdateStatus.INSTALLING) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    LinearWavyProgressIndicator(
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                } else if (progress > 0f) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    LinearWavyProgressIndicator(
+                        progress = { progress },
+                        modifier = Modifier.fillMaxWidth(),
+                        trackColor = MaterialTheme.colorScheme.primary.copy(0.7f),
+                        stroke = stroke,
+                        amplitude = { 0.8f },
+                        wavelength = 20.dp,
+                        waveSpeed = 20.dp
+                    )
+                }
+            } else {
+                Spacer(modifier = Modifier.height(12.dp))
+                when {
+                    status == UpdateStatus.INSTALLING -> {
+                        LinearWavyProgressIndicator(
+                            modifier = Modifier.fillMaxWidth()
+                        )
+                    }
+                    else -> {
+                        LinearProgressIndicator(
+                            progress = { 1f },
+                            modifier = Modifier.fillMaxWidth(),
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                }
             }
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -1244,8 +1276,8 @@ fun formatFileSize(bytes: Long): String {
 }
 
 fun formatTimestamp(timestamp: Long): String {
-    val sdf = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
-    return sdf.format(java.util.Date(timestamp * 1000))
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+    return sdf.format(Date(timestamp * 1000))
 }
 
 @Composable
