@@ -20,7 +20,8 @@
     <string name="system_updates">System updates</string>
     <string name="up_to_date">Up-to-date</string>
     <string name="update_available">Update available</string>
-    <string name="build_specifier">Official build by</string>
+    <string name="official_specifier">Official</string>
+    <string name="build_specifier">Community</string>
     <string name="updates_title">Updates</string>
     <string name="changelog_guide">Swipe up to see what\'s new</string>
     <string name="changelog_title">What\'s New?</string>
