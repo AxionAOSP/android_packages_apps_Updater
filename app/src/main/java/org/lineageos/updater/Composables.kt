@@ -44,6 +44,7 @@ import androidx.compose.material.icons.filled.Pause
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Science
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
@@ -60,7 +61,7 @@ import androidx.compose.ui.platform.*
 import androidx.compose.ui.res.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.*
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.*
 import androidx.compose.ui.unit.*
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.geometry.Offset
@@ -198,7 +199,7 @@ fun UpdaterTopBar(
             Text(
                 text = title,
                 style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold
+                fontWeight = FontWeight.Thin
             )
         },
         navigationIcon = {
@@ -242,12 +243,10 @@ fun VersionCard(
     changelog: String,
     updated: Boolean
 ) {
-    val changelogLines = changelog.lines()
-
     val primaryColor = MaterialTheme.colorScheme.primary
     val versionParts = version.split(".")
-    val firstNumber = versionParts.getOrNull(0) ?: "2"
-    val rest = versionParts.drop(1).joinToString(".", prefix = ".")
+    val major = versionParts.getOrNull(0) ?: "2"
+    val minor = versionParts.drop(1).joinToString(".", prefix = ".")
 
     val infiniteTransition = rememberInfiniteTransition()
     val wavePhase by infiniteTransition.animateFloat(
@@ -259,76 +258,167 @@ fun VersionCard(
         )
     )
 
+    val displayVersion = SystemProperties.get("ro.lineage.version")
+    val isOfficial = displayVersion?.let { 
+        it.contains("official", ignoreCase = true) && 
+        !it.contains("unofficial", ignoreCase = true) 
+    } ?: false
+    val isBeta = displayVersion?.contains("beta", ignoreCase = true) ?: false
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .fillMaxHeight(0.6f),
+            .fillMaxHeight(0.65f),
         colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         shape = RoundedCornerShape(16.dp)
     ) {
-        Box(Modifier.fillMaxSize()) {
-            Row(
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Box(
                 Modifier
-                    .align(Alignment.TopStart)
-                    .padding(start = 24.dp, top = 12.dp)
+                    .weight(1f)
+                    .fillMaxWidth()
             ) {
-                Text(
-                    text = firstNumber,
-                    style = MaterialTheme.typography.headlineLarge.copy(
-                        fontSize = 100.sp, fontWeight = FontWeight.Bold
-                    ),
-                    color = primaryColor
-                )
-                Text(
-                    text = rest,
-                    style = MaterialTheme.typography.headlineLarge.copy(
-                        fontSize = 100.sp, fontWeight = FontWeight.Bold
+                Row(
+                    Modifier
+                        .align(Alignment.TopStart)
+                        .padding(top = 8.dp, start = 24.dp)
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.Top
+                ) {
+                    Text(
+                        text = major,
+                        style = MaterialTheme.typography.displayLarge.copy(
+                            fontSize = 96.sp, fontWeight = FontWeight.Thin
+                        ),
+                        color = primaryColor
                     )
+                    Text(
+                        text = minor,
+                        style = MaterialTheme.typography.displayLarge.copy(
+                            fontSize = 96.sp, fontWeight = FontWeight.Thin
+                        )
+                    )
+
+                    Spacer(modifier = Modifier.weight(1f))
+
+                    if (isBeta) {
+                        Spacer(modifier = Modifier.width(12.dp))
+                        Column(
+                            modifier = Modifier
+                                .padding(top = 20.dp, end = 24.dp)
+                                .fillMaxHeight(),
+                            verticalArrangement = Arrangement.Top
+                        ) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Science,
+                                    contentDescription = "Experimental build",
+                                    modifier = Modifier.size(28.dp)
+                                )
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Text(
+                                    text = "Open BETA",
+                                    style = MaterialTheme.typography.titleMedium.copy(
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                )
+                            }
+                        }
+                    }
+                }
+
+                WaveAnimation(
+                    wavePhase = wavePhase,
+                    color = primaryColor,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(140.dp) 
+                        .align(Alignment.Center)
+                        .padding(top = 24.dp)
                 )
             }
-
-            WaveAnimation(
-                wavePhase = wavePhase,
-                color = primaryColor,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(200.dp)
-                    .align(Alignment.TopStart)
-                    .offset(y = 100.dp)
-            )
-
             Column(
-                Modifier
-                    .align(Alignment.BottomStart)
-                    .padding(24.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp)
+                modifier = Modifier
+                    .padding(horizontal = 20.dp, vertical = 0.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                Text(
-                    text = if (updated) stringResource(R.string.up_to_date) else stringResource(R.string.update_available),
-                    style = MaterialTheme.typography.bodySmall,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 36.sp
-                )
-                Spacer(Modifier.height(20.dp))
-                Text(
-                    text = "AxionOS",
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontSize = 36.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = primaryColor
-                )
-                Text(
-                    text = "$deviceModel",
-                    style = MaterialTheme.typography.bodySmall,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 24.sp
-                )
-                Text(
-                    text = stringResource(R.string.build_specifier) + " $maintainer",
-                    style = MaterialTheme.typography.bodySmall,
-                    fontWeight = FontWeight.Medium,
-                    fontSize = 20.sp
-                )
+                Surface(
+                    color = MaterialTheme.colorScheme.surface,
+                    shape = RoundedCornerShape(50),
+                    tonalElevation = 2.dp,
+                    modifier = Modifier
+                        .fillMaxWidth(0.9f)
+                        .height(56.dp)
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalArrangement = Arrangement.SpaceEvenly,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "AxionOS",
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = primaryColor
+                        )
+                        Divider(
+                            modifier = Modifier
+                                .height(24.dp)
+                                .width(1.dp),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.2f)
+                        )
+                        Text(
+                            text = stringResource(
+                                if (updated) R.string.up_to_date else R.string.update_available
+                            ),
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = if (updated) {
+                                Color(0xFF4CAF50)
+                            } else {
+                                Color(0xFFFFC107)
+                            }
+                        )
+                    }
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Spacer(Modifier.weight(1f))
+
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = deviceModel + " • " + stringResource(
+                                if (isOfficial) R.string.official_specifier else R.string.build_specifier
+                            ),
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium
+                        )
+                        Text(
+                            text = " • $maintainer",
+                            style = MaterialTheme.typography.bodyLarge,
+                            fontWeight = FontWeight.Medium,
+                            maxLines = 1,
+                            overflow = TextOverflow.Clip,
+                            modifier = Modifier
+                                .widthIn(max = 160.dp)
+                                .basicMarquee()
+                        )
+                    }
+
+                    Spacer(Modifier.weight(1f))
+                }
             }
         }
     }
@@ -1176,7 +1266,10 @@ fun EmptyScreenIllustration(callbacks: UpdaterCallbacks) {
         Text(
             text = stringResource(R.string.list_no_updates),
             style = MaterialTheme.typography.bodyMedium,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(onClick = callbacks.onRefresh) {
