@@ -258,10 +258,10 @@ fun VersionCard(
         )
     )
 
-    val displayVersion = SystemProperties.get("ro.lineage.version")
-    val isOfficial = displayVersion?.let { 
-        it.contains("official", ignoreCase = true) && 
-        !it.contains("unofficial", ignoreCase = true) 
+    val displayVersion = SystemProperties.get("ro.axion.version")
+    val isOfficial = displayVersion?.let {
+        it.contains("official", ignoreCase = true) &&
+        !it.contains("unofficial", ignoreCase = true)
     } ?: false
     val isBeta = displayVersion?.contains("beta", ignoreCase = true) ?: false
 
@@ -337,7 +337,7 @@ fun VersionCard(
                     color = primaryColor,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(140.dp) 
+                        .height(140.dp)
                         .align(Alignment.Center)
                         .padding(top = 24.dp)
                 )
@@ -740,21 +740,21 @@ fun PreferencesDialog(
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val prefs = remember { PreferenceManager.getDefaultSharedPreferences(context) }
-    
-    var autoCheckInterval by remember { 
+
+    var autoCheckInterval by remember {
         mutableIntStateOf(Utils.getUpdateCheckSetting(context))
     }
-    var autoDelete by remember { 
+    var autoDelete by remember {
         mutableStateOf(prefs.getBoolean(Constants.PREF_AUTO_DELETE_UPDATES, false))
     }
-    var meteredNetworkWarning by remember { 
+    var meteredNetworkWarning by remember {
         mutableStateOf(prefs.getBoolean(Constants.PREF_METERED_NETWORK_WARNING,
             prefs.getBoolean(Constants.PREF_MOBILE_DATA_WARNING, true)))
     }
-    var abPerfMode by remember { 
+    var abPerfMode by remember {
         mutableStateOf(prefs.getBoolean(Constants.PREF_AB_PERF_MODE, false))
     }
-    var updateRecovery by remember { 
+    var updateRecovery by remember {
         mutableStateOf(if (Utils.isRecoveryUpdateExecPresent()) {
             SystemProperties.getBoolean(Constants.UPDATE_RECOVERY_PROPERTY, false)
         } else true)
@@ -774,12 +774,12 @@ fun PreferencesDialog(
             ) {
                 var expanded by remember { mutableStateOf(false) }
                 val intervals = listOf(
-                        stringResource(R.string.menu_auto_updates_check_interval_never), 
-                        stringResource(R.string.menu_auto_updates_check_interval_daily), 
-                        stringResource(R.string.menu_auto_updates_check_interval_weekly), 
+                        stringResource(R.string.menu_auto_updates_check_interval_never),
+                        stringResource(R.string.menu_auto_updates_check_interval_daily),
+                        stringResource(R.string.menu_auto_updates_check_interval_weekly),
                         stringResource(R.string.menu_auto_updates_check_interval_monthly)
                     )
-                
+
                 ExposedDropdownMenuBox(
                     expanded = expanded,
                     onExpandedChange = { expanded = !expanded }
@@ -832,12 +832,12 @@ fun PreferencesDialog(
                     PreferenceSwitch(
                         title = stringResource(R.string.menu_update_recovery),
                         checked = updateRecovery,
-                        onCheckedChange = { 
+                        onCheckedChange = {
                             if (Utils.isRecoveryUpdateExecPresent()) {
                                 updateRecovery = it
                             } else {
-                                Toast.makeText(context, 
-                                    context.getString(R.string.toast_forced_update_recovery), 
+                                Toast.makeText(context,
+                                    context.getString(R.string.toast_forced_update_recovery),
                                     Toast.LENGTH_SHORT).show()
                             }
                         },
@@ -879,7 +879,7 @@ fun PreferenceSwitch(
         Text(
             text = title,
             modifier = Modifier.weight(1f),
-            color = if (enabled) MaterialTheme.colorScheme.onSurface 
+            color = if (enabled) MaterialTheme.colorScheme.onSurface
                    else MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
         )
         Switch(
@@ -915,8 +915,8 @@ fun ImportSuccessDialog(
         iconContentColor = MaterialTheme.colorScheme.primary,
         onDismissRequest = { onCancel() },
         title = { Text(stringResource(R.string.local_update_import)) },
-        text = { 
-            Text(stringResource(R.string.local_update_import_success, update.version)) 
+        text = {
+            Text(stringResource(R.string.local_update_import_success, update.version))
         },
         confirmButton = {
             TextButton(onClick = onInstall) {
