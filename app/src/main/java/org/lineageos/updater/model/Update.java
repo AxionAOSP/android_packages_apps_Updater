@@ -126,4 +126,8 @@ public class Update extends UpdateBase implements UpdateInfo {
     public void setFinalizing(boolean finalizing) {
         mIsFinalizing = finalizing;
     }
+
+    public void updateInstallProgress(int progress) {
+        this.mInstallProgress = Math.max(0, Math.min(100, progress));
+    }
 }

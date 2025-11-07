@@ -43,7 +43,8 @@ data class UiState(
     var toastMessage: String? = null,
     var importSuccessUpdate: Update? = null,
     var changelog: String = "",
-    var isLoadingChangelog: Boolean = false
+    var isLoadingChangelog: Boolean = false,
+    val installProgress: Int? = null
 )
 
 data class UpdaterCallbacks(

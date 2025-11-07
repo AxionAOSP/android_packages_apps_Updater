@@ -155,7 +155,8 @@ fun UpdateScreen(
 ) {
     val latestUpdate = uiState.latestUpdate
     val status = uiState.updateStatus ?: UpdateStatus.UNKNOWN
-    val progress = uiState.downloadProgress
+    val downloadProgress = uiState.downloadProgress
+    val installProgress = uiState.installProgress ?: 0
 
     Scaffold(
         topBar = {
@@ -177,7 +178,8 @@ fun UpdateScreen(
                 UpdateCard(
                     status = status,
                     update = latestUpdate,
-                    progress = progress,
+                    downloadProgress = downloadProgress,
+                    installProgress = installProgress,
                     callbacks = callbacks
                 )
             } else {
@@ -1030,7 +1032,8 @@ fun PillToolbar(
 fun UpdateCard(
     status: UpdateStatus,
     update: UpdateInfo,
-    progress: Float,
+    downloadProgress: Float,
+    installProgress: Int,
     callbacks: UpdaterCallbacks
 ) {
     var menuExpanded by remember { mutableStateOf(false) }
@@ -1038,6 +1041,11 @@ fun UpdateCard(
     val stroke = Stroke(width = strokeWidthPx, cap = StrokeCap.Round)
 
     val isLocalUpdate = update.getType() == null
+
+    val indicatorProgress: () -> Float = when (status) {
+        UpdateStatus.INSTALLING -> { { installProgress / 100f } }
+        else -> { { downloadProgress } }
+    }
 
     Card(
         modifier = Modifier.fillMaxWidth(),
@@ -1067,7 +1075,7 @@ fun UpdateCard(
                         menuExpanded = menuExpanded,
                         onDismiss = { menuExpanded = false },
                         update = update,
-                        progress = progress,
+                        progress = downloadProgress,
                         callbacks = callbacks
                     )
                 }
@@ -1099,22 +1107,28 @@ fun UpdateCard(
 
                 InfoRow(Icons.Default.Timer, "ETA", update.getEta()?.takeIf { it > 0 }?.let { "${it}s" } ?: "—")
                 InfoRow(Icons.Default.Speed, "Speed", update.getSpeed()?.takeIf { it > 0 }?.let { "${it / 1024} KB/s" } ?: "—")
-
-                if (status == UpdateStatus.INSTALLING) {
+                if (status == UpdateStatus.INSTALLING || downloadProgress > 0f) {
                     Spacer(modifier = Modifier.height(8.dp))
+                    val isInstalling = status == UpdateStatus.INSTALLING
+                    val trackColor = if (isInstalling) {
+                        MaterialTheme.colorScheme.tertiary
+                    } else {
+                        MaterialTheme.colorScheme.primary.copy(0.7f)
+                    }
                     LinearWavyProgressIndicator(
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                } else if (progress > 0f) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    LinearWavyProgressIndicator(
-                        progress = { progress },
+                        progress = indicatorProgress,
                         modifier = Modifier.fillMaxWidth(),
-                        trackColor = MaterialTheme.colorScheme.primary.copy(0.7f),
+                        trackColor = trackColor,
                         stroke = stroke,
                         amplitude = { 0.8f },
                         wavelength = 20.dp,
                         waveSpeed = 20.dp
+                    )
+                    Text(
+                        text = "${(indicatorProgress() * 100).toInt()}%",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        modifier = Modifier.align(Alignment.CenterHorizontally)
                     )
                 }
             } else {
@@ -1122,11 +1136,20 @@ fun UpdateCard(
                 when {
                     status == UpdateStatus.INSTALLING -> {
                         LinearWavyProgressIndicator(
-                            modifier = Modifier.fillMaxWidth()
+                            progress = { installProgress / 100f },
+                            modifier = Modifier.fillMaxWidth(),
+                            trackColor = MaterialTheme.colorScheme.tertiary,
+                            stroke = stroke
+                        )
+                        Text(
+                            text = "${installProgress}%",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.align(Alignment.CenterHorizontally)
                         )
                     }
                     else -> {
-                        LinearProgressIndicator(
+                        LinearWavyProgressIndicator(
                             progress = { 1f },
                             modifier = Modifier.fillMaxWidth(),
                             color = MaterialTheme.colorScheme.primary
@@ -1186,7 +1209,7 @@ fun UpdateDropdownMenu(
 
 @Composable
 private fun ActionButtons(
-    status: UpdateStatus?,
+    status: UpdateStatus,
     update: UpdateInfo,
     callbacks: UpdaterCallbacks
 ) {

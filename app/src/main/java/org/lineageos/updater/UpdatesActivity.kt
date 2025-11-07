@@ -77,7 +77,7 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
         super.onCreate(savedInstanceState)
 
         mUpdateImporter = UpdateImporter(this, this)
-        
+
         lifecycleScope.launch {
             uiState.value = uiState.value.copy(isLoadingChangelog = true)
             val changelogResult = getChangelog()
@@ -241,7 +241,8 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 }
                 UpdaterController.ACTION_INSTALL_PROGRESS -> {
                     uiState.value = uiState.value.copy(
-                        downloadProgress = intent.getFloatExtra(UpdaterController.EXTRA_PROGRESS, 0f)
+                        downloadProgress = intent.getFloatExtra(UpdaterController.EXTRA_PROGRESS, 0f),
+                        installProgress = intent.getIntExtra(UpdaterController.EXTRA_INSTALL_PROGRESS, 0)
                     )
                 }
                 UpdaterController.ACTION_UPDATE_REMOVED -> checkUpdates()
