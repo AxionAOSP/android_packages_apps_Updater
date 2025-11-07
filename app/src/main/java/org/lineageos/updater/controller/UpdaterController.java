@@ -501,12 +501,16 @@ public class UpdaterController {
         DownloadEntry entry = mDownloads.get(downloadId);
         if (entry != null) {
             Update update = entry.mUpdate;
+
+            final boolean isLocalUpdate = Update.LOCAL_ID.equals(downloadId);
+            if (isLocalUpdate && update.getStatus() == UpdateStatus.INSTALLED) {
+                Log.w(TAG, "Cannot delete local update in committed state: " + update.getStatus());
+                return;
+            }
             update.setStatus(UpdateStatus.DELETED);
             update.setProgress(0);
             update.setPersistentStatus(UpdateStatus.Persistent.UNKNOWN);
             deleteUpdateAsync(update);
-
-            final boolean isLocalUpdate = Update.LOCAL_ID.equals(downloadId);
             if (!isLocalUpdate && !update.getAvailableOnline()) {
                 Log.d(TAG, "Download no longer available online, removing");
                 mDownloads.remove(downloadId);

@@ -262,7 +262,6 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
         )
     }
 
-
     private fun onDlStateChange(downloadId: String?) {
         val status = mUpdaterService?.updaterController?.getUpdate(downloadId ?: return)?.getStatus() ?: UpdateStatus.UNKNOWN
         val message = when (status) {
