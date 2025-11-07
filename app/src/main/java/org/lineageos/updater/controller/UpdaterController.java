@@ -51,6 +51,7 @@ public class UpdaterController {
     public static final String EXTRA_PROGRESS = "extra_progress";
     public static final String EXTRA_DOWNLOADED_BYTES = "extra_downloaded_bytes";
     public static final String EXTRA_TOTAL_BYTES = "extra_total_bytes";
+    public static final String EXTRA_INSTALL_PROGRESS = "extra_install_progress";
 
     private final String TAG = "UpdaterController";
 
@@ -130,10 +131,24 @@ public class UpdaterController {
     }
 
     void notifyInstallProgress(String downloadId) {
+        Update update = getActualUpdate(downloadId);
+        if (update == null) return;
         Intent intent = new Intent();
         intent.setAction(ACTION_INSTALL_PROGRESS);
         intent.putExtra(EXTRA_DOWNLOAD_ID, downloadId);
+        intent.putExtra(EXTRA_INSTALL_PROGRESS, update.getInstallProgress());
         mBroadcastManager.sendBroadcast(intent);
+    }
+
+    public void updateInstallProgress(String downloadId, int progress) {
+        Update update = getActualUpdate(downloadId);
+        if (update == null) {
+            Log.e(TAG, "No update found for " + downloadId);
+            return;
+        }
+        update.updateInstallProgress(progress);
+        notifyInstallProgress(downloadId);
+        notifyUpdateChange(downloadId);
     }
 
     private void tryReleaseWakelock() {
