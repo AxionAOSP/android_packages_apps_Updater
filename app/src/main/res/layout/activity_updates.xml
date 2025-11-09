@@ -55,7 +55,8 @@
                     android:fontFamily="sans-serif-light"
                     android:paddingBottom="16dp"
                     android:textColor="?android:attr/textColorPrimary"
-                    android:textSize="56sp"/>
+                    android:textSize="56sp"
+                    tools:text="LineageOS\n20"/>
 
                 <TextView
                     android:id="@+id/header_build_version"
