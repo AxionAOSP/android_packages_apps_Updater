@@ -24,6 +24,7 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.*
 import android.util.Log
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.*
 import androidx.activity.compose.*
@@ -146,6 +147,13 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 )
             }
 
+            LaunchedEffect(state.showImportDialog) {
+                if (state.showImportDialog) {
+                    window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                } else {
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+                }
+            }
             if (state.showImportDialog) ImportProgressDialog(
                 onDismiss = { uiState.value = uiState.value.copy(showImportDialog = false); mUpdateImporter?.stopImport() }
             )
