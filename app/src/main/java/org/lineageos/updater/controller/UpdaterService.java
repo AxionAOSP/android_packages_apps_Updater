@@ -497,7 +497,8 @@ public class UpdaterService extends Service {
     private void setNotificationTitle(UpdateInfo update) {
         String buildDate = StringGenerator.getDateLocalizedUTC(this,
                 DateFormat.MEDIUM, update.getTimestamp());
-        String buildInfo = "AxionOS " + update.getVersion() + " - " + buildDate;
+        String buildInfo = getString(R.string.list_build_version_date,
+                update.getVersion(), buildDate);
         mNotificationStyle.setBigContentTitle(buildInfo);
         mNotificationBuilder.setContentTitle(buildInfo);
     }

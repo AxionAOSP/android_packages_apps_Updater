@@ -165,14 +165,7 @@ public class Utils {
         String incrementalVersion = SystemProperties.get(Constants.PROP_BUILD_VERSION_INCREMENTAL);
         String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
                 SystemProperties.get(Constants.PROP_DEVICE));
-        String buildVersion = SystemProperties.get(Constants.PROP_BUILD_VERSION, "");
-        String variant;
-
-        if (buildVersion.toLowerCase().contains("vanilla")) {
-            variant = "VANILLA";
-        } else {
-            variant = "GMS";
-        }
+        String type = SystemProperties.get(Constants.PROP_RELEASE_TYPE).toLowerCase(Locale.ROOT);
 
         String serverUrl = SystemProperties.get(Constants.PROP_UPDATER_URI);
         if (serverUrl.trim().isEmpty()) {
@@ -180,7 +173,8 @@ public class Utils {
         }
 
         return serverUrl.replace("{device}", device)
-                .replace("{variant}", variant);
+                .replace("{type}", type)
+                .replace("{incr}", incrementalVersion);
     }
 
     public static String getUpgradeBlockedURL(Context context) {
@@ -190,7 +184,9 @@ public class Utils {
     }
 
     public static String getChangelogURL(Context context) {
-        return context.getString(R.string.menu_changelog_url);
+        String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
+                SystemProperties.get(Constants.PROP_DEVICE));
+        return context.getString(R.string.menu_changelog_url, device);
     }
 
     public static void triggerUpdate(Context context, String downloadId) {
