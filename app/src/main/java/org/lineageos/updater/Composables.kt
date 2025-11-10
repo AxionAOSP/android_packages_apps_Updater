@@ -46,6 +46,7 @@ import androidx.compose.material.icons.filled.RestartAlt
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Science
 import androidx.compose.material3.*
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.*
@@ -166,24 +167,32 @@ fun UpdateScreen(
             )
         }
     ) { padding ->
-        Column(
+        PullToRefreshBox(
+            isRefreshing = uiState.isRefreshing,
+            onRefresh = callbacks.onRefresh,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            if (latestUpdate != null) {
-                UpdateCard(
-                    status = status,
-                    update = latestUpdate,
-                    downloadProgress = downloadProgress,
-                    installProgress = installProgress,
-                    callbacks = callbacks
-                )
-            } else {
-                EmptyScreenIllustration(callbacks = callbacks)
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                if (latestUpdate != null) {
+                    UpdateCard(
+                        status = status,
+                        update = latestUpdate,
+                        downloadProgress = downloadProgress,
+                        installProgress = installProgress,
+                        callbacks = callbacks
+                    )
+                } else {
+                    EmptyScreenIllustration(callbacks = callbacks)
+                }
             }
         }
     }
