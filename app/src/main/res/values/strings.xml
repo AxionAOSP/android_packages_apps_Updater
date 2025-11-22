@@ -185,6 +185,11 @@
     <string name="local_update_import_failure">Failed to import local update</string>
     <string name="local_update_import_install">Install</string>
     <string name="local_update_name">Local update</string>
+    <string name="local_update_import_warning_title">Precaution!</string>
+    <string name="local_update_import_warning_message">
+    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
 
     <string name="welcome_title">Welcome</string>
     <string name="welcome_message">Please note that when multiple updates are available, there is no need to go update-by-update, you can always install the latest one directly, and then safely delete old updates to free up storage space.</string>

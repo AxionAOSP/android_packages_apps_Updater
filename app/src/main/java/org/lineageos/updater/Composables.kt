@@ -944,17 +944,58 @@ fun ImportSuccessDialog(
     )
 }
 
+@Composable
+fun ImportWarningDialog(
+    onDismiss: () -> Unit,
+    onCancel: () -> Unit
+) {
+    AlertDialog(
+        iconContentColor = MaterialTheme.colorScheme.primary,
+        onDismissRequest = onCancel,
+        title = { Text(stringResource(R.string.local_update_import_warning_title)) },
+        text = { Text(stringResource(R.string.local_update_import_warning_message)) },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(stringResource(R.string.info_dialog_ok))
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = onCancel) {
+                Text(stringResource(android.R.string.cancel))
+            }
+        }
+    )
+}
+
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun PillToolbar(
     selectedScreen: String,
     callbacks: UpdaterCallbacks
 ) {
+    var showImportDialog by remember { mutableStateOf(false) }
+
     val items = listOf(
         ToolbarItem("Home", Icons.Filled.Home) { callbacks.onScreenChange("Home") },
         ToolbarItem("Update", Icons.Filled.Update) { callbacks.onScreenChange("Update") },
-        ToolbarItem("Import", Icons.Filled.FileUpload) { callbacks.onImportLocal(); callbacks.onScreenChange("Update") }
+        ToolbarItem("Import", Icons.Filled.FileUpload) {
+            showImportDialog = true
+        }
     )
+
+    if (showImportDialog) {
+        ImportWarningDialog(
+            onDismiss = { 
+                callbacks.onImportLocal()
+                callbacks.onScreenChange("Update")
+                showImportDialog = false
+            },
+            onCancel = {
+                callbacks.onScreenChange("Home")
+                showImportDialog = false
+            }
+        )
+    }
 
     Box(
         modifier = Modifier
@@ -974,59 +1015,57 @@ fun PillToolbar(
             ),
             expanded = true,
             content = {
-                Box {
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        items.forEach { item ->
-                            val containerColor by animateColorAsState(
-                                targetValue = if (selectedScreen == item.name) MaterialTheme.colorScheme.primary
-                                else MaterialTheme.colorScheme.surface
-                            )
-                            val contentColor by animateColorAsState(
-                                targetValue = if (selectedScreen == item.name) MaterialTheme.colorScheme.surface
-                                else MaterialTheme.colorScheme.primary
-                            )
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    items.forEach { item ->
+                        val containerColor by animateColorAsState(
+                            targetValue = if (selectedScreen == item.name) MaterialTheme.colorScheme.primary
+                            else MaterialTheme.colorScheme.surface
+                        )
+                        val contentColor by animateColorAsState(
+                            targetValue = if (selectedScreen == item.name) MaterialTheme.colorScheme.surface
+                            else MaterialTheme.colorScheme.primary
+                        )
 
-                            val scale = remember { Animatable(1f) }
-                            LaunchedEffect(selectedScreen) {
-                                if (selectedScreen == item.name) {
-                                    scale.snapTo(0.8f)
-                                    scale.animateTo(
-                                        targetValue = 1.2f,
-                                        animationSpec = tween(150, easing = FastOutSlowInEasing)
-                                    )
-                                    scale.animateTo(
-                                        targetValue = 1f,
-                                        animationSpec = tween(100, easing = LinearOutSlowInEasing)
-                                    )
-                                }
+                        val scale = remember { Animatable(1f) }
+                        LaunchedEffect(selectedScreen) {
+                            if (selectedScreen == item.name) {
+                                scale.snapTo(0.8f)
+                                scale.animateTo(
+                                    targetValue = 1.2f,
+                                    animationSpec = tween(150, easing = FastOutSlowInEasing)
+                                )
+                                scale.animateTo(
+                                    targetValue = 1f,
+                                    animationSpec = tween(100, easing = LinearOutSlowInEasing)
+                                )
                             }
+                        }
 
-                            Surface(
-                                onClick = { item.onClick() },
-                                shape = CircleShape,
-                                color = containerColor,
-                                contentColor = contentColor,
-                                modifier = Modifier
-                                    .graphicsLayer {
-                                        scaleX = scale.value
-                                        scaleY = scale.value
-                                    }
-                                    .width(48.dp)
-                                    .height(56.dp)
-                            ) {
-                                Box(
-                                    modifier = Modifier.fillMaxSize(),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        imageVector = item.icon,
-                                        contentDescription = item.name,
-                                        modifier = Modifier.size(40.dp).padding(8.dp)
-                                    )
+                        Surface(
+                            onClick = { item.onClick() },
+                            shape = CircleShape,
+                            color = containerColor,
+                            contentColor = contentColor,
+                            modifier = Modifier
+                                .graphicsLayer {
+                                    scaleX = scale.value
+                                    scaleY = scale.value
                                 }
+                                .width(48.dp)
+                                .height(56.dp)
+                        ) {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = item.icon,
+                                    contentDescription = item.name,
+                                    modifier = Modifier.size(40.dp).padding(8.dp)
+                                )
                             }
                         }
                     }
