@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2025-2026 AxionOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,13 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.updater;
+package org.lineageos.updater.ui.theme
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.compose.runtime.Composable
+import com.android.axion.compose.theme.AxionTheme
 
-import org.lineageos.updater.model.UpdateInfo;
-
-public abstract class UpdatesListActivity extends AppCompatActivity {
-    public abstract void exportUpdate(UpdateInfo update);
-    public abstract void showSnackbar(int stringId, int duration);
+@Composable
+fun UpdaterTheme(content: @Composable () -> Unit) {
+    AxionTheme(content = content)
 }

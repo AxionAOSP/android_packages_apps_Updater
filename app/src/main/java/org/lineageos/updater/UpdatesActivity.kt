@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 AxionOS
+ * Copyright (C) 2025-2026 AxionOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,50 +16,50 @@
 package org.lineageos.updater
 
 import android.Manifest
-import android.app.Activity
-import android.content.*
+import android.content.BroadcastReceiver
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.ServiceConnection
 import android.content.pm.PackageManager
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import android.net.Uri
-import android.os.*
-import android.util.Log
+import android.os.Bundle
+import android.os.IBinder
+import android.os.PowerManager
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.activity.*
-import androidx.activity.compose.*
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.runtime.*
+import androidx.activity.viewModels
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import androidx.preference.PreferenceManager
-import androidx.lifecycle.lifecycleScope
 import org.lineageos.updater.controller.UpdaterController
 import org.lineageos.updater.controller.UpdaterService
-import org.lineageos.updater.download.DownloadClient
 import org.lineageos.updater.misc.Constants
 import org.lineageos.updater.misc.Utils
 import org.lineageos.updater.model.Update
 import org.lineageos.updater.model.UpdateInfo
-import org.lineageos.updater.model.UpdateStatus
-import org.lineageos.updater.R
-import java.io.File
-import java.io.IOException
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.net.HttpURLConnection
-import java.net.URL
-import java.util.*
-import kotlinx.coroutines.*
-import org.json.JSONObject
+import org.lineageos.updater.shared.model.UpdaterCallbacks
+import org.lineageos.updater.ui.composable.ImportProgressDialog
+import org.lineageos.updater.ui.composable.ImportSuccessDialog
+import org.lineageos.updater.ui.composable.PreferencesDialog
+import org.lineageos.updater.ui.composable.UpdaterApp
+import org.lineageos.updater.ui.composable.WelcomeDialog
+import org.lineageos.updater.ui.theme.UpdaterTheme
+import org.lineageos.updater.ui.viewmodel.UpdaterViewModel
 
 class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
 
+    private val viewModel: UpdaterViewModel by viewModels()
     private var mUpdaterService: UpdaterService? = null
     private var mUpdateImporter: UpdateImporter? = null
     private var mToBeExported: UpdateInfo? = null
-
-    private val uiState = mutableStateOf(UiState())
 
     private val mExportUpdate = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -79,57 +79,19 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
 
         mUpdateImporter = UpdateImporter(this, this)
 
-        lifecycleScope.launch {
-            uiState.value = uiState.value.copy(isLoadingChangelog = true)
-            val changelogResult = getChangelog()
-            uiState.value = uiState.value.copy(
-                changelog = changelogResult,
-                isLoadingChangelog = false
-            )
-        }
-
         setContent {
-            val state by uiState
+            val state by viewModel.uiState
 
             val callbacks = UpdaterCallbacks(
-                onStartDownload = { update ->
-                    mUpdaterService?.updaterController?.takeIf { Utils.isNetworkAvailable(this@UpdatesActivity) }
-                        ?.startDownload(update.downloadId)
-                        ?.also { uiState.value = uiState.value.copy(currentScreen = "Update") }
-                        ?: showToast("No internet connection or service not ready.")
-                },
-                onPause = { update ->
-                    mUpdaterService?.updaterController?.pauseDownload(update.downloadId)
-                        ?: showToast("Unable to pause download.")
-                },
-                onResume = { update ->
-                    mUpdaterService?.updaterController?.takeIf { Utils.isNetworkAvailable(this@UpdatesActivity) }
-                        ?.startDownload(update.downloadId)
-                        ?.also { uiState.value = uiState.value.copy(currentScreen = "Update") }
-                        ?: showToast("No internet connection or service not ready.")
-                },
-                onDelete = { update ->
-                    mUpdaterService?.updaterController?.deleteUpdate(update.downloadId)
-                        ?: showToast("Unable to delete download.")
-                },
-                onInstalled = { update ->
-                    (getSystemService(Context.POWER_SERVICE) as PowerManager).reboot(null)
-                },
-                onVerified = { update ->
-                    Utils.triggerUpdate(this@UpdatesActivity, update.downloadId)
-                },
-                onFinish = {
-                    uiState.value = uiState.value.copy(
-                        currentScreen = "Home",
-                        downloadProgress = 0f,
-                        downloadedMB = 0,
-                        totalMB = 0
-                    )
-                    finish()
-                },
-                onScreenChange = { uiState.value = uiState.value.copy(currentScreen = it) },
-                onRefresh = { fetchList(true) },
-                onShowPreferences = { uiState.value = uiState.value.copy(showPreferencesDialog = true) },
+                onStartDownload = { viewModel.startDownload(it) },
+                onPause = { viewModel.pauseDownload(it) },
+                onResume = { viewModel.resumeDownload(it) },
+                onDelete = { viewModel.deleteUpdate(it) },
+                onInstalled = { (getSystemService(Context.POWER_SERVICE) as PowerManager).reboot(null) },
+                onVerified = { Utils.triggerUpdate(this@UpdatesActivity, it.downloadId) },
+                onFinish = { finish() },
+                onRefresh = { viewModel.fetchList(true) },
+                onShowPreferences = { viewModel.showPreferences() },
                 onImportLocal = { importUpdate() },
                 onExportUpdate = { exportUpdate(it) }
             )
@@ -137,11 +99,9 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
             UpdaterTheme {
                 UpdaterApp(
                     uiState = state,
-                    preferences = PreferencesData(),
                     callbacks = callbacks,
                     changelog = when {
-                        state.isLoadingChangelog -> "Loading changelog..."
-                        state.changelog.isEmpty() -> "No changelog available."
+                        state.isLoadingChangelog -> ""
                         else -> state.changelog
                     }
                 )
@@ -155,43 +115,35 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 }
             }
             if (state.showImportDialog) ImportProgressDialog(
-                onDismiss = { uiState.value = uiState.value.copy(showImportDialog = false); mUpdateImporter?.stopImport() }
+                onDismiss = { viewModel.dismissImport(); mUpdateImporter?.stopImport() }
             )
             if (state.showPreferencesDialog) PreferencesDialog(
-                onDismiss = { uiState.value = uiState.value.copy(showPreferencesDialog = false) },
-                onSave = ::savePreferences
+                onDismiss = { viewModel.dismissPreferences() },
+                onSave = { viewModel.savePreferences(it) }
             )
             if (state.showWelcomeDialog) WelcomeDialog(
-                onDismiss = { uiState.value = uiState.value.copy(showWelcomeDialog = false); markWelcomeSeen(); maybeShowNotificationPermissionPrompt() }
+                onDismiss = { viewModel.dismissWelcome(); maybeShowNotificationPermissionPrompt() }
             )
             state.importSuccessUpdate?.let { update ->
                 ImportSuccessDialog(
                     update = update,
                     onInstall = {
-                        getUpdatesList()
+                        viewModel.getUpdatesList()
                         Utils.triggerUpdate(this, update.downloadId)
-                        uiState.value = uiState.value.copy(importSuccessUpdate = null)
+                        viewModel.clearImportSuccess()
                     },
                     onCancel = {
-                        UpdaterController.getInstance(this).deleteUpdate(update.downloadId)
-                        uiState.value = uiState.value.copy(importSuccessUpdate = null)
+                        viewModel.deleteImportedUpdate(update.downloadId)
                     }
                 )
             }
             state.toastMessage?.let {
                 LaunchedEffect(it) {
                     Toast.makeText(this@UpdatesActivity, it, Toast.LENGTH_SHORT).show()
-                    uiState.value = uiState.value.copy(toastMessage = null)
+                    viewModel.clearToast()
                 }
             }
         }
-
-        maybeShowWelcomeMessage()
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        mUpdateImporter?.onResult(requestCode, resultCode, data)
     }
 
     override fun onStart() {
@@ -208,8 +160,8 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
     }
 
     override fun onPause() {
-        if (uiState.value.showImportDialog) {
-            uiState.value = uiState.value.copy(showImportDialog = false)
+        if (viewModel.uiState.value.showImportDialog) {
+            viewModel.dismissImport()
             mUpdateImporter?.stopImport()
         }
         super.onPause()
@@ -224,11 +176,12 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
     private val mConnection = object : ServiceConnection {
         override fun onServiceConnected(className: ComponentName, service: IBinder) {
             mUpdaterService = (service as UpdaterService.LocalBinder).service
-            getUpdatesList()
+            viewModel.setController(mUpdaterService?.updaterController)
         }
 
         override fun onServiceDisconnected(componentName: ComponentName) {
             mUpdaterService = null
+            viewModel.setController(null)
         }
     }
 
@@ -237,124 +190,33 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
             val downloadId = intent.getStringExtra(UpdaterController.EXTRA_DOWNLOAD_ID)
             when (intent.action) {
                 UpdaterController.ACTION_UPDATE_STATUS -> {
-                    onDlStateChange(downloadId)
-                    checkUpdates()
+                    viewModel.onDlStateChange(downloadId)
+                    viewModel.checkUpdates()
                 }
                 UpdaterController.ACTION_DOWNLOAD_PROGRESS -> {
-                    uiState.value = uiState.value.copy(
-                        downloadProgress = intent.getFloatExtra(UpdaterController.EXTRA_PROGRESS, 0f),
-                        downloadedMB = (intent.getLongExtra(UpdaterController.EXTRA_DOWNLOADED_BYTES, 0L) / (1024 * 1024)).toInt(),
-                        totalMB = (intent.getLongExtra(UpdaterController.EXTRA_TOTAL_BYTES, 0L) / (1024 * 1024)).toInt()
+                    viewModel.handleDownloadProgress(
+                        intent.getFloatExtra(UpdaterController.EXTRA_PROGRESS, 0f),
+                        intent.getLongExtra(UpdaterController.EXTRA_DOWNLOADED_BYTES, 0L),
+                        intent.getLongExtra(UpdaterController.EXTRA_TOTAL_BYTES, 0L)
                     )
                 }
                 UpdaterController.ACTION_INSTALL_PROGRESS -> {
-                    uiState.value = uiState.value.copy(
-                        downloadProgress = intent.getFloatExtra(UpdaterController.EXTRA_PROGRESS, 0f),
-                        installProgress = intent.getIntExtra(UpdaterController.EXTRA_INSTALL_PROGRESS, 0)
+                    viewModel.handleInstallProgress(
+                        intent.getFloatExtra(UpdaterController.EXTRA_PROGRESS, 0f),
+                        intent.getIntExtra(UpdaterController.EXTRA_INSTALL_PROGRESS, 0)
                     )
                 }
-                UpdaterController.ACTION_UPDATE_REMOVED -> checkUpdates()
+                UpdaterController.ACTION_UPDATE_REMOVED -> viewModel.handleUpdateRemoved()
             }
-        }
-    }
-
-    private fun checkUpdates() {
-        val latestUpdate = mUpdaterService
-            ?.updaterController
-            ?.updates
-            ?.maxByOrNull { it.timestamp }
-            ?: null
-        uiState.value = uiState.value.copy(
-            latestUpdate = latestUpdate,
-            updateStatus = latestUpdate?.getStatus() ?: UpdateStatus.UNKNOWN
-        )
-    }
-
-    private fun onDlStateChange(downloadId: String?) {
-        val status = mUpdaterService?.updaterController?.getUpdate(downloadId ?: return)?.getStatus() ?: UpdateStatus.UNKNOWN
-        val message = when (status) {
-            UpdateStatus.PAUSED_ERROR -> getString(R.string.snack_download_failed)
-            UpdateStatus.VERIFICATION_FAILED -> getString(R.string.snack_download_verification_failed)
-            UpdateStatus.VERIFIED -> getString(R.string.snack_download_verified)
-            else -> null
-        }
-        message?.let { showToast(it) }
-    }
-
-    private fun loadUpdatesList(jsonFile: File, manualRefresh: Boolean) {
-        try {
-            val controller = mUpdaterService?.updaterController ?: return
-            val updates = Utils.parseJson(jsonFile, true)
-            val updatesOnline = updates.map { it.downloadId }
-            val newUpdates = updates.any { controller.addUpdate(it) }
-            controller.setUpdatesAvailableOnline(updatesOnline, true)
-            if (manualRefresh) showToast(getString(if (newUpdates) R.string.snack_updates_found else R.string.snack_no_updates_found))
-            checkUpdates()
-        } catch (e: Exception) {
-            Log.e(TAG, "Error while parsing json list", e)
-        }
-    }
-
-    private fun getUpdatesList() {
-        val jsonFile = Utils.getCachedUpdateList(this)
-        if (jsonFile.exists()) loadUpdatesList(jsonFile, false) else fetchList(false)
-    }
-
-    private fun processNewJson(json: File, jsonNew: File, manualRefresh: Boolean) {
-        try {
-            loadUpdatesList(jsonNew, manualRefresh)
-            PreferenceManager.getDefaultSharedPreferences(this).edit()
-                .putLong(Constants.PREF_LAST_UPDATE_CHECK, System.currentTimeMillis())
-                .apply()
-
-            if (json.exists() && Utils.isUpdateCheckEnabled(this) && Utils.checkForNewUpdates(json, jsonNew)) {
-                UpdatesCheckReceiver.updateRepeatingUpdatesCheck(this)
-            }
-            UpdatesCheckReceiver.cancelUpdatesCheck(this)
-            jsonNew.renameTo(json)
-        } catch (e: Exception) {
-            Log.e(TAG, "Could not read json", e)
-            showToast(getString(R.string.snack_updates_check_failed))
-        }
-    }
-
-    private fun fetchList(manualRefresh: Boolean) {
-        val jsonFile = Utils.getCachedUpdateList(this)
-        val jsonFileTmp = File("${jsonFile.absolutePath}${UUID.randomUUID()}")
-        val url = Utils.getServerURL(this)
-        uiState.value = uiState.value.copy(isRefreshing = true)
-        try {
-            DownloadClient.Builder()
-                .setUrl(url)
-                .setDestination(jsonFileTmp)
-                .setDownloadCallback(object : DownloadClient.DownloadCallback {
-                    override fun onFailure(cancelled: Boolean) = runOnUiThread {
-                        if (!cancelled) showToast(getString(R.string.snack_updates_check_failed))
-                        uiState.value = uiState.value.copy(isRefreshing = false)
-                    }
-                    override fun onResponse(headers: DownloadClient.Headers) {}
-                    override fun onSuccess() = runOnUiThread {
-                        processNewJson(jsonFile, jsonFileTmp, manualRefresh)
-                        uiState.value = uiState.value.copy(isRefreshing = false)
-                    }
-                })
-                .build()
-                .start()
-        } catch (exception: IOException) {
-            Log.e(TAG, "Could not build download client")
-            showToast(getString(R.string.snack_updates_check_failed))
-            uiState.value = uiState.value.copy(isRefreshing = false)
         }
     }
 
     override fun onImportStarted() {
-        uiState.value = uiState.value.copy(showImportDialog = true)
+        viewModel.onImportStarted()
     }
 
     override fun onImportCompleted(update: Update?) {
-        uiState.value = uiState.value.copy(showImportDialog = false)
-        if (update == null) showToast(getString(R.string.local_update_import_failure))
-        else uiState.value = uiState.value.copy(importSuccessUpdate = update)
+        viewModel.onImportCompleted(update)
     }
 
     private fun exportUpdate(update: UpdateInfo) {
@@ -383,68 +245,11 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
         })
     }
 
-    private fun savePreferences(preferences: PreferencesData) {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        prefs.edit()
-            .putInt(Constants.PREF_AUTO_UPDATES_CHECK_INTERVAL, preferences.autoCheckInterval)
-            .putBoolean(Constants.PREF_AUTO_DELETE_UPDATES, preferences.autoDelete)
-            .putBoolean(Constants.PREF_METERED_NETWORK_WARNING, preferences.meteredNetworkWarning)
-            .putBoolean(Constants.PREF_AB_PERF_MODE, preferences.abPerfMode)
-            .apply()
-        if (Utils.isUpdateCheckEnabled(this)) {
-            UpdatesCheckReceiver.scheduleRepeatingUpdatesCheck(this)
-        } else {
-            UpdatesCheckReceiver.cancelRepeatingUpdatesCheck(this)
-            UpdatesCheckReceiver.cancelUpdatesCheck(this)
-        }
-        val controller = mUpdaterService?.updaterController ?: return
-        if (Utils.isABDevice()) {
-            controller!!.setPerformanceMode(preferences.abPerfMode)
-        }
-    }
-
-    private fun maybeShowWelcomeMessage() {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        if (!prefs.getBoolean(Constants.HAS_SEEN_WELCOME_MESSAGE, false)) uiState.value = uiState.value.copy(showWelcomeDialog = true)
-    }
-
-    private fun markWelcomeSeen() {
-        PreferenceManager.getDefaultSharedPreferences(this)
-            .edit()
-            .putBoolean(Constants.HAS_SEEN_WELCOME_MESSAGE, true)
-            .apply()
-    }
-
-    private fun showToast(message: String) {
-        uiState.value = uiState.value.copy(toastMessage = message)
-    }
-
-    private suspend fun getChangelog(): String = withContext(Dispatchers.IO) {
-        var connection: HttpURLConnection? = null
-        try {
-            val url = URL(getString(R.string.changelog_url))
-            connection = url.openConnection() as HttpURLConnection
-            connection.requestMethod = "GET"
-            connection.connectTimeout = 10_000
-            connection.readTimeout = 10_000
-
-            connection.inputStream.bufferedReader().use { reader ->
-                reader.readText()
-            }
-        } catch (e: Exception) {
-            ""
-        } finally {
-            connection?.disconnect()
-        }
-    }
-
     private val requestNotificationPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
-            if (granted) {
-                showToast("Notifications enabled")
-            } else {
-                showToast("Notifications permission denied")
-            }
+            viewModel.showToast(getString(
+                if (granted) R.string.notifications_enabled else R.string.notifications_denied
+            ))
             markNotificationPermissionRequested()
         }
 
@@ -467,9 +272,5 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
             .edit()
             .putBoolean(Constants.HAS_REQUESTED_NOTIFICATION_PERMISSION, true)
             .apply()
-    }
-
-    companion object {
-        private const val TAG = "UpdatesActivity"
     }
 }

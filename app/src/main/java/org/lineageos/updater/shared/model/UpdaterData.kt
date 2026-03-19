@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 AxionOS
+ * Copyright (C) 2025-2026 AxionOS
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.updater
+package org.lineageos.updater.shared.model
 
-import androidx.compose.ui.graphics.vector.ImageVector
 import org.lineageos.updater.model.Update
 import org.lineageos.updater.model.UpdateInfo
 import org.lineageos.updater.model.UpdateStatus
@@ -29,28 +28,25 @@ data class PreferencesData(
 )
 
 data class UiState(
-    var currentScreen: String = "Home",
-    var showChangelog: Boolean = false,
-    var latestUpdate: UpdateInfo? = null,
-    var updateStatus: UpdateStatus? = null,
-    var downloadProgress: Float = 0f,
-    var downloadedMB: Int = 0,
-    var totalMB: Int = 0,
-    var isRefreshing: Boolean = false,
-    var showImportDialog: Boolean = false,
-    var showPreferencesDialog: Boolean = false,
-    var showWelcomeDialog: Boolean = false,
-    var toastMessage: String? = null,
-    var importSuccessUpdate: Update? = null,
-    var changelog: String = "",
-    var isLoadingChangelog: Boolean = false,
+    val latestUpdate: UpdateInfo? = null,
+    val updateStatus: UpdateStatus? = null,
+    val downloadProgress: Float = 0f,
+    val downloadedMB: Int = 0,
+    val totalMB: Int = 0,
+    val isRefreshing: Boolean = false,
+    val showImportDialog: Boolean = false,
+    val showPreferencesDialog: Boolean = false,
+    val showWelcomeDialog: Boolean = false,
+    val toastMessage: String? = null,
+    val importSuccessUpdate: Update? = null,
+    val changelog: String = "",
+    val isLoadingChangelog: Boolean = false,
     val installProgress: Int? = null
 )
 
 data class UpdaterCallbacks(
     val onStartDownload: (UpdateInfo) -> Unit,
     val onFinish: () -> Unit,
-    val onScreenChange: (String) -> Unit,
     val onRefresh: () -> Unit,
     val onShowPreferences: () -> Unit,
     val onImportLocal: () -> Unit,
@@ -60,10 +56,4 @@ data class UpdaterCallbacks(
     val onInstalled: (UpdateInfo) -> Unit,
     val onVerified: (UpdateInfo) -> Unit,
     val onDelete: (UpdateInfo) -> Unit
-)
-
-data class ToolbarItem(
-    val name: String,
-    val icon: ImageVector,
-    val onClick: () -> Unit
 )
