@@ -1,71 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="system_updates">Systemaktualisierungen</string>
+<!--
+     Copyright (C) 2017-2024 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Updater</string>
-    <string name="update_available">Update verfügbar</string>
-    <string name="up_to_date">Aktuell</string>
     <string name="display_name">Updater</string>
+    <string name="system_updates">Systemaktualisierungen</string>
+    <string name="up_to_date">Aktuell</string>
+    <string name="update_available">Update verfügbar</string>
+    <string name="official_specifier">Official</string>
+    <string name="build_specifier">Offizieller Bau von</string>
+    <string name="updates_title">Aktualisierungen</string>
+    <string name="changelog_guide">Streichen Sie nach oben, um zu sehen, was neu ist</string>
     <string name="changelog_title">Was ist neu?</string>
     <string name="pref_save">Speichern</string>
     <string name="pref_cancel">Stornieren</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">Überprüfung fehlgeschlagen</string>
-    <string name="updates_title">Aktualisierungen</string>
-    <string name="changelog_guide">Streichen Sie nach oben, um zu sehen, was neu ist</string>
-    <string name="build_specifier">Offizieller Bau von</string>
     <string name="verifying_download_notification">Überprüfen Sie das Update</string>
     <string name="downloading_notification">Herunterladen</string>
     <string name="download_paused_notification">Download Pause</string>
-    <string name="download_completed_notification">Download abgeschlossen</string>
     <string name="download_paused_error_notification">Download -Fehler</string>
+    <string name="download_completed_notification">Download abgeschlossen</string>
     <string name="download_starting_notification">Download beginnen</string>
-    <string name="resume_button">Wieder aufnehmen</string>
-    <string name="pause_button">Pause</string>
-    <string name="suspend_button">Aussetzen</string>
-    <string name="installation_suspended_notification">Installation suspendiert</string>
-    <string name="installing_update_error">Fehler einbauen</string>
-    <string name="installing_update">Installieren von Update -Paket</string>
-    <string name="new_updates_found_title">Neue Updates</string>
     <string name="update_failed_notification">Update fehlgeschlagen</string>
+    <string name="installation_suspended_notification">Installation suspendiert</string>
+    <string name="new_updates_found_title">Neue Updates</string>
+    <string name="text_download_speed">%1$s, %2$s/s</string>
+    <string name="pause_button">Pause</string>
+    <string name="resume_button">Wieder aufnehmen</string>
+    <string name="suspend_button">Aussetzen</string>
+    <string name="installing_update">Installieren von Update -Paket</string>
+    <string name="installing_update_error">Fehler einbauen</string>
     <string name="installing_update_finished">Update installiert</string>
-    <string name="dialog_prepare_zip_message">Vorbereitungsvorbereitung</string>
     <string name="finalizing_package">Fertigstellung der Paketinstallation</string>
-    <string name="dialog_battery_low_title">Niedrige Batterie</string>
     <string name="preparing_ota_first_boot">Vorbereitung auf den ersten Start</string>
-    <string name="dialog_scratch_mounted_title">Das Update kann nicht mit Overlayfs montiert werden</string>
-    <string name="menu_refresh">Aktualisieren</string>
-    <string name="dialog_scratch_mounted_message">Bitte führen Sie die folgenden Befehle aus und versuchen Sie das Update erneut: \ n
+    <string name="dialog_prepare_zip_message">Vorbereitungsvorbereitung</string>
+    <string name="dialog_battery_low_title">Niedrige Batterie</string>
+    <string name="dialog_battery_low_message_pct">The battery level is too low, you need at least <xliff:g id="percent_discharging">%1$d</xliff:g>%% of the battery to continue, <xliff:g id="percent_charging">%2$d</xliff:g>%% if charging.</string>
+    <string name="dialog_scratch_mounted_message"><![CDATA[Bitte führen Sie die folgenden Befehle aus und versuchen Sie das Update erneut: \ n
         • ADB Root \ n
         • ADB Enable-Vielität \ n
-        • ADB -Neustart</string>
+        • ADB -Neustart]]></string>
+    <string name="dialog_scratch_mounted_title">Das Update kann nicht mit Overlayfs montiert werden</string>
     <string name="reboot">Neustart</string>
-    <string name="dialog_battery_low_message_pct">Der Batteriepegel ist zu niedrig, Sie brauchen zumindest</string>
+    <string name="menu_refresh">Aktualisieren</string>
+    <string name="menu_preferences">Vorlieben</string>
+    <string name="menu_auto_updates_check">Automatische Updates überprüfen</string>
+    <string name="menu_auto_updates_check_interval_daily">Einmal am Tag</string>
+    <string name="menu_auto_updates_check_interval_weekly">Einmal in der Woche</string>
     <string name="menu_auto_updates_check_interval_monthly">Einmal im Monat</string>
     <string name="menu_auto_updates_check_interval_never">Niemals</string>
-    <string name="menu_preferences">Vorlieben</string>
-    <string name="menu_auto_updates_check_interval_weekly">Einmal in der Woche</string>
-    <string name="menu_auto_updates_check">Automatische Updates überprüfen</string>
     <string name="menu_auto_delete_updates">Updates löschen bei der Installation</string>
-    <string name="menu_auto_updates_check_interval_daily">Einmal am Tag</string>
     <string name="menu_delete_update">Löschen</string>
-    <string name="menu_export_update">Export -Update</string>
-    <string name="menu_update_recovery">Aktualisieren Sie die Wiederherstellung</string>
     <string name="menu_copy_url">URL kopieren</string>
+    <string name="menu_export_update">Export -Update</string>
     <string name="menu_show_changelog">Show Changelog</string>
     <string name="menu_ab_perf_mode">Priorisieren Sie den Aktualisierungsprozess</string>
+    <string name="menu_update_recovery">Aktualisieren Sie die Wiederherstellung</string>
     <string name="toast_forced_update_recovery">Es ist unmöglich, die Wiederherstellungsaktualisierungen von Linienwiederholungen auf diesem Gerät zu deaktivieren.</string>
-    <string name="snack_no_updates_found">Keine neuen Updates gefunden</string>
     <string name="snack_updates_found">Neue Updates gefunden</string>
+    <string name="snack_no_updates_found">Keine neuen Updates gefunden</string>
     <string name="snack_updates_check_failed">Der Update -Check ist fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut.</string>
     <string name="snack_download_failed">Der Download ist fehlgeschlagen. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es später erneut.</string>
-    <string name="snack_update_not_installable">Dieses Update kann nicht oben im aktuellen Build installiert werden.</string>
-    <string name="snack_download_verified">Download abgeschlossen.</string>
-    <string name="header_android_version">Android</string>
-    <string name="list_download_progress_newer"/>
-    <string name="list_download_progress_eta_newer"/>
-    <string name="header_last_updates_check">Zuletzt überprüft:</string>
     <string name="snack_download_verification_failed">Die Update -Überprüfung ist fehlgeschlagen.</string>
-    <string name="action_download">Herunterladen</string>
+    <string name="snack_download_verified">Download abgeschlossen.</string>
+    <string name="snack_update_not_installable">Dieses Update kann nicht oben im aktuellen Build installiert werden.</string>
+    <string name="header_title_text">LineageOS\n%1$s</string>
+    <string name="header_android_version">Android <xliff:g id="version" example="7.1.2">%1$s</xliff:g></string>
+    <string name="header_last_updates_check">Last checked: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
+    <string name="list_build_version">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
+    <string name="list_build_version_date">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
+    <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
+    <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
     <string name="list_verifying_update">Überprüfen Sie das Update</string>
+    <string name="list_no_updates">Keine neuen Updates gefunden. Um nach neuen Updates manuell zu überprüfen, verwenden Sie die Taste für Aktualisierung.</string>
+    <string name="action_download">Herunterladen</string>
     <string name="action_pause">Pause</string>
     <string name="action_resume">Wieder aufnehmen</string>
     <string name="action_install">Installieren</string>
@@ -73,44 +104,58 @@
     <string name="action_delete">Löschen</string>
     <string name="action_cancel">Stornieren</string>
     <string name="action_na">N / A</string>
-    <string name="list_build_version_date">Lineageos</string>
-    <string name="list_build_version">Lineageos</string>
     <string name="confirm_delete_dialog_title">Datei löschen</string>
-    <string name="list_no_updates">Keine neuen Updates gefunden. Um nach neuen Updates manuell zu überprüfen, verwenden Sie die Taste für Aktualisierung.</string>
     <string name="confirm_delete_dialog_message">Löschen Sie die ausgewählte Aktualisierungsdatei?</string>
-    <string name="apply_update_dialog_message">Sie sind gleich installieren</string>
-    <string name="label_download_url">URL herunterladen</string>
     <string name="apply_update_dialog_title">Aktualisierung anwenden</string>
-    <string name="apply_update_dialog_message_ab">Sie sind gleich installieren</string>
+    <string name="apply_update_dialog_message">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.</string>
+    <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
     <string name="cancel_installation_dialog_message">Die Installation stornieren?</string>
-    <string name="notification_export_success">Update exportiert</string>
+    <string name="label_download_url">URL herunterladen</string>
+    <string name="toast_download_url_copied">URL kopiert</string>
     <string name="dialog_export_title">Exportieren von Update</string>
+    <string name="notification_export_success">Update exportiert</string>
     <string name="notification_export_fail">Exportfehler</string>
     <string name="toast_already_exporting">Bereits ein Update exportieren</string>
-    <string name="toast_download_url_copied">URL kopiert</string>
-    <string name="update_over_metered_network_title">Warnung</string>
-    <string name="blocked_update_dialog_title">Update blockiert</string>
-    <string name="menu_metered_network_warning">Messnetzwerkwarnung</string>
     <string name="toast_export_started">Der Export begann</string>
-    <string name="checkbox_metered_network_warning">Zeigen Sie nicht noch einmal</string>
+    <plurals name="eta_seconds">
+        <item quantity="one">1 second left</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> seconds left</item>
+    </plurals>
+    <plurals name="eta_minutes">
+        <item quantity="one">1 minute left</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> minutes left</item>
+    </plurals>
+    <plurals name="eta_hours">
+        <item quantity="one">1 hour left</item>
+        <item quantity="other"><xliff:g id="count">%d</xliff:g> hours left</item>
+    </plurals>
+    <string name="update_over_metered_network_title">Warnung</string>
     <string name="update_over_metered_network_message">Sie werden ein Update -Paket über ein gemessenes Netzwerk herunterladen, das wahrscheinlich eine hohe Datennutzung verursacht. Möchten Sie fortfahren?</string>
+    <string name="checkbox_metered_network_warning">Zeigen Sie nicht noch einmal</string>
+    <string name="menu_metered_network_warning">Messnetzwerkwarnung</string>
+    <string name="blocked_update_dialog_title">Update blockiert</string>
+    <string name="blocked_update_dialog_message">This update cannot be installed using the updater app.  Please read <xliff:g id="info_url">%1$s</xliff:g> for more information.</string>
+    <string name="export_channel_title">Exportabschluss</string>
     <string name="new_updates_channel_title">Neue Updates</string>
+    <string name="ongoing_channel_title">Laufende Downloads</string>
     <string name="update_failed_channel_title">Update fehlgeschlagen</string>
     <string name="info_dialog_title">Wussten Sie?</string>
-    <string name="info_dialog_ok">Danke für die Info!</string>
-    <string name="blocked_update_dialog_message">Dieses Update kann nicht über die Updater -App installiert werden.  Bitte lesen Sie</string>
-    <string name="ongoing_channel_title">Laufende Downloads</string>
-    <string name="local_update_import">Lokales Update</string>
-    <string name="export_channel_title">Exportabschluss</string>
     <string name="info_dialog_message">LineageOS -Updates sind vollständige Installationspakete. Das heißt, Sie können immer nur das neueste Update installieren, auch wenn Sie einige dazwischen übersprungen haben!</string>
-    <string name="local_update_import_install">Installieren</string>
-    <string name="welcome_title">Willkommen</string>
-    <string name="local_update_name">Lokales Update</string>
+    <string name="info_dialog_ok">Danke für die Info!</string>
+    <string name="local_update_import">Lokales Update</string>
     <string name="local_update_import_progress">Lokales Update \ U2026 importieren</string>
+    <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
     <string name="local_update_import_failure">Das lokale Update nicht importieren</string>
+    <string name="local_update_import_install">Installieren</string>
+    <string name="local_update_name">Lokales Update</string>
+    <string name="local_update_import_warning_title">Precaution!</string>
+    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
+    <string name="welcome_title">Willkommen</string>
     <string name="welcome_message">Bitte beachten Sie, dass Sie, wenn mehrere Updates verfügbar sind, keine Aktualisierung durch Update benötigen, die Sie immer direkt installieren und dann alte Updates sicher löschen können, um den Speicherplatz freizugeben.</string>
     <!-- Axion UI -->
-    <string name="screen_home">Startseite</string>
+    <string name="screen_home">Startbildschirm</string>
     <string name="screen_update">Aktualisieren</string>
     <string name="screen_import">Importieren</string>
     <string name="content_description_back">Zurück</string>

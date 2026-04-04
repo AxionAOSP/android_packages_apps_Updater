@@ -1,113 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<!--
+     Copyright (C) 2017-2024 The LineageOS Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">アップデーター</string>
+    <string name="display_name">アップデーター</string>
+    <string name="system_updates">システムの更新</string>
     <string name="up_to_date">最新の</string>
     <string name="update_available">利用可能な更新</string>
-    <string name="display_name">アップデーター</string>
-    <string name="updates_title">更新</string>
-    <string name="pref_save">保存</string>
-    <string name="changelog_title">新着情報？</string>
-    <string name="pref_cancel">キャンセル</string>
+    <string name="official_specifier">公式</string>
     <string name="build_specifier">公式ビルドによる</string>
+    <string name="updates_title">更新</string>
     <string name="changelog_guide">スワイプして、何が新しいかを確認します</string>
+    <string name="changelog_title">新着情報？</string>
+    <string name="pref_save">保存</string>
+    <string name="pref_cancel">キャンセル</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">検証に失敗しました</string>
-    <string name="system_updates">システムの更新</string>
-    <string name="downloading_notification">ダウンロード</string>
-    <string name="download_completed_notification">完成したダウンロード</string>
     <string name="verifying_download_notification">更新の確認</string>
+    <string name="downloading_notification">ダウンロード</string>
     <string name="download_paused_notification">ダウンロードしてください</string>
-    <string name="download_starting_notification">ダウンロードを開始します</string>
     <string name="download_paused_error_notification">エラーをダウンロードします</string>
+    <string name="download_completed_notification">完成したダウンロード</string>
+    <string name="download_starting_notification">ダウンロードを開始します</string>
     <string name="update_failed_notification">更新に失敗しました</string>
     <string name="installation_suspended_notification">インストールが中断されました</string>
-    <string name="suspend_button">つるす</string>
-    <string name="resume_button">再開する</string>
+    <string name="new_updates_found_title">新しい更新</string>
+    <string name="text_download_speed">%1$s - %2$s/s</string>
     <string name="pause_button">一時停止</string>
+    <string name="resume_button">再開する</string>
+    <string name="suspend_button">つるす</string>
+    <string name="installing_update">更新パッケージのインストール</string>
     <string name="installing_update_error">エラーをインストールします</string>
     <string name="installing_update_finished">更新インストール</string>
-    <string name="new_updates_found_title">新しい更新</string>
-    <string name="installing_update">更新パッケージのインストール</string>
     <string name="finalizing_package">パッケージのインストールの最終化</string>
-    <string name="dialog_battery_low_title">低いバッテリー</string>
-    <string name="dialog_battery_low_message_pct">バッテリーレベルが低すぎるので、少なくとも必要です</string>
-    <string name="dialog_prepare_zip_message">予備更新の準備</string>
     <string name="preparing_ota_first_boot">最初のブーツの準備</string>
-    <string name="dialog_scratch_mounted_message">次のコマンドを実行し、更新を再試行してください：\ n
+    <string name="dialog_prepare_zip_message">予備更新の準備</string>
+    <string name="dialog_battery_low_title">低いバッテリー</string>
+    <string name="dialog_battery_low_message_pct">The battery level is too low, you need at least <xliff:g id="percent_discharging">%1$d</xliff:g>%% of the battery to continue, <xliff:g id="percent_charging">%2$d</xliff:g>%% if charging.</string>
+    <string name="dialog_scratch_mounted_message"><![CDATA[次のコマンドを実行し、更新を再試行してください：\ n
         •ADBルート\ n
         •ADB Enable-Verity \ n
-        •ADB再起動</string>
+        •ADB再起動]]></string>
+    <string name="dialog_scratch_mounted_title">overlayfsに取り付けられた状態で更新をインストールできません</string>
     <string name="reboot">リブート</string>
     <string name="menu_refresh">リフレッシュします</string>
     <string name="menu_preferences">好み</string>
+    <string name="menu_auto_updates_check">自動更新チェック</string>
+    <string name="menu_auto_updates_check_interval_daily">1日1回</string>
     <string name="menu_auto_updates_check_interval_weekly">週に一度</string>
     <string name="menu_auto_updates_check_interval_monthly">月に一度</string>
     <string name="menu_auto_updates_check_interval_never">一度もない</string>
+    <string name="menu_auto_delete_updates">インストール時に更新を削除します</string>
     <string name="menu_delete_update">消去</string>
     <string name="menu_copy_url">URLをコピーします</string>
-    <string name="menu_auto_delete_updates">インストール時に更新を削除します</string>
-    <string name="menu_auto_updates_check_interval_daily">1日1回</string>
-    <string name="menu_auto_updates_check">自動更新チェック</string>
-    <string name="dialog_scratch_mounted_title">overlayfsに取り付けられた状態で更新をインストールできません</string>
-    <string name="menu_ab_perf_mode">更新プロセスに優先順位を付けます</string>
     <string name="menu_export_update">エクスポートの更新</string>
-    <string name="toast_forced_update_recovery">このデバイスでの系統回復の更新を無効にすることは不可能です。</string>
-    <string name="menu_update_recovery">リカバリを更新します</string>
     <string name="menu_show_changelog">show changelog</string>
-    <string name="snack_download_failed">ダウンロードに失敗しました。インターネット接続を確認して、後でもう一度お試しください。</string>
+    <string name="menu_ab_perf_mode">更新プロセスに優先順位を付けます</string>
+    <string name="menu_update_recovery">リカバリを更新します</string>
+    <string name="toast_forced_update_recovery">このデバイスでの系統回復の更新を無効にすることは不可能です。</string>
     <string name="snack_updates_found">新しいアップデートが見つかりました</string>
-    <string name="snack_download_verification_failed">更新の検証に失敗しました。</string>
-    <string name="snack_updates_check_failed">更新チェックに失敗しました。インターネット接続を確認して、後でもう一度お試しください。</string>
     <string name="snack_no_updates_found">新しい更新は見つかりませんでした</string>
-    <string name="header_android_version">アンドロイド</string>
-    <string name="header_last_updates_check">最後のチェック：</string>
-    <string name="list_download_progress_newer"/>
-    <string name="list_download_progress_eta_newer"/>
+    <string name="snack_updates_check_failed">更新チェックに失敗しました。インターネット接続を確認して、後でもう一度お試しください。</string>
+    <string name="snack_download_failed">ダウンロードに失敗しました。インターネット接続を確認して、後でもう一度お試しください。</string>
+    <string name="snack_download_verification_failed">更新の検証に失敗しました。</string>
     <string name="snack_download_verified">完成したダウンロード。</string>
-    <string name="list_build_version">lineageos</string>
-    <string name="list_build_version_date">lineageos</string>
     <string name="snack_update_not_installable">このアップデートは、現在のビルドの上にインストールできます。</string>
+    <string name="header_title_text">LineageOS\n%1$s</string>
+    <string name="header_android_version">Android <xliff:g id="version" example="7.1.2">%1$s</xliff:g></string>
+    <string name="header_last_updates_check">最終確認: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
+    <string name="list_build_version">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
+    <string name="list_build_version_date">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
+    <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> - <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
+    <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> - <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
     <string name="list_verifying_update">更新の確認</string>
+    <string name="list_no_updates">新しい更新は見つかりませんでした。新しい更新を手動で確認するには、更新ボタンを使用します。</string>
+    <string name="action_download">ダウンロード</string>
     <string name="action_pause">一時停止</string>
     <string name="action_resume">再開する</string>
-    <string name="action_download">ダウンロード</string>
+    <string name="action_install">インストール</string>
     <string name="action_info">情報</string>
     <string name="action_delete">消去</string>
     <string name="action_cancel">キャンセル</string>
-    <string name="action_install">インストール</string>
     <string name="action_na">n/a</string>
-    <string name="list_no_updates">新しい更新は見つかりませんでした。新しい更新を手動で確認するには、更新ボタンを使用します。</string>
     <string name="confirm_delete_dialog_title">ファイルを削除します</string>
     <string name="confirm_delete_dialog_message">選択した更新ファイルを削除しますか？</string>
     <string name="apply_update_dialog_title">更新を適用します</string>
-    <string name="apply_update_dialog_message_ab">インストールしようとしています</string>
-    <string name="toast_download_url_copied">URLコピー</string>
-    <string name="apply_update_dialog_message">インストールしようとしています</string>
-    <string name="dialog_export_title">更新のエクスポート</string>
+    <string name="apply_update_dialog_message">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.</string>
+    <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
     <string name="cancel_installation_dialog_message">インストールをキャンセルしますか？</string>
     <string name="label_download_url">URLをダウンロードします</string>
-    <string name="update_over_metered_network_title">警告</string>
+    <string name="toast_download_url_copied">URLコピー</string>
+    <string name="dialog_export_title">更新のエクスポート</string>
+    <string name="notification_export_success">エクスポートされた更新</string>
     <string name="notification_export_fail">エクスポートエラー</string>
     <string name="toast_already_exporting">すでにアップデートをエクスポートしています</string>
-    <string name="notification_export_success">エクスポートされた更新</string>
     <string name="toast_export_started">エクスポートが開始されました</string>
-    <string name="blocked_update_dialog_message">このアップデートは、Updaterアプリを使用してインストールすることはできません。  読んでください</string>
-    <string name="blocked_update_dialog_title">更新がブロックされました</string>
-    <string name="menu_metered_network_warning">計量ネットワーク警告</string>
-    <string name="checkbox_metered_network_warning">二度と見せないでください</string>
+    <plurals name="eta_seconds">
+        <item quantity="other">残り <xliff:g id="count">%d</xliff:g> 秒</item>
+    </plurals>
+    <plurals name="eta_minutes">
+        <item quantity="other">残り <xliff:g id="count">%d</xliff:g> 分</item>
+    </plurals>
+    <plurals name="eta_hours">
+        <item quantity="other">残り <xliff:g id="count">%d</xliff:g> 時間</item>
+    </plurals>
+    <string name="update_over_metered_network_title">警告</string>
     <string name="update_over_metered_network_message">メーターネットワーク上に更新パッケージをダウンロードしようとしているため、高いデータ使用量を引き起こす可能性があります。先に進みたいですか？</string>
-    <string name="update_failed_channel_title">更新に失敗しました</string>
-    <string name="info_dialog_title">知っていましたか？</string>
+    <string name="checkbox_metered_network_warning">二度と見せないでください</string>
+    <string name="menu_metered_network_warning">計量ネットワーク警告</string>
+    <string name="blocked_update_dialog_title">更新がブロックされました</string>
+    <string name="blocked_update_dialog_message">This update cannot be installed using the updater app.  Please read <xliff:g id="info_url">%1$s</xliff:g> for more information.</string>
+    <string name="export_channel_title">エクスポートの完了</string>
     <string name="new_updates_channel_title">新しい更新</string>
     <string name="ongoing_channel_title">継続的なダウンロード</string>
-    <string name="export_channel_title">エクスポートの完了</string>
+    <string name="update_failed_channel_title">更新に失敗しました</string>
+    <string name="info_dialog_title">知っていましたか？</string>
     <string name="info_dialog_message">Lineageosの更新は、完全なインストールパッケージです。つまり、その間にスキップしたとしても、いつでも最新のアップデートのみをインストールできます。</string>
-    <string name="local_update_import_progress">ローカルアップデートのインポート\ u2026</string>
     <string name="info_dialog_ok">情報をありがとう！</string>
     <string name="local_update_import">ローカルアップデート</string>
+    <string name="local_update_import_progress">ローカルアップデートのインポート\ u2026</string>
+    <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
     <string name="local_update_import_failure">ローカルアップデートをインポートできませんでした</string>
-    <string name="welcome_title">いらっしゃいませ</string>
     <string name="local_update_import_install">インストール</string>
     <string name="local_update_name">ローカルアップデート</string>
+    <string name="local_update_import_warning_title">注意！</string>
+    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
+    <string name="welcome_title">いらっしゃいませ</string>
     <string name="welcome_message">複数の更新が利用可能な場合は、アップデートごとに更新する必要はありません。最新の更新を常に直接インストールしてから、古い更新を安全に削除してストレージスペースを無料で削除できます。</string>
     <!-- Axion UI -->
     <string name="screen_home">ホーム</string>
@@ -121,7 +163,7 @@
     <string name="default_maintainer">不明</string>
     <string name="default_version">2.0</string>
     <string name="default_device">不明なデバイス</string>
-    <string name="local_update_label">ローカル更新</string>
+    <string name="local_update_label">ローカルアップデート</string>
     <string name="label_version">バージョン：</string>
     <string name="label_size">サイズ</string>
     <string name="label_date">日付</string>

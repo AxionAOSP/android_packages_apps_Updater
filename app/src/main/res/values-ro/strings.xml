@@ -17,6 +17,26 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Actualizator</string>
     <string name="display_name">Actualizator</string>
+    <string name="system_updates">System updates</string>
+    <string name="up_to_date">Up-to-date</string>
+    <string name="update_available">Update available</string>
+    <string name="official_specifier">Official</string>
+    <string name="build_specifier">Community</string>
+    <string name="updates_title">Updates</string>
+    <string name="changelog_guide">Swipe up to see what\'s new</string>
+    <string name="changelog_title">What\'s New?</string>
+    <string name="pref_save">Save</string>
+    <string name="pref_cancel">Cancel</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">Verificarea a eșuat</string>
     <string name="verifying_download_notification">Verificare actualizare</string>
     <string name="downloading_notification">Descărcare</string>
@@ -80,10 +100,11 @@
     <string name="action_download">Descărcați</string>
     <string name="action_pause">Pauză</string>
     <string name="action_resume">Reluaţi</string>
-    <string name="action_install">Instalați</string>
+    <string name="action_install">Instalează</string>
     <string name="action_info">Info</string>
-    <string name="action_delete">Ștergeți</string>
-    <string name="action_cancel">Anulare</string>
+    <string name="action_delete">Șterge</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_na">N/A</string>
     <string name="confirm_delete_dialog_title">Ștergeți fișierul</string>
     <string name="confirm_delete_dialog_message">Șterge fișierul de actualizare selectat?</string>
     <string name="apply_update_dialog_title">Aplicaţi actualizarea</string>
@@ -129,8 +150,45 @@
     <string name="local_update_import_progress">Importare actualizare locală\u2026</string>
     <string name="local_update_import_success">%1$s a fost importată. Doriți să o instalați?</string>
     <string name="local_update_import_failure">Eroare la importarea actualizării locale</string>
-    <string name="local_update_import_install">Instalați</string>
+    <string name="local_update_import_install">Instalează</string>
     <string name="local_update_name">Actualizare locală</string>
+    <string name="local_update_import_warning_title">Precaution!</string>
+    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
     <string name="welcome_title">Bun venit</string>
     <string name="welcome_message">Vă rugăm să rețineți că, atunci când sunt disponibile mai multe actualizări, nu este nevoie să treceți prin fiecare dintre ele, ci puteți instala întotdeauna cea mai recentă în mod direct și apoi să ștergeți în siguranță actualizările vechi pentru a elibera spațiul de stocare.</string>
+    <!-- Axion UI -->
+    <string name="screen_home">Pagina de pornire</string>
+    <string name="screen_update">Actualizează</string>
+    <string name="screen_import">Import</string>
+    <string name="content_description_back">Back</string>
+    <string name="content_description_menu">Menu</string>
+    <string name="content_description_experimental_build">Experimental build</string>
+    <string name="beta_label">Open BETA</string>
+    <string name="rom_name">AxionOS</string>
+    <string name="default_maintainer">Necunoscut</string>
+    <string name="default_version">2.0</string>
+    <string name="default_device">Unknown Device</string>
+    <string name="local_update_label">Actualizare locală</string>
+    <string name="label_version">Version:</string>
+    <string name="label_size">Size</string>
+    <string name="label_date">Date</string>
+    <string name="label_type">Type</string>
+    <string name="label_status">Status</string>
+    <string name="label_eta">ETA</string>
+    <string name="label_speed">Speed</string>
+    <string name="unit_kilobytes_per_second">KB/s</string>
+    <string name="unit_megabytes">MB</string>
+    <string name="unit_kilobytes">KB</string>
+    <string name="unit_percent">%</string>
+    <string name="bullet_point">•</string>
+    <string name="toast_no_internet_or_service">No internet connection or service not ready.</string>
+    <string name="toast_unable_to_pause">Unable to pause download.</string>
+    <string name="toast_unable_to_delete">Unable to delete download.</string>
+    <string name="changelog_loading">Loading changelog…</string>
+    <string name="changelog_not_available">No changelog available.</string>
+    <string name="toast_notifications_enabled">Notifications enabled</string>
+    <string name="toast_notifications_permission_denied">Notifications permission denied</string>
+    <string name="separator_bullet"> • </string>
 </resources>
