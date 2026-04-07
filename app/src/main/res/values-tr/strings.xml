@@ -17,6 +17,26 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Güncelleyici</string>
     <string name="display_name">Güncelleyici</string>
+    <string name="system_updates">Sistem güncellemeleri</string>
+    <string name="up_to_date">Güncel</string>
+    <string name="update_available">Güncelleme mevcut</string>
+    <string name="official_specifier">Resmi</string>
+    <string name="build_specifier">Topluluk</string>
+    <string name="updates_title">Güncellemeler</string>
+    <string name="changelog_guide">Yenilikleri öğrenmek için yukarı kaydırın</string>
+    <string name="changelog_title">Neler Yeni?</string>
+    <string name="pref_save">Kaydet</string>
+    <string name="pref_cancel">Vazgeç</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">Doğrulama başarısız</string>
     <string name="verifying_download_notification">Güncelleme doğrulanıyor</string>
     <string name="downloading_notification">İndiriliyor</string>
@@ -27,7 +47,7 @@
     <string name="update_failed_notification">Güncelleme başarısız</string>
     <string name="installation_suspended_notification">Kurulum askıya alındı</string>
     <string name="new_updates_found_title">Yeni güncellemeler</string>
-    <string name="text_download_speed">%1$s, %2$s/s</string>
+    <string name="text_download_speed">%1$s, %2$s/sn</string>
     <string name="pause_button">Duraklat</string>
     <string name="resume_button">Devam</string>
     <string name="suspend_button">Askıya al</string>
@@ -61,7 +81,7 @@
     <string name="menu_ab_perf_mode">Güncelleme sürecini öncelikli hale getir</string>
     <string name="menu_update_recovery">Kurtarma modunu güncelle</string>
     <string name="toast_forced_update_recovery">Bu cihazda Lineage Kurtarma Modu güncellemelerini devre dışı bırakmak imkansızdır.</string>
-    <string name="snack_updates_found">Yeni güncelleştirmeler bulundu</string>
+    <string name="snack_updates_found">Yeni güncellemeler bulundu</string>
     <string name="snack_no_updates_found">Yeni güncelleme bulunamadı</string>
     <string name="snack_updates_check_failed">Güncelleme kontrolü başarısız oldu. Lütfen internet bağlantınızı kontrol edin ve daha sonra tekrar deneyin.</string>
     <string name="snack_download_failed">Güncelleme indirilemedi. Lütfen internet bağlantınızı kontrol edin ve daha sonra tekrar deneyin.</string>
@@ -79,11 +99,12 @@
     <string name="list_no_updates">Yeni güncelleme bulunamadı. El ile yeni güncellemeleri kontrol etmek için Yenile tuşunu kullanın.</string>
     <string name="action_download">İndir</string>
     <string name="action_pause">Duraklat</string>
-    <string name="action_resume">Devam et</string>
+    <string name="action_resume">Devam</string>
     <string name="action_install">Yükle</string>
     <string name="action_info">Bilgi</string>
     <string name="action_delete">Sil</string>
-    <string name="action_cancel">İptal</string>
+    <string name="action_cancel">Vazgeç</string>
+    <string name="action_na">Mevcut değil</string>
     <string name="confirm_delete_dialog_title">Dosya sil</string>
     <string name="confirm_delete_dialog_message">Seçilen güncelleme dosyası silinsin mi?</string>
     <string name="apply_update_dialog_title">Güncellemeyi uygula</string>
@@ -119,7 +140,7 @@
     <string name="new_updates_channel_title">Yeni güncellemeler</string>
     <string name="ongoing_channel_title">Devam eden indirmeler</string>
     <string name="update_failed_channel_title">Güncelleme başarısız</string>
-    <string name="info_dialog_title">Biliyor musun?</string>
+    <string name="info_dialog_title">Biliyor muydunuz?</string>
     <string name="info_dialog_message">LineageOS güncellemeleri tam yükleme paketleridir. Bu demektir ki güncelleme atlamış olsanız bile her zaman sadece son güncellemeyi kurabilirsiniz!</string>
     <string name="info_dialog_ok">Bilgi için teşekkürler!</string>
     <string name="local_update_import">Yerel güncelleme</string>
@@ -128,6 +149,27 @@
     <string name="local_update_import_failure">Yerel güncelleme içe aktarılamadı</string>
     <string name="local_update_import_install">Yükle</string>
     <string name="local_update_name">Yerel güncelleme</string>
+    <string name="local_update_import_warning_title">Dikkat!</string>
+    <string name="local_update_import_warning_message">    Yerel güncelleme mevcut bölümlerin üzerine yazar ve yan yüklenen GApps uygulamalarını veya paketleri geri yüklemez. 
+    Bu tür paketler yüklüyse, kurtarma modunda yan yükleme kullanmanız önerilir.    </string>
+    <string name="info_label_android">Android version</string>
+    <string name="info_label_build">Build date</string>
+    <string name="info_label_size">Boyut</string>
+    <string name="info_label_date">Security patch</string>
+    <string name="info_label_type">Tür</string>
+    <string name="info_label_status">Durum</string>
+    <string name="info_label_eta">Kalan süre</string>
+    <string name="info_label_speed">Hız</string>
+    <string name="info_label_version">Version: %1$s</string>
+    <string name="open_beta">AÇIK BETA</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="speed_kbps">%1$d KB/s</string>
+    <string name="eta_seconds_short">%1$ds</string>
+    <string name="no_connection_or_service">İnternet bağlantısı yok veya hizmet hazır değil.</string>
+    <string name="unable_to_pause">İndirme duraklatılamıyor.</string>
+    <string name="notifications_enabled">Bildirimler etkinleştirildi</string>
+    <string name="notifications_denied">Bildirim izni reddedildi</string>
+    <string name="action_retry">Retry</string>
     <string name="welcome_title">Hoş Geldiniz</string>
     <string name="welcome_message">Eğer birden fazla güncelleştirme mevcutsa bunları tek tek yüklemeniz gerekmez. Son güncelleştirmeyi uygulayıp eski güncelleştirmeleri silerek depolama alanınızdan tasarruf edebilirsiniz.</string>
 </resources>
