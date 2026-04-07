@@ -17,6 +17,26 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Actualitzador</string>
     <string name="display_name">Actualitzador</string>
+    <string name="system_updates">System updates</string>
+    <string name="up_to_date">Up-to-date</string>
+    <string name="update_available">Update available</string>
+    <string name="official_specifier">Official</string>
+    <string name="build_specifier">Community</string>
+    <string name="updates_title">Updates</string>
+    <string name="changelog_guide">Swipe up to see what\'s new</string>
+    <string name="changelog_title">What\'s New?</string>
+    <string name="pref_save">Save</string>
+    <string name="pref_cancel">Cancel</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">Ha fallat la verificació</string>
     <string name="verifying_download_notification">S\'està verificant l\'actualització</string>
     <string name="downloading_notification">S\'està baixant</string>
@@ -82,8 +102,9 @@
     <string name="action_resume">Reprèn</string>
     <string name="action_install">Instal·la</string>
     <string name="action_info">Informació</string>
-    <string name="action_delete">Suprimeix</string>
-    <string name="action_cancel">Cancel·la</string>
+    <string name="action_delete">Elimina</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_na">N/A</string>
     <string name="confirm_delete_dialog_title">Esborra el fitxer</string>
     <string name="confirm_delete_dialog_message">Vols esborrar el fitxer d\'actualització seleccionat?</string>
     <string name="apply_update_dialog_title">Aplica l\'actualització</string>
@@ -128,6 +149,28 @@
     <string name="local_update_import_failure">No s\'ha pogut importar l\'actualització local</string>
     <string name="local_update_import_install">Instal·la</string>
     <string name="local_update_name">Actualització local</string>
+    <string name="local_update_import_warning_title">Precaution!</string>
+    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
+    <string name="info_label_android">Android version</string>
+    <string name="info_label_build">Build date</string>
+    <string name="info_label_size">Size</string>
+    <string name="info_label_date">Security patch</string>
+    <string name="info_label_type">Type</string>
+    <string name="info_label_status">Status</string>
+    <string name="info_label_eta">ETA</string>
+    <string name="info_label_speed">Speed</string>
+    <string name="info_label_version">Version: %1$s</string>
+    <string name="open_beta">Open BETA</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="speed_kbps">%1$d KB/s</string>
+    <string name="eta_seconds_short">%1$ds</string>
+    <string name="no_connection_or_service">No internet connection or service not ready.</string>
+    <string name="unable_to_pause">Unable to pause download.</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_denied">Notifications permission denied</string>
+    <string name="action_retry">Retry</string>
     <string name="welcome_title">Us donem la benvinguda</string>
     <string name="welcome_message">Tingueu en compte que quan hi ha diverses actualitzacions disponibles, no cal instal·lar actualització a actualització, sempre podeu instal·lar l\'última directament i a continuació, suprimir les actualitzacions antigues de manera segura per alliberar espai.</string>
 </resources>
