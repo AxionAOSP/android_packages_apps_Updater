@@ -17,6 +17,26 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Päivittäjä</string>
     <string name="display_name">Päivittäjä</string>
+    <string name="system_updates">System updates</string>
+    <string name="up_to_date">Up-to-date</string>
+    <string name="update_available">Update available</string>
+    <string name="official_specifier">Official</string>
+    <string name="build_specifier">Community</string>
+    <string name="updates_title">Updates</string>
+    <string name="changelog_guide">Swipe up to see what\'s new</string>
+    <string name="changelog_title">What\'s New?</string>
+    <string name="pref_save">Save</string>
+    <string name="pref_cancel">Cancel</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">Vahvistus epäonnistui</string>
     <string name="verifying_download_notification">Todentaa päivitystä</string>
     <string name="downloading_notification">Ladataan</string>
@@ -39,6 +59,12 @@
     <string name="dialog_prepare_zip_message">Alustava päivityksen valmistelu</string>
     <string name="dialog_battery_low_title">Akku vähissä</string>
     <string name="dialog_battery_low_message_pct">Akun varaus on liian matala, tarvitset vähintään <xliff:g id="percent_discharging">%1$d</xliff:g>%% jatkaaksesi, <xliff:g id="percent_charging">%2$d</xliff:g>%% jos laite on latauksessa.</string>
+    <string name="dialog_scratch_mounted_message"><![CDATA[        Please run the following commands and retry the update:\n
+        • adb root\n
+        • adb enable-verity\n
+        • adb reboot
+        ]]></string>
+    <string name="dialog_scratch_mounted_title">Cannot install update with OverlayFS mounted</string>
     <string name="reboot">Käynnistä uudelleen</string>
     <string name="menu_refresh">Päivitä</string>
     <string name="menu_preferences">Ominaisuudet</string>
@@ -67,6 +93,8 @@
     <string name="header_last_updates_check">Viimeksi tarkistettu: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
     <string name="list_build_version">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
     <string name="list_build_version_date">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
+    <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
+    <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
     <string name="list_verifying_update">Todentaa päivitystä</string>
     <string name="list_no_updates">Uusia päivityksiä ei löytynyt. Tarkistaaksesi päivitykset manuaalisesti, paina Päivitä-painiketta.</string>
     <string name="action_download">Lataa</string>
@@ -75,10 +103,13 @@
     <string name="action_install">Asenna</string>
     <string name="action_info">Info</string>
     <string name="action_delete">Poista</string>
-    <string name="action_cancel">Peruuta</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_na">N/A</string>
     <string name="confirm_delete_dialog_title">Poista tiedosto</string>
     <string name="confirm_delete_dialog_message">Poista valittu päivitystiedosto?</string>
     <string name="apply_update_dialog_title">Asenna päivitys</string>
+    <string name="apply_update_dialog_message">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.</string>
+    <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
     <string name="cancel_installation_dialog_message">Peruuta asennus?</string>
     <string name="label_download_url">Lataussivun URL-osoite</string>
     <string name="toast_download_url_copied">URL-osoite kopioitu</string>
@@ -86,6 +117,7 @@
     <string name="notification_export_success">Päivitys viety</string>
     <string name="notification_export_fail">Vienti epäonnistui</string>
     <string name="toast_already_exporting">Päivityksen vieminen jo käynnissä</string>
+    <string name="toast_export_started">Export started</string>
     <plurals name="eta_seconds">
         <item quantity="one">1 sekunti jäljellä</item>
         <item quantity="other"><xliff:g id="count">%d</xliff:g> sekuntia jäljellä</item>
@@ -99,7 +131,9 @@
         <item quantity="other"><xliff:g id="count">%d</xliff:g> tuntia jäljellä</item>
     </plurals>
     <string name="update_over_metered_network_title">Varoitus</string>
+    <string name="update_over_metered_network_message">You\'re about to download an update package over a metered network which is likely going to cause high data usage. Would you like to proceed?</string>
     <string name="checkbox_metered_network_warning">Älä näytä uudelleen</string>
+    <string name="menu_metered_network_warning">Metered network warning</string>
     <string name="blocked_update_dialog_title">Päivitys estetty</string>
     <string name="blocked_update_dialog_message">Tätä päivitystä ei voida asentaa päivitys-sovelluksella. Lue <xliff:g id="info_url">%1$s</xliff:g> saadaksesi lisätietoja.</string>
     <string name="export_channel_title">Vienti valmis</string>
@@ -108,10 +142,35 @@
     <string name="update_failed_channel_title">Päivitys epäonnistui</string>
     <string name="info_dialog_title">Tiesitkö?</string>
     <string name="info_dialog_message">LineageOS-päivitykset ovat täydellisiä asennuspaketteja, jonka ansiosta voit aina asentaa vain viimeisimmän päivityksen, vaikka ohittaisitkin välillä joitakin versioita!</string>
+    <string name="info_dialog_ok">Thanks for the info!</string>
     <string name="local_update_import">Paikallinen päivitys</string>
     <string name="local_update_import_progress">Tuodaan paikallista päivitystä\u2026</string>
     <string name="local_update_import_success">%1$s on tuotu. Haluatko asentaa sen?</string>
     <string name="local_update_import_failure">Paikallisen päivityksen tuonti epäonnistui</string>
     <string name="local_update_import_install">Asenna</string>
     <string name="local_update_name">Paikallinen päivitys</string>
+    <string name="local_update_import_warning_title">Precaution!</string>
+    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
+    <string name="info_label_android">Android version</string>
+    <string name="info_label_build">Build date</string>
+    <string name="info_label_size">Size</string>
+    <string name="info_label_date">Security patch</string>
+    <string name="info_label_type">Type</string>
+    <string name="info_label_status">Status</string>
+    <string name="info_label_eta">ETA</string>
+    <string name="info_label_speed">Speed</string>
+    <string name="info_label_version">Version: %1$s</string>
+    <string name="open_beta">Open BETA</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="speed_kbps">%1$d KB/s</string>
+    <string name="eta_seconds_short">%1$ds</string>
+    <string name="no_connection_or_service">No internet connection or service not ready.</string>
+    <string name="unable_to_pause">Unable to pause download.</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_denied">Notifications permission denied</string>
+    <string name="action_retry">Retry</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_message">Please note that when multiple updates are available, there is no need to go update-by-update, you can always install the latest one directly, and then safely delete old updates to free up storage space.</string>
 </resources>
