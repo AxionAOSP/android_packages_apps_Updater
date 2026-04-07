@@ -159,24 +159,24 @@
     <string name="local_update_import_warning_message">    Выполнение локального обновления перезапишет существующие разделы и не может восстановить никакие сторонние пакеты (например GApps). 
     Если у вас есть пакеты установленные из recovery, потребуется установить их повторно.
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">Версия Android</string>
+    <string name="info_label_build">Дата сборки</string>
     <string name="info_label_size">Размер</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">Обновление системы безопасности</string>
     <string name="info_label_type">Тип</string>
     <string name="info_label_status">Статус</string>
     <string name="info_label_eta">Осталось времени</string>
     <string name="info_label_speed">Скорость</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">Версия: %1$s</string>
     <string name="open_beta">ОТКРЫТАЯ БЕТА</string>
-    <string name="check_for_updates">Check for updates</string>
-    <string name="speed_kbps">%1$d KB/s</string>
-    <string name="eta_seconds_short">%1$ds</string>
+    <string name="check_for_updates">Проверить обновления</string>
+    <string name="speed_kbps">%1$d КБ/с</string>
+    <string name="eta_seconds_short">%1$dс</string>
     <string name="no_connection_or_service">Нет подключения к Интернету или служба не готова.</string>
     <string name="unable_to_pause">Не удалось приостановить загрузку.</string>
     <string name="notifications_enabled">Уведомления включены</string>
     <string name="notifications_denied">Разрешение на уведомления отклонено</string>
-    <string name="action_retry">Retry</string>
+    <string name="action_retry">Повторить</string>
     <string name="welcome_title">Добро пожаловать</string>
     <string name="welcome_message">Обратите внимание, что когда доступно несколько обновлений, нет необходимости перейти на обновления, вы всегда можете установить последний непосредственно, а затем безопасно удалять старые обновления, чтобы освободить место для хранения.</string>
 </resources>
