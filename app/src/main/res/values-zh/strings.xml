@@ -15,18 +15,18 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_name">Updater</string>
-    <string name="display_name">Updater</string>
-    <string name="system_updates">System updates</string>
-    <string name="up_to_date">Up-to-date</string>
-    <string name="update_available">Update available</string>
-    <string name="official_specifier">Official</string>
-    <string name="build_specifier">Community</string>
-    <string name="updates_title">Updates</string>
-    <string name="changelog_guide">Swipe up to see what\'s new</string>
-    <string name="changelog_title">What\'s New?</string>
-    <string name="pref_save">Save</string>
-    <string name="pref_cancel">Cancel</string>
+    <string name="app_name">更新程式</string>
+    <string name="display_name">更新程式</string>
+    <string name="system_updates">系統更新</string>
+    <string name="up_to_date">最新</string>
+    <string name="update_available">有可用更新</string>
+    <string name="official_specifier">官方版本</string>
+    <string name="build_specifier">社群</string>
+    <string name="updates_title">更新</string>
+    <string name="changelog_guide">向上滑動以查看最新資訊</string>
+    <string name="changelog_title">有什麼新功能？</string>
+    <string name="pref_save">儲存</string>
+    <string name="pref_cancel">取消</string>
     <!-- Directory where the update files will be downloaded and stored.
          WARNING: The application can and will delete any unknown file. -->
     <!-- Directory where the downloads will be exported to.
@@ -37,137 +37,137 @@
           {type} - Build type
           {incr} - Incremental version
     -->
-    <string name="verification_failed_notification">Verification failed</string>
-    <string name="verifying_download_notification">Verifying update</string>
-    <string name="downloading_notification">Downloading</string>
-    <string name="download_paused_notification">Download paused</string>
-    <string name="download_paused_error_notification">Download error</string>
-    <string name="download_completed_notification">Download completed</string>
-    <string name="download_starting_notification">Starting download</string>
-    <string name="update_failed_notification">Update failed</string>
-    <string name="installation_suspended_notification">Installation suspended</string>
-    <string name="new_updates_found_title">New updates</string>
-    <string name="text_download_speed">%1$s, %2$s/s</string>
-    <string name="pause_button">Pause</string>
-    <string name="resume_button">Resume</string>
-    <string name="suspend_button">Suspend</string>
-    <string name="installing_update">Installing update package</string>
-    <string name="installing_update_error">Install error</string>
-    <string name="installing_update_finished">Update installed</string>
-    <string name="finalizing_package">Finalizing package installation</string>
-    <string name="preparing_ota_first_boot">Preparing for first boot</string>
-    <string name="dialog_prepare_zip_message">Preliminary update preparation</string>
-    <string name="dialog_battery_low_title">Low battery</string>
-    <string name="dialog_battery_low_message_pct">The battery level is too low, you need at least <xliff:g id="percent_discharging">%1$d</xliff:g>%% of the battery to continue, <xliff:g id="percent_charging">%2$d</xliff:g>%% if charging.</string>
-    <string name="dialog_scratch_mounted_message"><![CDATA[        Please run the following commands and retry the update:\n
+    <string name="verification_failed_notification">驗證失敗</string>
+    <string name="verifying_download_notification">正在驗證更新</string>
+    <string name="downloading_notification">下載中</string>
+    <string name="download_paused_notification">下載已暫停</string>
+    <string name="download_paused_error_notification">下載發生錯誤</string>
+    <string name="download_completed_notification">下載完成</string>
+    <string name="download_starting_notification">開始下載</string>
+    <string name="update_failed_notification">更新失敗</string>
+    <string name="installation_suspended_notification">安裝已暫停</string>
+    <string name="new_updates_found_title">找到新更新</string>
+    <string name="text_download_speed">%1$s, %2$s/秒</string>
+    <string name="pause_button">暫停</string>
+    <string name="resume_button">繼續</string>
+    <string name="suspend_button">暫停</string>
+    <string name="installing_update">正在安裝更新套件</string>
+    <string name="installing_update_error">安裝發生錯誤</string>
+    <string name="installing_update_finished">更新已安裝</string>
+    <string name="finalizing_package">正在完成套件安裝</string>
+    <string name="preparing_ota_first_boot">準備首次開機</string>
+    <string name="dialog_prepare_zip_message">準備更新套件中</string>
+    <string name="dialog_battery_low_title">電池電量不足</string>
+    <string name="dialog_battery_low_message_pct">電池電量太低，你至少需要 <xliff:g id="percent_discharging">%1$d</xliff:g>%%的電量才能繼續，如果正在充電，則需要 <xliff:g id="percent_charging">%2$d</xliff:g>%%。</string>
+    <string name="dialog_scratch_mounted_message"><![CDATA[        請執行以下指令後重試更新：\n
         • adb root\n
         • adb enable-verity\n
         • adb reboot
         ]]></string>
-    <string name="dialog_scratch_mounted_title">Cannot install update with OverlayFS mounted</string>
-    <string name="reboot">Reboot</string>
-    <string name="menu_refresh">Refresh</string>
-    <string name="menu_preferences">Preferences</string>
-    <string name="menu_auto_updates_check">Auto updates check</string>
-    <string name="menu_auto_updates_check_interval_daily">Once a day</string>
-    <string name="menu_auto_updates_check_interval_weekly">Once a week</string>
-    <string name="menu_auto_updates_check_interval_monthly">Once a month</string>
-    <string name="menu_auto_updates_check_interval_never">Never</string>
-    <string name="menu_auto_delete_updates">Delete updates when installed</string>
-    <string name="menu_delete_update">Delete</string>
-    <string name="menu_copy_url">Copy URL</string>
-    <string name="menu_export_update">Export update</string>
-    <string name="menu_show_changelog">Show changelog</string>
-    <string name="menu_ab_perf_mode">Prioritize update process</string>
-    <string name="menu_update_recovery">Update recovery</string>
-    <string name="toast_forced_update_recovery">It is impossible to disable Lineage Recovery updates on this device.</string>
-    <string name="snack_updates_found">New updates found</string>
-    <string name="snack_no_updates_found">No new updates found</string>
-    <string name="snack_updates_check_failed">The update check failed. Please check your internet connection and try again later.</string>
-    <string name="snack_download_failed">The download failed. Please check your internet connection and try again later.</string>
-    <string name="snack_download_verification_failed">The update verification failed.</string>
-    <string name="snack_download_verified">Download completed.</string>
-    <string name="snack_update_not_installable">This update can\'t be installed on top of the current build.</string>
-    <string name="header_title_text">LineageOS\n%1$s</string>
+    <string name="dialog_scratch_mounted_title">無法在掛載 OverlayFS 時安裝更新</string>
+    <string name="reboot">重新啟動</string>
+    <string name="menu_refresh">重新整理</string>
+    <string name="menu_preferences">偏好設定</string>
+    <string name="menu_auto_updates_check">自動檢查更新</string>
+    <string name="menu_auto_updates_check_interval_daily">每天一次</string>
+    <string name="menu_auto_updates_check_interval_weekly">每週一次</string>
+    <string name="menu_auto_updates_check_interval_monthly">每月一次</string>
+    <string name="menu_auto_updates_check_interval_never">永不</string>
+    <string name="menu_auto_delete_updates">安裝後刪除更新檔案</string>
+    <string name="menu_delete_update">刪除</string>
+    <string name="menu_copy_url">複製 URL</string>
+    <string name="menu_export_update">匯出更新</string>
+    <string name="menu_show_changelog">顯示更新日誌</string>
+    <string name="menu_ab_perf_mode">優先進行更新程序</string>
+    <string name="menu_update_recovery">更新 Recovery</string>
+    <string name="toast_forced_update_recovery">此裝置無法停用 ROM Recovery 更新。</string>
+    <string name="snack_updates_found">發現新的更新</string>
+    <string name="snack_no_updates_found">沒有找到新的更新</string>
+    <string name="snack_updates_check_failed">更新檢查失敗。請確認你的網際網路連線後再試一次。</string>
+    <string name="snack_download_failed">下載失敗。請確認你的網際網路連線後再試一次。</string>
+    <string name="snack_download_verification_failed">更新驗證失敗。</string>
+    <string name="snack_download_verified">下載完成。</string>
+    <string name="snack_update_not_installable">此更新無法在目前的版本上安裝。</string>
+    <string name="header_title_text">AxionOS\n%1$s</string>
     <string name="header_android_version">Android <xliff:g id="version" example="7.1.2">%1$s</xliff:g></string>
-    <string name="header_last_updates_check">Last checked: <xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
-    <string name="list_build_version">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
-    <string name="list_build_version_date">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
-    <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
-    <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> of <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
-    <string name="list_verifying_update">Verifying update</string>
-    <string name="list_no_updates">No new updates found. To manually check for new updates, use the Refresh button.</string>
-    <string name="action_download">Download</string>
-    <string name="action_pause">Pause</string>
-    <string name="action_resume">Resume</string>
+    <string name="header_last_updates_check">上次檢查：<xliff:g id="date" example="1 January 1970">%1$s</xliff:g> (<xliff:g id="time" example="01:23">%2$s</xliff:g>)</string>
+    <string name="list_build_version">AxionOS <xliff:g id="version" example="14.1">%1$s</xliff:g></string>
+    <string name="list_build_version_date">AxionOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
+    <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> / <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
+    <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> / <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g>（剩餘<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g> 分）</string>
+    <string name="list_verifying_update">正在驗證更新</string>
+    <string name="list_no_updates">找不到新的更新。如要手動檢查新更新，請使用「重新整理」按鈕。</string>
+    <string name="action_download">下載</string>
+    <string name="action_pause">暫停</string>
+    <string name="action_resume">繼續</string>
     <string name="action_install">安裝</string>
-    <string name="action_info">Info</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_cancel">Cancel</string>
-    <string name="action_na">N/A</string>
-    <string name="confirm_delete_dialog_title">Delete file</string>
-    <string name="confirm_delete_dialog_message">Delete the selected update file?</string>
-    <string name="apply_update_dialog_title">Apply update</string>
-    <string name="apply_update_dialog_message">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.</string>
-    <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
-    <string name="cancel_installation_dialog_message">Cancel the installation?</string>
-    <string name="label_download_url">Download URL</string>
-    <string name="toast_download_url_copied">URL Copied</string>
-    <string name="dialog_export_title">Exporting update</string>
-    <string name="notification_export_success">Update exported</string>
-    <string name="notification_export_fail">Export error</string>
-    <string name="toast_already_exporting">Already exporting an update</string>
-    <string name="toast_export_started">Export started</string>
+    <string name="action_info">資訊</string>
+    <string name="action_delete">刪除</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_na">不適用</string>
+    <string name="confirm_delete_dialog_title">刪除檔案</string>
+    <string name="confirm_delete_dialog_message">刪除所選的更新檔案？</string>
+    <string name="apply_update_dialog_title">套用更新</string>
+    <string name="apply_update_dialog_message">你即將安裝 <xliff:g id="update_name">%1$s</xliff:g>。\n\n按下<xliff:g id="ok">%2$s</xliff:g>後，裝置將重新啟動進入 Recovery 模式以安裝更新。\n\n注意：此功能需要相容的 Recovery，否則需手動安裝更新。</string>
+    <string name="apply_update_dialog_message_ab">你即將安裝 <xliff:g id="update_name">%1$s</xliff:g>。\n\n按下<xliff:g id="ok">%2$s</xliff:g>後，裝置將開始在背景安裝。\n\n完成後，系統將提示你重新啟動。</string>
+    <string name="cancel_installation_dialog_message">取消安裝？</string>
+    <string name="label_download_url">下載 URL</string>
+    <string name="toast_download_url_copied">已複製 URL</string>
+    <string name="dialog_export_title">匯出更新</string>
+    <string name="notification_export_success">更新已匯出</string>
+    <string name="notification_export_fail">匯出失敗</string>
+    <string name="toast_already_exporting">正在匯出更新中</string>
+    <string name="toast_export_started">已開始匯出</string>
     <plurals name="eta_seconds">
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> seconds left</item>
+        <item quantity="other">剩餘 <xliff:g id="count">%d</xliff:g> 秒鐘</item>
     </plurals>
     <plurals name="eta_minutes">
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> minutes left</item>
+        <item quantity="other">剩餘 <xliff:g id="count">%d</xliff:g> 分鐘</item>
     </plurals>
     <plurals name="eta_hours">
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> hours left</item>
+        <item quantity="other">剩餘 <xliff:g id="count">%d</xliff:g> 小時</item>
     </plurals>
-    <string name="update_over_metered_network_title">Warning</string>
-    <string name="update_over_metered_network_message">You\'re about to download an update package over a metered network which is likely going to cause high data usage. Would you like to proceed?</string>
-    <string name="checkbox_metered_network_warning">Do not show again</string>
-    <string name="menu_metered_network_warning">Metered network warning</string>
-    <string name="blocked_update_dialog_title">Update blocked</string>
-    <string name="blocked_update_dialog_message">This update cannot be installed using the updater app.  Please read <xliff:g id="info_url">%1$s</xliff:g> for more information.</string>
-    <string name="export_channel_title">Export completion</string>
-    <string name="new_updates_channel_title">New updates</string>
-    <string name="ongoing_channel_title">Ongoing downloads</string>
-    <string name="update_failed_channel_title">Update failed</string>
-    <string name="info_dialog_title">Did you know?</string>
-    <string name="info_dialog_message">LineageOS updates are full installation packages. That means you can always install only the latest update, even if you skipped some in between!</string>
-    <string name="info_dialog_ok">Thanks for the info!</string>
-    <string name="local_update_import">Local update</string>
-    <string name="local_update_import_progress">Importing local update\u2026</string>
-    <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
-    <string name="local_update_import_failure">Failed to import local update</string>
+    <string name="update_over_metered_network_title">警告</string>
+    <string name="update_over_metered_network_message">你即將透過計量網路下載更新套件，這可能會產生大量數據用量。是否要繼續？</string>
+    <string name="checkbox_metered_network_warning">不要再顯示</string>
+    <string name="menu_metered_network_warning">計量網路警告</string>
+    <string name="blocked_update_dialog_title">更新已封鎖</string>
+    <string name="blocked_update_dialog_message">此更新無法透過更新程式安裝。請參閱 <xliff:g id="info_url">%1$s</xliff:g> 以取得更多資訊。</string>
+    <string name="export_channel_title">匯出完成</string>
+    <string name="new_updates_channel_title">找到新更新</string>
+    <string name="ongoing_channel_title">下載進行中</string>
+    <string name="update_failed_channel_title">更新失敗</string>
+    <string name="info_dialog_title">你知道嗎？</string>
+    <string name="info_dialog_message">AxionOS 更新為完整的安裝套件。這代表你隨時都可以直接安裝最新更新，即使跳過了中間的版本也沒問題！</string>
+    <string name="info_dialog_ok">感謝告知！</string>
+    <string name="local_update_import">本機更新</string>
+    <string name="local_update_import_progress">匯入本機更新中\u2026</string>
+    <string name="local_update_import_success">已匯入 %1$s。是否要立即安裝？</string>
+    <string name="local_update_import_failure">無法匯入本機更新</string>
     <string name="local_update_import_install">安裝</string>
-    <string name="local_update_name">Local update</string>
-    <string name="local_update_import_warning_title">Precaution!</string>
-    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
-    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    <string name="local_update_name">本機更新</string>
+    <string name="local_update_import_warning_title">注意！</string>
+    <string name="local_update_import_warning_message">    執行本機更新將會覆寫現有的磁碟分割區，且無法還原任何側載的 GApps 或套件。 
+    若你已側載套件，建議改用 Recovery 側載方式進行。
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
-    <string name="info_label_size">Size</string>
-    <string name="info_label_date">Security patch</string>
-    <string name="info_label_type">Type</string>
-    <string name="info_label_status">Status</string>
-    <string name="info_label_eta">ETA</string>
-    <string name="info_label_speed">Speed</string>
-    <string name="info_label_version">Version: %1$s</string>
-    <string name="open_beta">Open BETA</string>
-    <string name="check_for_updates">Check for updates</string>
+    <string name="info_label_android">Android 版本</string>
+    <string name="info_label_build">建構日期</string>
+    <string name="info_label_size">大小</string>
+    <string name="info_label_date">安全性修補程式</string>
+    <string name="info_label_type">類型</string>
+    <string name="info_label_status">狀態</string>
+    <string name="info_label_eta">剩餘時間</string>
+    <string name="info_label_speed">速度</string>
+    <string name="info_label_version">版本：%1$s</string>
+    <string name="open_beta">公開測試版</string>
+    <string name="check_for_updates">檢查更新</string>
     <string name="speed_kbps">%1$d KB/s</string>
-    <string name="eta_seconds_short">%1$ds</string>
-    <string name="no_connection_or_service">No internet connection or service not ready.</string>
-    <string name="unable_to_pause">Unable to pause download.</string>
-    <string name="notifications_enabled">Notifications enabled</string>
-    <string name="notifications_denied">Notifications permission denied</string>
-    <string name="action_retry">Retry</string>
-    <string name="welcome_title">Welcome</string>
-    <string name="welcome_message">Please note that when multiple updates are available, there is no need to go update-by-update, you can always install the latest one directly, and then safely delete old updates to free up storage space.</string>
+    <string name="eta_seconds_short">%1$d 秒</string>
+    <string name="no_connection_or_service">無網際網路連線或服務未就緒。</string>
+    <string name="unable_to_pause">無法暫停下載。</string>
+    <string name="notifications_enabled">已啟用通知</string>
+    <string name="notifications_denied">通知權限遭拒</string>
+    <string name="action_retry">重試</string>
+    <string name="welcome_title">歡迎</string>
+    <string name="welcome_message">請注意，當有多個更新可用時，無需逐一安裝，你可以隨時直接安裝最新的更新，然後安全地刪除舊更新以釋放儲存空間。</string>
 </resources>
