@@ -100,7 +100,7 @@
     <string name="action_download">Download</string>
     <string name="action_pause">Pause</string>
     <string name="action_resume">Resume</string>
-    <string name="action_install">Install</string>
+    <string name="action_install">安裝</string>
     <string name="action_info">Info</string>
     <string name="action_delete">Delete</string>
     <string name="action_cancel">Cancel</string>
@@ -144,7 +144,7 @@
     <string name="local_update_import_progress">Importing local update\u2026</string>
     <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
     <string name="local_update_import_failure">Failed to import local update</string>
-    <string name="local_update_import_install">Install</string>
+    <string name="local_update_import_install">安裝</string>
     <string name="local_update_name">Local update</string>
     <string name="local_update_import_warning_title">Precaution!</string>
     <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
