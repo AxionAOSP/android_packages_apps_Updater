@@ -112,10 +112,10 @@
     <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
     <string name="cancel_installation_dialog_message">Cancel the installation?</string>
     <string name="label_download_url">Download URL</string>
-    <string name="toast_download_url_copied">URL Copied</string>
-    <string name="dialog_export_title">Exporting update</string>
-    <string name="notification_export_success">Update exported</string>
-    <string name="notification_export_fail">Export error</string>
+    <string name="toast_download_url_copied">URL copiada</string>
+    <string name="dialog_export_title">Exportando atualização</string>
+    <string name="notification_export_success">Atualização exportada</string>
+    <string name="notification_export_fail">Erro ao exportar</string>
     <string name="toast_already_exporting">Already exporting an update</string>
     <string name="toast_export_started">Export started</string>
     <plurals name="eta_seconds">
@@ -127,7 +127,7 @@
         <item quantity="other"><xliff:g id="count">%d</xliff:g> minutes left</item>
     </plurals>
     <plurals name="eta_hours">
-        <item quantity="one">1 hour left</item>
+        <item quantity="one">1 hora restante</item>
         <item quantity="other"><xliff:g id="count">%d</xliff:g> hours left</item>
     </plurals>
     <string name="update_over_metered_network_title">Warning</string>
