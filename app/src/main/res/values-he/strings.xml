@@ -159,24 +159,24 @@
     <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
     If you have sideloaded packages, it is advised to use recovery sideload instead.
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">‏גרסת Android</string>
+    <string name="info_label_build">תאריך בנייה</string>
     <string name="info_label_size">גודל</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">תיקון אבטחה</string>
     <string name="info_label_type">סוג</string>
     <string name="info_label_status">מצב</string>
     <string name="info_label_eta">ETA</string>
     <string name="info_label_speed">מהירות</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">גרסה: %1$s</string>
     <string name="open_beta">גרסת ביתא פתוחה</string>
-    <string name="check_for_updates">Check for updates</string>
-    <string name="speed_kbps">%1$d KB/s</string>
-    <string name="eta_seconds_short">%1$ds</string>
+    <string name="check_for_updates">בדיקת עדכונים</string>
+    <string name="speed_kbps">%1$d ק״ב/שנ׳</string>
+    <string name="eta_seconds_short">%1$d שנ׳</string>
     <string name="no_connection_or_service">No internet connection or service not ready.</string>
     <string name="unable_to_pause">Unable to pause download.</string>
     <string name="notifications_enabled">Notifications enabled</string>
     <string name="notifications_denied">Notifications permission denied</string>
-    <string name="action_retry">Retry</string>
+    <string name="action_retry">ניסיון חוזר</string>
     <string name="welcome_title">Welcome</string>
     <string name="welcome_message">Please note that when multiple updates are available, there is no need to go update-by-update, you can always install the latest one directly, and then safely delete old updates to free up storage space.</string>
 </resources>
