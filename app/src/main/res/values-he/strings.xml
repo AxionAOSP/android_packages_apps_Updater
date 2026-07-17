@@ -59,7 +59,8 @@
     <string name="dialog_prepare_zip_message">Preliminary update preparation</string>
     <string name="dialog_battery_low_title">סוללה חלשה</string>
     <string name="dialog_battery_low_message_pct">רמת הסוללה נמוכה מדי, על הסוללה להיות טעונה בלפחות <xliff:g id="percent_discharging">%1$d</xliff:g>%% כדי להמשיך, <xliff:g id="percent_charging">%2$d</xliff:g> אם המכשיר בטעינה.</string>
-    <string name="dialog_scratch_mounted_message"><![CDATA[        נא להריץ את הפקודות הבאות ולנסות לעדכן שוב:\n
+    <string name="dialog_scratch_mounted_message"><![CDATA[
+        נא להריץ את הפקודות הבאות ולנסות לעדכן שוב:\n
         ‏•‎ adb root\n
         ‏•‎ adb enable-verity\n
         ‏•‎ adb reboot
@@ -156,7 +157,8 @@
     <string name="local_update_import_install">התקנה</string>
     <string name="local_update_name">עדכון מקומי</string>
     <string name="local_update_import_warning_title">Precaution!</string>
-    <string name="local_update_import_warning_message">    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    <string name="local_update_import_warning_message">
+    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
     If you have sideloaded packages, it is advised to use recovery sideload instead.
     </string>
     <string name="info_label_android">‏גרסת Android</string>
