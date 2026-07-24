@@ -18,14 +18,14 @@
     <string name="app_name">Actualizador</string>
     <string name="display_name">Actualizador</string>
     <string name="system_updates">Actualizaciones del sistema</string>
-    <string name="up_to_date">A hoy</string>
+    <string name="up_to_date">Al día</string>
     <string name="update_available">Actualización disponible</string>
     <string name="official_specifier">Oficial</string>
     <string name="build_specifier">Construcción oficial por</string>
     <string name="updates_title">Actualizaciones</string>
     <string name="changelog_guide">Deslizar hacia arriba para ver lo nuevo</string>
     <string name="changelog_title">¿Qué hay de nuevo?</string>
-    <string name="pref_save">Ahorrar</string>
+    <string name="pref_save">Guardar</string>
     <string name="pref_cancel">Cancelar</string>
     <!-- Directory where the update files will be downloaded and stored.
          WARNING: The application can and will delete any unknown file. -->
@@ -38,20 +38,20 @@
           {incr} - Incremental version
     -->
     <string name="verification_failed_notification">La verificación falló</string>
-    <string name="verifying_download_notification">Verificación de la actualización</string>
-    <string name="downloading_notification">Descarga</string>
-    <string name="download_paused_notification">Descargar Pause</string>
+    <string name="verifying_download_notification">Verificando actualización</string>
+    <string name="downloading_notification">Descargando</string>
+    <string name="download_paused_notification">Descarga en pausa</string>
     <string name="download_paused_error_notification">Error de descarga</string>
-    <string name="download_completed_notification">Descargar completado</string>
-    <string name="download_starting_notification">Descarga inicial</string>
+    <string name="download_completed_notification">Descarga completada</string>
+    <string name="download_starting_notification">Iniciando descarga</string>
     <string name="update_failed_notification">La actualización falló</string>
     <string name="installation_suspended_notification">Instalación suspendida</string>
     <string name="new_updates_found_title">Nuevas actualizaciones</string>
     <string name="text_download_speed">%1$s,%2$s/s</string>
-    <string name="pause_button">Pausa</string>
+    <string name="pause_button">Pausar</string>
     <string name="resume_button">Reanudar</string>
     <string name="suspend_button">Suspender</string>
-    <string name="installing_update">Instalación del paquete de actualización</string>
+    <string name="installing_update">Instalando paquete de actualización</string>
     <string name="installing_update_error">Error de instalación</string>
     <string name="installing_update_finished">Actualización instalada</string>
     <string name="finalizing_package">Finalización de la instalación del paquete</string>
@@ -64,7 +64,7 @@ Por favor ejecute los siguientes comandos y vuelva a intentar la actualización:
         • adb root \n
         • adb enable-verity \n
         • adb reboot]]></string>
-    <string name="dialog_scratch_mounted_title">No se puede instalar la actualización con superpuesto montado</string>
+    <string name="dialog_scratch_mounted_title">No se puede instalar la actualización con OverlayFS montado</string>
     <string name="reboot">Reiniciar</string>
     <string name="menu_refresh">Refrescar</string>
     <string name="menu_preferences">Preferencias</string>
@@ -73,13 +73,13 @@ Por favor ejecute los siguientes comandos y vuelva a intentar la actualización:
     <string name="menu_auto_updates_check_interval_weekly">Una vez por semana</string>
     <string name="menu_auto_updates_check_interval_monthly">Una vez al mes</string>
     <string name="menu_auto_updates_check_interval_never">Nunca</string>
-    <string name="menu_auto_delete_updates">Eliminar actualizaciones cuando se instala</string>
+    <string name="menu_auto_delete_updates">Borrar actualizaciones luego de instalar</string>
     <string name="menu_delete_update">Borrar</string>
     <string name="menu_copy_url">Copiar URL</string>
-    <string name="menu_export_update">Actualización de exportación</string>
-    <string name="menu_show_changelog">Mostrar cambios</string>
+    <string name="menu_export_update">Exportar actualización</string>
+    <string name="menu_show_changelog">Mostrar lista de cambios</string>
     <string name="menu_ab_perf_mode">Priorizar el proceso de actualización</string>
-    <string name="menu_update_recovery">Actualizar recuperación</string>
+    <string name="menu_update_recovery">Actualizar partición de recuperación</string>
     <string name="toast_forced_update_recovery">Es imposible deshabilitar las actualizaciones de recuperación de linaje en este dispositivo.</string>
     <string name="snack_updates_found">Nuevas actualizaciones encontradas</string>
     <string name="snack_no_updates_found">No se encontraron nuevas actualizaciones</string>
@@ -95,10 +95,10 @@ Por favor ejecute los siguientes comandos y vuelva a intentar la actualización:
     <string name="list_build_version_date">LineageOS <xliff:g id="version" example="14.1">%1$s</xliff:g> - <xliff:g id="date" example="July 11, 2017">%2$s</xliff:g></string>
     <string name="list_download_progress_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> de <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g></string>
     <string name="list_download_progress_eta_newer"><xliff:g id="filesize_without_unit" example="12.2">%1$s</xliff:g> de <xliff:g id="filesize_without_unit" example="310 MB">%2$s</xliff:g> (<xliff:g id="eta" example="3 minutes left">%3$s</xliff:g>)</string>
-    <string name="list_verifying_update">Verificación de la actualización</string>
+    <string name="list_verifying_update">Verificando actualización</string>
     <string name="list_no_updates">No se encontraron nuevas actualizaciones. Para verificar manualmente las nuevas actualizaciones, use el botón Actualizar.</string>
     <string name="action_download">Descargar</string>
-    <string name="action_pause">Pausa</string>
+    <string name="action_pause">Pausar</string>
     <string name="action_resume">Reanudar</string>
     <string name="action_install">Instalar</string>
     <string name="action_info">Información</string>
@@ -153,19 +153,19 @@ Por favor ejecute los siguientes comandos y vuelva a intentar la actualización:
     <string name="local_update_import_warning_message">    Realizar una actualización local sobrescribirá las particiones existentes y no podrá restaurar ninguna GApps o paquete cargado lateralmente. 
     Si tiene paquetes cargados lateralmente, se recomienda utilizar la carga lateral de recuperación en su lugar.
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">Versión de Android</string>
+    <string name="info_label_build">Fecha de compilación</string>
     <string name="info_label_size">Tamaño</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">Parche de seguridad</string>
     <string name="info_label_type">Tipo</string>
     <string name="info_label_status">Estado</string>
     <string name="info_label_eta">Tiempo restante</string>
     <string name="info_label_speed">Velocidad</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">Versión: %1$s</string>
     <string name="open_beta">BETA ABIERTO</string>
-    <string name="check_for_updates">Check for updates</string>
+    <string name="check_for_updates">Comprobar actualizaciones</string>
     <string name="speed_kbps">%1$d KB/s</string>
-    <string name="eta_seconds_short">%1$ds</string>
+    <string name="eta_seconds_short">%1$d s</string>
     <string name="no_connection_or_service">No hay conexión a Internet o el servicio no está listo.</string>
     <string name="unable_to_pause">No se puede pausar la descarga.</string>
     <string name="notifications_enabled">Notificaciones habilitadas</string>
