@@ -107,11 +107,11 @@
     <string name="action_cancel">ביטול</string>
     <string name="action_na">N/A</string>
     <string name="confirm_delete_dialog_title">מחיקת קובץ</string>
-    <string name="confirm_delete_dialog_message">Delete the selected update file?</string>
-    <string name="apply_update_dialog_title">Apply update</string>
+    <string name="confirm_delete_dialog_message">למחוק את קובץ העדכון שנבחר?</string>
+    <string name="apply_update_dialog_title">החלת עדכון</string>
     <string name="apply_update_dialog_message">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.</string>
     <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
-    <string name="cancel_installation_dialog_message">Cancel the installation?</string>
+    <string name="cancel_installation_dialog_message">לבטל את ההתקנה?</string>
     <string name="label_download_url">כתובת ההורדה</string>
     <string name="toast_download_url_copied">הכתובת הועתקה</string>
     <string name="dialog_export_title">העדכון מיוצא</string>
@@ -149,7 +149,7 @@
     <string name="update_failed_channel_title">העדכון נכשל</string>
     <string name="info_dialog_title">הידעת?</string>
     <string name="info_dialog_message">LineageOS updates are full installation packages. That means you can always install only the latest update, even if you skipped some in between!</string>
-    <string name="info_dialog_ok">Thanks for the info!</string>
+    <string name="info_dialog_ok">תודה על המידע!</string>
     <string name="local_update_import">עדכון מקומי</string>
     <string name="local_update_import_progress">Importing local update\u2026</string>
     <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
@@ -179,6 +179,6 @@
     <string name="notifications_enabled">ההתראות מופעלות</string>
     <string name="notifications_denied">ההרשאה להצגת התראות נדחתה</string>
     <string name="action_retry">ניסיון חוזר</string>
-    <string name="welcome_title">Welcome</string>
+    <string name="welcome_title">ברוך בואך</string>
     <string name="welcome_message">Please note that when multiple updates are available, there is no need to go update-by-update, you can always install the latest one directly, and then safely delete old updates to free up storage space.</string>
 </resources>
