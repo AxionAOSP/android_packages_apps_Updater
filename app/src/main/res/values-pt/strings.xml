@@ -155,24 +155,24 @@
     Fazer uma atualização local sobrescreverá as partições existentes e não poderá restaurar quaisquer GApps ou pacotes secundários. 
     Se você tiver pacotes secundários, é aconselhável usar sideload em vez disso.
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">Versão do Android</string>
+    <string name="info_label_build">Data da compilação</string>
     <string name="info_label_size">Tamanho</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">Patch de segurança</string>
     <string name="info_label_type">Tipo</string>
     <string name="info_label_status">Status</string>
     <string name="info_label_eta">ETA</string>
     <string name="info_label_speed">Velocidade</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">Versão: %1$s</string>
     <string name="open_beta">Abrir BETA</string>
-    <string name="check_for_updates">Check for updates</string>
+    <string name="check_for_updates">Verifique se há atualizações</string>
     <string name="speed_kbps">%1$d KB/s</string>
     <string name="eta_seconds_short">%1$ds</string>
     <string name="no_connection_or_service">Nenhuma conexão ou serviço de internet está indisponível.</string>
     <string name="unable_to_pause">Não é possível pausar o download.</string>
     <string name="notifications_enabled">Notificações habilitadas</string>
     <string name="notifications_denied">Permissão de notificações negada</string>
-    <string name="action_retry">Retry</string>
+    <string name="action_retry">Repetir</string>
     <string name="welcome_title">Boas-vindas</string>
     <string name="welcome_message">Por favor, note que quando há várias atualizações disponíveis, não há necessidade de ir atualizar, você sempre pode instalar a última diretamente e em seguida excluir atualizações antigas com segurança para liberar espaço de armazenamento.</string>
 </resources>
