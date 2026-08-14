@@ -17,6 +17,26 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Aktualizace</string>
     <string name="display_name">Aktualizace</string>
+    <string name="system_updates">System updates</string>
+    <string name="up_to_date">Up-to-date</string>
+    <string name="update_available">Update available</string>
+    <string name="official_specifier">Official</string>
+    <string name="build_specifier">Community</string>
+    <string name="updates_title">Updates</string>
+    <string name="changelog_guide">Swipe up to see what\'s new</string>
+    <string name="changelog_title">What\'s New?</string>
+    <string name="pref_save">Save</string>
+    <string name="pref_cancel">Cancel</string>
+    <!-- Directory where the update files will be downloaded and stored.
+         WARNING: The application can and will delete any unknown file. -->
+    <!-- Directory where the downloads will be exported to.
+         The path is relative to the root of the external storage.-->
+    <!--
+        Optional placeholders replaced at runtime:
+          {device} - Device name
+          {type} - Build type
+          {incr} - Incremental version
+    -->
     <string name="verification_failed_notification">Ověření selhalo</string>
     <string name="verifying_download_notification">Ověření aktualizace</string>
     <string name="downloading_notification">Stahování</string>
@@ -79,11 +99,12 @@
     <string name="list_no_updates">Nebyly nalezeny žádné nové aktualizace. Chcete-li ručně vyhledat nové aktualizace, použijte tlačítko „Obnovit“.</string>
     <string name="action_download">Stáhnout</string>
     <string name="action_pause">Pozastavit</string>
-    <string name="action_resume">Pokračovat</string>
-    <string name="action_install">Instalovat</string>
+    <string name="action_resume">Obnovit</string>
+    <string name="action_install">Nainstalovat</string>
     <string name="action_info">Informace</string>
     <string name="action_delete">Odstranit</string>
-    <string name="action_cancel">Zrušit</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_na">N/A</string>
     <string name="confirm_delete_dialog_title">Smazat soubor</string>
     <string name="confirm_delete_dialog_message">Smazat zvolený soubor aktualizace?</string>
     <string name="apply_update_dialog_title">Použít aktualizaci</string>
@@ -120,7 +141,7 @@
     <string name="checkbox_metered_network_warning">Znovu nezobrazovat</string>
     <string name="menu_metered_network_warning">Upozornění na měřenou síť</string>
     <string name="blocked_update_dialog_title">Aktualizace zablokována</string>
-    <string name="blocked_update_dialog_message">Tuto aktualizaci nelze nainstalovat pomocí aplikace aktualizace.  Přečtěte si <xliff:g id="info_url">%1$s </xliff:g> pro další informace.</string>
+    <string name="blocked_update_dialog_message">This update cannot be installed using the updater app.  Please read <xliff:g id="info_url">%1$s</xliff:g> for more information.</string>
     <string name="export_channel_title">Dokončení exportu</string>
     <string name="new_updates_channel_title">Nové aktualizace</string>
     <string name="ongoing_channel_title">Probíhající stahování</string>
@@ -132,8 +153,31 @@
     <string name="local_update_import_progress">Probíhá import místní aktualizace\u2026</string>
     <string name="local_update_import_success">%1$s byla importována. Chcete ji nainstalovat?</string>
     <string name="local_update_import_failure">Nepodařilo se importovat místní aktualizaci</string>
-    <string name="local_update_import_install">Instalovat</string>
+    <string name="local_update_import_install">Nainstalovat</string>
     <string name="local_update_name">Místní aktualizace</string>
+    <string name="local_update_import_warning_title">Precaution!</string>
+    <string name="local_update_import_warning_message">
+    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
+    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    </string>
+    <string name="info_label_android">Android version</string>
+    <string name="info_label_build">Build date</string>
+    <string name="info_label_size">Size</string>
+    <string name="info_label_date">Security patch</string>
+    <string name="info_label_type">Type</string>
+    <string name="info_label_status">Status</string>
+    <string name="info_label_eta">ETA</string>
+    <string name="info_label_speed">Speed</string>
+    <string name="info_label_version">Version: %1$s</string>
+    <string name="open_beta">Open BETA</string>
+    <string name="check_for_updates">Check for updates</string>
+    <string name="speed_kbps">%1$d KB/s</string>
+    <string name="eta_seconds_short">%1$ds</string>
+    <string name="no_connection_or_service">No internet connection or service not ready.</string>
+    <string name="unable_to_pause">Unable to pause download.</string>
+    <string name="notifications_enabled">Notifications enabled</string>
+    <string name="notifications_denied">Notifications permission denied</string>
+    <string name="action_retry">Retry</string>
     <string name="welcome_title">Vítejte</string>
     <string name="welcome_message">Vezměte prosím na vědomí, že pokud je k dispozici více aktualizací, není třeba pokračovat v aktualizaci po aktualizaci, můžete vždy instalovat přímo poslední a pak bezpečně odstranit staré aktualizace a uvolnit úložný prostor.</string>
 </resources>
