@@ -122,19 +122,16 @@
     <plurals name="eta_seconds">
         <item quantity="one">נותרה שנייה</item>
         <item quantity="two">נותרו <xliff:g id="count">%d</xliff:g> שניות</item>
-        <item quantity="many">נותרו <xliff:g id="count">%d</xliff:g> שניות</item>
         <item quantity="other">נותרו <xliff:g id="count">%d</xliff:g> שניות</item>
     </plurals>
     <plurals name="eta_minutes">
         <item quantity="one">נותרה דקה</item>
         <item quantity="two">נותרו <xliff:g id="count">%d</xliff:g> דקות</item>
-        <item quantity="many">נותרו <xliff:g id="count">%d</xliff:g> דקות</item>
         <item quantity="other">נותרו <xliff:g id="count">%d</xliff:g> דקות</item>
     </plurals>
     <plurals name="eta_hours">
         <item quantity="one">נותרה שעה</item>
         <item quantity="two">נותרו שעתיים (<xliff:g id="count">%d</xliff:g>)</item>
-        <item quantity="many">נותרו <xliff:g id="count">%d</xliff:g> שעות</item>
         <item quantity="other">נותרו <xliff:g id="count">%d</xliff:g> שעות</item>
     </plurals>
     <string name="update_over_metered_network_title">אזהרה</string>
