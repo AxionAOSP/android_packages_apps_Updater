@@ -150,24 +150,24 @@
     Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
     If you have sideloaded packages, it is advised to use recovery sideload instead.
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">Android 버전</string>
+    <string name="info_label_build">빌드 날짜</string>
     <string name="info_label_size">크기</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">보안 패치</string>
     <string name="info_label_type">유형</string>
     <string name="info_label_status">상태</string>
     <string name="info_label_eta">남은 시간</string>
     <string name="info_label_speed">속도</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">버전: %1$s</string>
     <string name="open_beta">오픈 베타</string>
-    <string name="check_for_updates">Check for updates</string>
-    <string name="speed_kbps">%1$d KB/s</string>
-    <string name="eta_seconds_short">%1$ds</string>
+    <string name="check_for_updates">업데이트 확인</string>
+    <string name="speed_kbps">%1$d KB/초</string>
+    <string name="eta_seconds_short">%1$d초</string>
     <string name="no_connection_or_service">인터넷 연결이 없거나 서비스가 준비되지 않았습니다.</string>
     <string name="unable_to_pause">다운로드를 일시 중지할 수 없습니다.</string>
     <string name="notifications_enabled">알림이 활성화되었습니다</string>
     <string name="notifications_denied">알림 권한이 거부되었습니다</string>
-    <string name="action_retry">Retry</string>
+    <string name="action_retry">다시 시도</string>
     <string name="welcome_title">환영</string>
     <string name="welcome_message">여러 업데이트를 사용할 수 있으면 업데이트 별 업데이트가 필요하지 않으며 항상 최신 업데이트를 직접 설치 한 다음 오래된 업데이트를 안전하게 삭제하여 저장 공간을 확정 할 수 있습니다.</string>
 </resources>
