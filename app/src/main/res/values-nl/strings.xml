@@ -139,6 +139,7 @@
     <string name="new_updates_channel_title">Nieuwe updates</string>
     <string name="ongoing_channel_title">Huidige downloads</string>
     <string name="update_failed_channel_title">Update mislukt</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Wist u dat?</string>
     <string name="info_dialog_message">LineageOS updates zijn volledige installatiepakketten. Dat betekent dat u altijd alleen de nieuwste update hoeft te installeren, zelfs als u een paar updates overslaat!</string>
     <string name="info_dialog_ok">Bedankt voor de informatie!</string>
