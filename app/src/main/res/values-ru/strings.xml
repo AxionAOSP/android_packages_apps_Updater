@@ -147,6 +147,7 @@
     <string name="new_updates_channel_title">Доступно обновление</string>
     <string name="ongoing_channel_title">Текущие загрузки</string>
     <string name="update_failed_channel_title">Ошибка обновления</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Вы знали?</string>
     <string name="info_dialog_message">Обновления LineageOS являются полными пакетами установки. Это означает, что нет необходимости устанавливать все обновления по порядку, достаточно скачать последнее!</string>
     <string name="info_dialog_ok">Спасибо за информацию!</string>
