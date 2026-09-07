@@ -146,6 +146,7 @@
     <string name="new_updates_channel_title">Nowe aktualizacje</string>
     <string name="ongoing_channel_title">Trwające pobieranie</string>
     <string name="update_failed_channel_title">Aktualizacja nie powiodła się</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Czy wiesz, że?</string>
     <string name="info_dialog_message">Aktualizacje LineageOS to pełne pakiety instalacyjne. Oznacza to, że zawsze możesz zainstalować tylko najnowszą aktualizację, nawet jeśli poprzednie zostały pominięte!</string>
     <string name="info_dialog_ok">Dziękujemy za informację!</string>
