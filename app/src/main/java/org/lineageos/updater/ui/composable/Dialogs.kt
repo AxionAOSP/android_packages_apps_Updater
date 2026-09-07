@@ -303,3 +303,18 @@ fun ImportWarningDialog(
         }
     )
 }
+
+@Composable
+fun BatteryLowDialog(onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        shape = MaterialTheme.shapes.extraLarge,
+        title = { Text(stringResource(R.string.dialog_battery_low_title)) },
+        text = { Text(stringResource(R.string.dialog_battery_low_message_pct, 30, 20)) },
+        confirmButton = {
+            Button(onClick = onDismiss) {
+                Text(stringResource(R.string.info_dialog_ok))
+            }
+        }
+    )
+}

@@ -188,6 +188,14 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
         markWelcomeSeen()
     }
 
+    fun showBatteryLow() {
+        uiState.value = uiState.value.copy(showBatteryLowDialog = true)
+    }
+
+    fun dismissBatteryLow() {
+        uiState.value = uiState.value.copy(showBatteryLowDialog = false)
+    }
+
     fun clearImportSuccess() {
         uiState.value = uiState.value.copy(importSuccessUpdate = null)
     }

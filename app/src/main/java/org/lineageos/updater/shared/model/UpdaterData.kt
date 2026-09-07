@@ -37,6 +37,7 @@ data class UiState(
     val showImportDialog: Boolean = false,
     val showPreferencesDialog: Boolean = false,
     val showWelcomeDialog: Boolean = false,
+    val showBatteryLowDialog: Boolean = false,
     val toastMessage: String? = null,
     val importSuccessUpdate: Update? = null,
     val changelog: String = "",
