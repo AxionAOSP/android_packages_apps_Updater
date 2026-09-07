@@ -136,6 +136,7 @@
     <string name="new_updates_channel_title">新しい更新</string>
     <string name="ongoing_channel_title">継続的なダウンロード</string>
     <string name="update_failed_channel_title">更新に失敗しました</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">知っていましたか？</string>
     <string name="info_dialog_message">Lineageosの更新は、完全なインストールパッケージです。つまり、その間にスキップしたとしても、いつでも最新のアップデートのみをインストールできます。</string>
     <string name="info_dialog_ok">情報をありがとう！</string>
