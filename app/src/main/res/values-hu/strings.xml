@@ -141,6 +141,7 @@ illetve, ha éppen tölt, akkor még <xliff:g id="percent_charging">%2$d</xliff:
     <string name="new_updates_channel_title">Új frissítések</string>
     <string name="ongoing_channel_title">Folyamatban lévő letöltések</string>
     <string name="update_failed_channel_title">A frissítés sikertelen</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Tudta Ön?</string>
     <string name="info_dialog_message">A LineageOS frissítései teljes telepítőcsomagok. Ez azt jelenti, hogy mindig elég a legfrissebb csomagot telepítenie, nem baj ha korábban kihagyott párat!</string>
     <string name="info_dialog_ok">Köszönet az információért!</string>
