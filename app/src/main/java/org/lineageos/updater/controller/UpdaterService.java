@@ -64,6 +64,10 @@ public class UpdaterService extends Service {
 
     private static final String ONGOING_NOTIFICATION_CHANNEL =
             "ongoing_notification_channel";
+    private static final String COMPLETE_NOTIFICATION_CHANNEL =
+            "complete_notification_channel";
+    private static final String ERROR_NOTIFICATION_CHANNEL =
+            "error_notification_channel";
 
     public static final int DOWNLOAD_RESUME = 0;
     public static final int DOWNLOAD_PAUSE = 1;
@@ -92,6 +96,19 @@ public class UpdaterService extends Service {
                 getString(R.string.ongoing_channel_title),
                 NotificationManager.IMPORTANCE_LOW);
         mNotificationManager.createNotificationChannel(notificationChannel);
+
+        NotificationChannel completeChannel = new NotificationChannel(
+                COMPLETE_NOTIFICATION_CHANNEL,
+                getString(R.string.complete_channel_title),
+                NotificationManager.IMPORTANCE_HIGH);
+        mNotificationManager.createNotificationChannel(completeChannel);
+
+        NotificationChannel errorChannel = new NotificationChannel(
+                ERROR_NOTIFICATION_CHANNEL,
+                getString(R.string.update_failed_channel_title),
+                NotificationManager.IMPORTANCE_HIGH);
+        mNotificationManager.createNotificationChannel(errorChannel);
+
         mNotificationBuilder = new NotificationCompat.Builder(this,
                 ONGOING_NOTIFICATION_CHANNEL);
         mNotificationBuilder.setSmallIcon(R.drawable.ic_system_update);
@@ -397,19 +414,33 @@ public class UpdaterService extends Service {
             }
             case INSTALLED: {
                 stopForeground(STOP_FOREGROUND_DETACH);
-                mNotificationBuilder.mActions.clear();
-                mNotificationBuilder.setStyle(null);
-                mNotificationBuilder.setSmallIcon(R.drawable.ic_system_update);
-                mNotificationBuilder.setProgress(0, 0, false);
+                mNotificationManager.cancel(NOTIFICATION_ID);
+
                 String text = getString(R.string.installing_update_finished);
-                mNotificationBuilder.setContentText(text);
-                mNotificationBuilder.addAction(R.drawable.ic_system_update,
-                        getString(R.string.reboot),
-                        getRebootPendingIntent());
-                mNotificationBuilder.setTicker(text);
-                mNotificationBuilder.setOngoing(false);
-                mNotificationBuilder.setAutoCancel(true);
-                mNotificationManager.notify(NOTIFICATION_ID, mNotificationBuilder.build());
+                String buildDate = StringGenerator.getDateLocalizedUTC(this,
+                        DateFormat.MEDIUM, update.getTimestamp());
+                String buildInfo = "AxionOS v" + update.getVersion() + " " + buildDate;
+
+                Intent notificationIntent = new Intent(this, UpdatesActivity.class);
+                PendingIntent intent = PendingIntent.getActivity(this, 0, notificationIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+                NotificationCompat.Builder completeBuilder = new NotificationCompat.Builder(this,
+                        COMPLETE_NOTIFICATION_CHANNEL)
+                        .setSmallIcon(R.drawable.ic_system_update)
+                        .setContentTitle(buildInfo)
+                        .setContentText(text)
+                        .addAction(R.drawable.ic_system_update,
+                                getString(R.string.reboot),
+                                getRebootPendingIntent())
+                        .setTicker(text)
+                        .setOngoing(false)
+                        .setAutoCancel(true)
+                        .setContentIntent(intent)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setDefaults(NotificationCompat.DEFAULT_ALL);
+
+                mNotificationManager.notify(NOTIFICATION_ID, completeBuilder.build());
 
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
                 boolean deleteUpdate = pref.getBoolean(Constants.PREF_AUTO_DELETE_UPDATES, false);
@@ -424,15 +455,30 @@ public class UpdaterService extends Service {
             }
             case INSTALLATION_FAILED: {
                 stopForeground(STOP_FOREGROUND_DETACH);
-                mNotificationBuilder.setStyle(null);
-                mNotificationBuilder.setSmallIcon(android.R.drawable.stat_sys_warning);
-                mNotificationBuilder.setProgress(0, 0, false);
+                mNotificationManager.cancel(NOTIFICATION_ID);
+
                 String text = getString(R.string.installing_update_error);
-                mNotificationBuilder.setContentText(text);
-                mNotificationBuilder.setTicker(text);
-                mNotificationBuilder.setOngoing(false);
-                mNotificationBuilder.setAutoCancel(true);
-                mNotificationManager.notify(NOTIFICATION_ID, mNotificationBuilder.build());
+                String buildDate = StringGenerator.getDateLocalizedUTC(this,
+                        DateFormat.MEDIUM, update.getTimestamp());
+                String buildInfo = "AxionOS v" + update.getVersion() + " " + buildDate;
+
+                Intent notificationIntent = new Intent(this, UpdatesActivity.class);
+                PendingIntent intent = PendingIntent.getActivity(this, 0, notificationIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+                NotificationCompat.Builder errorBuilder = new NotificationCompat.Builder(this,
+                        ERROR_NOTIFICATION_CHANNEL)
+                        .setSmallIcon(android.R.drawable.stat_sys_warning)
+                        .setContentTitle(buildInfo)
+                        .setContentText(text)
+                        .setTicker(text)
+                        .setOngoing(false)
+                        .setAutoCancel(true)
+                        .setContentIntent(intent)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setDefaults(NotificationCompat.DEFAULT_ALL);
+
+                mNotificationManager.notify(NOTIFICATION_ID, errorBuilder.build());
                 tryStopSelf();
                 break;
             }
