@@ -139,6 +139,7 @@
     <string name="new_updates_channel_title">Nouvelles mises à jour</string>
     <string name="ongoing_channel_title">Téléchargements en cours</string>
     <string name="update_failed_channel_title">La mise à jour a échoué</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Saviez-vous?</string>
     <string name="info_dialog_message">Les mises à jour LineageOS sont des packages d\'installation complets. Cela signifie que vous ne pouvez toujours installer que la dernière mise à jour, même si vous en avez sauté entre les deux!</string>
     <string name="info_dialog_ok">Merci pour l\'info!</string>
