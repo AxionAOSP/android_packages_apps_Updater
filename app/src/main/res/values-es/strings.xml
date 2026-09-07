@@ -60,10 +60,11 @@
     <string name="dialog_battery_low_title">Batería baja</string>
     <string name="dialog_battery_low_message_pct">Tu batería está demasiado baja, necesitas por lo menos <xliff:g id="percent_discharging">%1$d</xliff:g>%% de batería para continuar, <xliff:g id="percent_charging">%2$d</xliff:g>%% si está cargando.</string>
     <string name="dialog_scratch_mounted_message"><![CDATA[
-Por favor ejecute los siguientes comandos y vuelva a intentar la actualización: \n
-        • adb root \n
-        • adb enable-verity \n
-        • adb reboot]]></string>
+        Please run the following commands and retry the update:\n
+        • adb root\n
+        • adb enable-verity\n
+        • adb reboot
+        ]]></string>
     <string name="dialog_scratch_mounted_title">No se puede instalar la actualización con OverlayFS montado</string>
     <string name="reboot">Reiniciar</string>
     <string name="menu_refresh">Refrescar</string>
@@ -140,6 +141,7 @@ Por favor ejecute los siguientes comandos y vuelva a intentar la actualización:
     <string name="new_updates_channel_title">Nuevas actualizaciones</string>
     <string name="ongoing_channel_title">Descargas en curso</string>
     <string name="update_failed_channel_title">La actualización falló</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">¿Sabías?</string>
     <string name="info_dialog_message">Las actualizaciones de Lineageos son paquetes de instalación completos. Eso significa que siempre puede instalar solo la última actualización, ¡incluso si saltaste un poco en el medio!</string>
     <string name="info_dialog_ok">¡Gracias por la información!</string>
