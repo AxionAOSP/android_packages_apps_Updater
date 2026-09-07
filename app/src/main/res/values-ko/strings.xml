@@ -136,6 +136,7 @@
     <string name="new_updates_channel_title">새로운 업데이트</string>
     <string name="ongoing_channel_title">진행중인 다운로드</string>
     <string name="update_failed_channel_title">업데이트가 실패했습니다</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">알고 있었나요?</string>
     <string name="info_dialog_message">Lineageos 업데이트는 전체 설치 패키지입니다. 즉, 사이에 일부를 건너 뛰더라도 항상 최신 업데이트 만 설치할 수 있습니다!</string>
     <string name="info_dialog_ok">정보 주셔서 감사합니다!</string>
