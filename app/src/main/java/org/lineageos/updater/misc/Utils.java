@@ -224,6 +224,10 @@ public class Utils {
         }
     }
 
+    public static boolean isScratchMounted() {
+        return new File("/mnt/scratch").exists();
+    }
+
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager cm = context.getSystemService(ConnectivityManager.class);
         Network activeNetwork = cm.getActiveNetwork();

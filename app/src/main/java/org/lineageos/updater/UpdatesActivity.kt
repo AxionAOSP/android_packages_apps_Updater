@@ -47,6 +47,8 @@ import org.lineageos.updater.model.Update
 import org.lineageos.updater.model.UpdateInfo
 import org.lineageos.updater.shared.model.UpdaterCallbacks
 import org.lineageos.updater.ui.composable.BatteryLowDialog
+import org.lineageos.updater.ui.composable.ImportErrorDialog
+import org.lineageos.updater.ui.composable.ScratchMountedDialog
 import org.lineageos.updater.ui.composable.ImportProgressDialog
 import org.lineageos.updater.ui.composable.ImportSuccessDialog
 import org.lineageos.updater.ui.composable.PreferencesDialog
@@ -90,7 +92,9 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 onDelete = { viewModel.deleteUpdate(it) },
                 onInstalled = { (getSystemService(Context.POWER_SERVICE) as PowerManager).reboot(null) },
                 onVerified = {
-                    if (Utils.isBatteryLevelOk(this@UpdatesActivity)) {
+                    if (Utils.isScratchMounted()) {
+                        viewModel.showScratchMounted()
+                    } else if (Utils.isBatteryLevelOk(this@UpdatesActivity)) {
                         Utils.triggerUpdate(this@UpdatesActivity, it.downloadId)
                     } else {
                         viewModel.showBatteryLow()
@@ -133,11 +137,22 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 if (state.showBatteryLowDialog) BatteryLowDialog(
                     onDismiss = { viewModel.dismissBatteryLow() }
                 )
+                if (state.showScratchMountedDialog) ScratchMountedDialog(
+                    onDismiss = { viewModel.dismissScratchMounted() }
+                )
+                state.importErrorReason?.let { errorReason ->
+                    ImportErrorDialog(
+                        errorReason = errorReason,
+                        onDismiss = { viewModel.dismissImportError() }
+                    )
+                }
                 state.importSuccessUpdate?.let { update ->
                     ImportSuccessDialog(
                         update = update,
                         onInstall = {
-                            if (Utils.isBatteryLevelOk(this)) {
+                            if (Utils.isScratchMounted()) {
+                                viewModel.showScratchMounted()
+                            } else if (Utils.isBatteryLevelOk(this)) {
                                 viewModel.getUpdatesList()
                                 Utils.triggerUpdate(this, update.downloadId)
                                 viewModel.clearImportSuccess()
@@ -229,8 +244,12 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
         viewModel.onImportStarted()
     }
 
-    override fun onImportCompleted(update: Update?) {
+    override fun onImportCompleted(update: Update) {
         viewModel.onImportCompleted(update)
+    }
+
+    override fun onImportFailed(errorReason: String) {
+        viewModel.onImportFailed(errorReason)
     }
 
     private fun exportUpdate(update: UpdateInfo) {

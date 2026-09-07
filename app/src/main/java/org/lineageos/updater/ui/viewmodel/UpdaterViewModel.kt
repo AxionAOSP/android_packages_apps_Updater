@@ -135,11 +135,22 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
         uiState.value = uiState.value.copy(showImportDialog = true)
     }
 
-    fun onImportCompleted(update: Update?) {
-        val ctx = getApplication<Application>()
-        uiState.value = uiState.value.copy(showImportDialog = false)
-        if (update == null) showToast(ctx.getString(R.string.local_update_import_failure))
-        else uiState.value = uiState.value.copy(importSuccessUpdate = update)
+    fun onImportCompleted(update: Update) {
+        uiState.value = uiState.value.copy(
+            showImportDialog = false,
+            importSuccessUpdate = update
+        )
+    }
+
+    fun onImportFailed(errorReason: String) {
+        uiState.value = uiState.value.copy(
+            showImportDialog = false,
+            importErrorReason = errorReason
+        )
+    }
+
+    fun dismissImportError() {
+        uiState.value = uiState.value.copy(importErrorReason = null)
     }
 
     fun savePreferences(preferences: PreferencesData) {
@@ -194,6 +205,14 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
 
     fun dismissBatteryLow() {
         uiState.value = uiState.value.copy(showBatteryLowDialog = false)
+    }
+
+    fun showScratchMounted() {
+        uiState.value = uiState.value.copy(showScratchMountedDialog = true)
+    }
+
+    fun dismissScratchMounted() {
+        uiState.value = uiState.value.copy(showScratchMountedDialog = false)
     }
 
     fun clearImportSuccess() {

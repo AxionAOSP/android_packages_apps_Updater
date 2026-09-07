@@ -38,8 +38,10 @@ data class UiState(
     val showPreferencesDialog: Boolean = false,
     val showWelcomeDialog: Boolean = false,
     val showBatteryLowDialog: Boolean = false,
+    val showScratchMountedDialog: Boolean = false,
     val toastMessage: String? = null,
     val importSuccessUpdate: Update? = null,
+    val importErrorReason: String? = null,
     val changelog: String = "",
     val isLoadingChangelog: Boolean = false,
     val installProgress: Int? = null

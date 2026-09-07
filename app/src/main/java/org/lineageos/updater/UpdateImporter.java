@@ -101,7 +101,19 @@ public class UpdateImporter {
                     importedFile.delete();
                 }
 
-                activity.runOnUiThread(() -> callbacks.onImportCompleted(null));
+                // Determine the error message
+                final String errorReason;
+                if (e.getMessage() != null && e.getMessage().contains("Verification failed")) {
+                    errorReason = activity.getString(R.string.local_update_import_failure_signature);
+                } else if (e instanceof java.io.IOException) {
+                    errorReason = activity.getString(R.string.local_update_import_failure_io);
+                } else if (e instanceof java.util.zip.ZipException || e instanceof IllegalArgumentException) {
+                    errorReason = activity.getString(R.string.local_update_import_failure_corrupt);
+                } else {
+                    errorReason = activity.getString(R.string.local_update_import_failure);
+                }
+
+                activity.runOnUiThread(() -> callbacks.onImportFailed(errorReason));
             }
         });
         workingThread.start();
@@ -241,5 +253,7 @@ public class UpdateImporter {
         void onImportStarted();
 
         void onImportCompleted(Update update);
+
+        void onImportFailed(String errorReason);
     }
 }

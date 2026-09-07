@@ -318,3 +318,36 @@ fun BatteryLowDialog(onDismiss: () -> Unit) {
         }
     )
 }
+
+@Composable
+fun ImportErrorDialog(
+    errorReason: String,
+    onDismiss: () -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        shape = MaterialTheme.shapes.extraLarge,
+        title = { Text(stringResource(R.string.local_update_import_failure)) },
+        text = { Text(errorReason) },
+        confirmButton = {
+            Button(onClick = onDismiss) {
+                Text(stringResource(android.R.string.ok))
+            }
+        }
+    )
+}
+
+@Composable
+fun ScratchMountedDialog(onDismiss: () -> Unit) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        shape = MaterialTheme.shapes.extraLarge,
+        title = { Text(stringResource(R.string.dialog_scratch_mounted_title)) },
+        text = { Text(stringResource(R.string.dialog_scratch_mounted_message)) },
+        confirmButton = {
+            Button(onClick = onDismiss) {
+                Text(stringResource(R.string.info_dialog_ok))
+            }
+        }
+    )
+}
