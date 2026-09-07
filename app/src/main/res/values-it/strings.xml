@@ -139,6 +139,7 @@
     <string name="new_updates_channel_title">Nuovi aggiornamenti</string>
     <string name="ongoing_channel_title">Download in corso</string>
     <string name="update_failed_channel_title">Aggiornamento non riuscito</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Lo sapevate?</string>
     <string name="info_dialog_message">Gli aggiornamenti di Lineageos sono pacchetti di installazione completi. Ciò significa che puoi sempre installare solo l\'ultimo aggiornamento, anche se ne hai saltato un po \'in mezzo!</string>
     <string name="info_dialog_ok">Grazie per le informazioni!</string>
