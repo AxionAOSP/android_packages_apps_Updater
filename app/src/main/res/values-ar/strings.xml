@@ -151,6 +151,7 @@
     <string name="new_updates_channel_title">تحديثات جديدة</string>
     <string name="ongoing_channel_title">التنزيلات المستمرة</string>
     <string name="update_failed_channel_title">فشل التحديث</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">هل تعلم؟</string>
     <string name="info_dialog_message">تحديثات Lineageos هي حزم التثبيت الكاملة. هذا يعني أنه يمكنك دائمًا تثبيت آخر تحديث فقط ، حتى لو تخطيت بعضًا بينهما!</string>
     <string name="info_dialog_ok">شكرا للمعلومات!</string>
