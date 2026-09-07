@@ -141,6 +141,7 @@
     <string name="new_updates_channel_title">Nye opdateringer</string>
     <string name="ongoing_channel_title">Igangværende Downloads</string>
     <string name="update_failed_channel_title">Opdatering fejlede</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Vidste du?</string>
     <string name="info_dialog_message">LineageOS opdateringer er komplette installationspakker. Det betyder, at du altid kun kan installere den seneste opdatering, selv om du har sprunget nogle over!</string>
     <string name="info_dialog_ok">Tak for info!</string>
