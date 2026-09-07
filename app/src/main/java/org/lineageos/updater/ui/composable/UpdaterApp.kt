@@ -61,9 +61,12 @@ import com.android.axion.compose.preferences.PreferenceGroup
 import com.android.axion.compose.scaffold.AxionScaffold
 import com.android.axion.deviceinfo.DeviceInfoProvider
 import org.lineageos.updater.R
+import org.lineageos.updater.misc.BuildInfoUtils
+import org.lineageos.updater.misc.StringGenerator
 import org.lineageos.updater.model.UpdateStatus
 import org.lineageos.updater.shared.model.UiState
 import org.lineageos.updater.shared.model.UpdaterCallbacks
+import java.text.DateFormat
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -78,6 +81,15 @@ fun UpdaterApp(
 
     val context = LocalContext.current
     val deviceInfo = remember { DeviceInfoProvider.getDeviceInfo(context) }
+
+    val buildDateTimestamp = BuildInfoUtils.getBuildDateTimestamp()
+    val formattedBuildDate = remember(buildDateTimestamp) {
+        if (buildDateTimestamp > 0) {
+            StringGenerator.getDateLocalizedUTC(context, DateFormat.MEDIUM, buildDateTimestamp)
+        } else {
+            deviceInfo.buildDate.takeLast(11).trim()
+        }
+    }
 
     val latestUpdate = uiState.latestUpdate
     val status = uiState.updateStatus ?: UpdateStatus.UNKNOWN
@@ -201,7 +213,7 @@ fun UpdaterApp(
                     item {
                         ClickablePreference(
                             title = stringResource(R.string.info_label_build),
-                            summary = deviceInfo.buildDate.takeLast(11).trim(),
+                            summary = formattedBuildDate,
                             icon = Icons.Default.CalendarMonth,
                             onClick = { }
                         )
