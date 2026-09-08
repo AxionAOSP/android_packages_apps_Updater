@@ -94,7 +94,7 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                 onVerified = {
                     if (Utils.isScratchMounted()) {
                         viewModel.showScratchMounted()
-                    } else if (Utils.isBatteryLevelOk(this@UpdatesActivity)) {
+                    } else if (Utils.isABDevice() || Utils.isBatteryLevelOk(this@UpdatesActivity)) {
                         Utils.triggerUpdate(this@UpdatesActivity, it.downloadId)
                     } else {
                         viewModel.showBatteryLow()
@@ -152,7 +152,7 @@ class UpdatesActivity : ComponentActivity(), UpdateImporter.Callbacks {
                         onInstall = {
                             if (Utils.isScratchMounted()) {
                                 viewModel.showScratchMounted()
-                            } else if (Utils.isBatteryLevelOk(this)) {
+                            } else if (Utils.isABDevice() || Utils.isBatteryLevelOk(this)) {
                                 viewModel.getUpdatesList()
                                 Utils.triggerUpdate(this, update.downloadId)
                                 viewModel.clearImportSuccess()
