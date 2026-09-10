@@ -146,6 +146,7 @@
     <string name="new_updates_channel_title">Nowe aktualizacje</string>
     <string name="ongoing_channel_title">Trwające pobieranie</string>
     <string name="update_failed_channel_title">Aktualizacja nie powiodła się</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Czy wiesz, że?</string>
     <string name="info_dialog_message">Aktualizacje LineageOS to pełne pakiety instalacyjne. Oznacza to, że zawsze możesz zainstalować tylko najnowszą aktualizację, nawet jeśli poprzednie zostały pominięte!</string>
     <string name="info_dialog_ok">Dziękujemy za informację!</string>
@@ -153,6 +154,9 @@
     <string name="local_update_import_progress">Importowanie aktualizacji lokalnej\u2026</string>
     <string name="local_update_import_success">Zaimportowano %1$s. Czy chcesz to zainstalować?</string>
     <string name="local_update_import_failure">Nie udało się zaimportować aktualizacji lokalnej</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">Zainstaluj</string>
     <string name="local_update_name">Aktualizacja lokalna</string>
     <string name="local_update_import_warning_title">Precaution!</string>

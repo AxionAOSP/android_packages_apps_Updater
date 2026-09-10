@@ -151,6 +151,7 @@
     <string name="new_updates_channel_title">تحديثات جديدة</string>
     <string name="ongoing_channel_title">التنزيلات المستمرة</string>
     <string name="update_failed_channel_title">فشل التحديث</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">هل تعلم؟</string>
     <string name="info_dialog_message">تحديثات Lineageos هي حزم التثبيت الكاملة. هذا يعني أنه يمكنك دائمًا تثبيت آخر تحديث فقط ، حتى لو تخطيت بعضًا بينهما!</string>
     <string name="info_dialog_ok">شكرا للمعلومات!</string>
@@ -158,6 +159,9 @@
     <string name="local_update_import_progress">استيراد التحديث المحلي \ u2026</string>
     <string name="local_update_import_success">تم استيراد %1$s. هل تريد تثبيته؟</string>
     <string name="local_update_import_failure">فشل في استيراد التحديث المحلي</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">تثبيت</string>
     <string name="local_update_name">التحديث المحلي</string>
     <string name="local_update_import_warning_title">تنبيه!</string>

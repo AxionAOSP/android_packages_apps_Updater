@@ -139,6 +139,7 @@
     <string name="new_updates_channel_title">Neue Updates</string>
     <string name="ongoing_channel_title">Laufende Downloads</string>
     <string name="update_failed_channel_title">Update fehlgeschlagen</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Wussten Sie?</string>
     <string name="info_dialog_message">LineageOS -Updates sind vollständige Installationspakete. Das heißt, Sie können immer nur das neueste Update installieren, auch wenn Sie einige dazwischen übersprungen haben!</string>
     <string name="info_dialog_ok">Danke für die Info!</string>
@@ -146,6 +147,9 @@
     <string name="local_update_import_progress">Lokales Update \ U2026 importieren</string>
     <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
     <string name="local_update_import_failure">Das lokale Update nicht importieren</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">Installieren</string>
     <string name="local_update_name">Lokales Update</string>
     <string name="local_update_import_warning_title">Precaution!</string>

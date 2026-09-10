@@ -122,19 +122,16 @@
     <plurals name="eta_seconds">
         <item quantity="one">נותרה שנייה</item>
         <item quantity="two">נותרו <xliff:g id="count">%d</xliff:g> שניות</item>
-        <item quantity="many">נותרו <xliff:g id="count">%d</xliff:g> שניות</item>
         <item quantity="other">נותרו <xliff:g id="count">%d</xliff:g> שניות</item>
     </plurals>
     <plurals name="eta_minutes">
         <item quantity="one">נותרה דקה</item>
         <item quantity="two">נותרו <xliff:g id="count">%d</xliff:g> דקות</item>
-        <item quantity="many">נותרו <xliff:g id="count">%d</xliff:g> דקות</item>
         <item quantity="other">נותרו <xliff:g id="count">%d</xliff:g> דקות</item>
     </plurals>
     <plurals name="eta_hours">
         <item quantity="one">נותרה שעה</item>
         <item quantity="two">נותרו שעתיים (<xliff:g id="count">%d</xliff:g>)</item>
-        <item quantity="many">נותרו <xliff:g id="count">%d</xliff:g> שעות</item>
         <item quantity="other">נותרו <xliff:g id="count">%d</xliff:g> שעות</item>
     </plurals>
     <string name="update_over_metered_network_title">אזהרה</string>
@@ -147,6 +144,7 @@
     <string name="new_updates_channel_title">עדכונים חדשים</string>
     <string name="ongoing_channel_title">Ongoing downloads</string>
     <string name="update_failed_channel_title">העדכון נכשל</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">הידעת?</string>
     <string name="info_dialog_message">LineageOS updates are full installation packages. That means you can always install only the latest update, even if you skipped some in between!</string>
     <string name="info_dialog_ok">תודה על המידע!</string>
@@ -154,6 +152,9 @@
     <string name="local_update_import_progress">Importing local update\u2026</string>
     <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
     <string name="local_update_import_failure">Failed to import local update</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">התקנה</string>
     <string name="local_update_name">עדכון מקומי</string>
     <string name="local_update_import_warning_title">Precaution!</string>

@@ -140,6 +140,7 @@
     <string name="new_updates_channel_title">Yeni güncellemeler</string>
     <string name="ongoing_channel_title">Devam eden indirmeler</string>
     <string name="update_failed_channel_title">Güncelleme başarısız</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Biliyor muydunuz?</string>
     <string name="info_dialog_message">LineageOS güncellemeleri tam yükleme paketleridir. Bu demektir ki güncelleme atlamış olsanız bile her zaman sadece son güncellemeyi kurabilirsiniz!</string>
     <string name="info_dialog_ok">Bilgi için teşekkürler!</string>
@@ -147,6 +148,9 @@
     <string name="local_update_import_progress">Yerel güncelleme içe aktarılıyor</string>
     <string name="local_update_import_success">%1$s içe aktarıldı. Yüklemek istiyor musunuz?</string>
     <string name="local_update_import_failure">Yerel güncelleme içe aktarılamadı</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">Yükle</string>
     <string name="local_update_name">Yerel güncelleme</string>
     <string name="local_update_import_warning_title">Dikkat!</string>

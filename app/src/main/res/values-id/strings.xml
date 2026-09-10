@@ -138,6 +138,7 @@
     <string name="new_updates_channel_title">Pembaruan terbaru</string>
     <string name="ongoing_channel_title">Unduhan berlangsung</string>
     <string name="update_failed_channel_title">Update gagal</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Tahukah Anda?</string>
     <string name="info_dialog_message">Pembaruan LineageOS adalah paket instalasi lengkap. Artinya, Kamu selalu dapat menginstal pembaruan terbaru, bahkan jika Kamu melewatkan beberapa pembaruan di antaranya!</string>
     <string name="info_dialog_ok">Terima kasih atas informasinya!</string>
@@ -145,6 +146,9 @@
     <string name="local_update_import_progress">Mengimpor pembaruan lokal\u2026</string>
     <string name="local_update_import_success">%1$s telah diimpor. Apakah Anda ingin menginstalnya?</string>
     <string name="local_update_import_failure">Gagal mengimpor pembaruan lokal</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">Pasang</string>
     <string name="local_update_name">Pembaruan lokal</string>
     <string name="local_update_import_warning_title">Perhatian!</string>

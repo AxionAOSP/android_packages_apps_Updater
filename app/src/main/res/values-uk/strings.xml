@@ -51,22 +51,21 @@
     <string name="pause_button">Пауза</string>
     <string name="resume_button">Продовжити</string>
     <string name="suspend_button">Призупинити</string>
-    <string name="installing_update">Пакунок оновлення встановлюється</string>
+    <string name="installing_update">Встановлення пакета оновлень</string>
     <string name="installing_update_error">Помилка встановлення</string>
     <string name="installing_update_finished">Оновлення встановлено</string>
     <string name="finalizing_package">Завершення встановлення</string>
     <string name="preparing_ota_first_boot">Підготовка до першого завантаження</string>
-    <string name="dialog_prepare_zip_message">Підготовка оновлення</string>
+    <string name="dialog_prepare_zip_message">Попередня підготовка оновлення</string>
     <string name="dialog_battery_low_title">Низький заряд батареї</string>
-    <string name="dialog_battery_low_message_pct">Рівень заряду акумулятора занадто низький, для продовження потрібно щонайменше <xliff:g id="percent_discharging">%1$d</xliff:g>%% заряду або <xliff:g id="percent_charging">%2$d</xliff:g>%%, якщо пристрій заряджається.</string>
+    <string name="dialog_battery_low_message_pct">Рівень заряду батареї занадто низький. Для продовження потрібно щонайменше<xliff:g id="percent_discharging">%1$d</xliff:g>%% заряду або <xliff:g id="percent_charging">%2$d</xliff:g>%% під час заряджання.</string>
     <string name="dialog_scratch_mounted_message"><![CDATA[
 Будь ласка, виконайте наступні команди та повторіть спробу оновлення:\n
-\n
 • adb root\n
 • adb enable-verity\n
 • adb reboot        ]]></string>
     <string name="dialog_scratch_mounted_title">Неможливо встановити оновлення, якщо змонтовано OverlayFS</string>
-    <string name="reboot">Перезавантаження</string>
+    <string name="reboot">Перезавантажити</string>
     <string name="menu_refresh">Оновити</string>
     <string name="menu_preferences">Параметри</string>
     <string name="menu_auto_updates_check">Автоматична перевірка оновлень</string>
@@ -86,7 +85,7 @@
     <string name="snack_no_updates_found">Оновлень не знайдено</string>
     <string name="snack_updates_check_failed">Не вдалося перевірити наявність оновлень. Будь ласка, перевірте з\'єднання з інтернетом і спробуйте пізніше.</string>
     <string name="snack_download_failed">Не вдалося завантажити оновлення. Будь ласка, перевірте з\'єднання з інтернетом і спробуйте пізніше.</string>
-    <string name="snack_download_verification_failed">Не пройшла перевірка оновлення.</string>
+    <string name="snack_download_verification_failed">Помилка перевірки оновлення.</string>
     <string name="snack_download_verified">Завантаження завершено.</string>
     <string name="snack_update_not_installable">Це оновлення не можна інсталювати на поточну збірку.</string>
     <string name="header_title_text">LineageOS\n%1$s</string>
@@ -117,7 +116,7 @@
     <string name="dialog_export_title">Експорт оновлення</string>
     <string name="notification_export_success">Оновлення експортовано</string>
     <string name="notification_export_fail">Помилка експорту</string>
-    <string name="toast_already_exporting">Експорт оновлення вже триває</string>
+    <string name="toast_already_exporting">Оновлення вже експортується</string>
     <string name="toast_export_started">Експорт розпочато</string>
     <plurals name="eta_seconds">
         <item quantity="one">Залишилася 1 секунда</item>
@@ -147,6 +146,7 @@
     <string name="new_updates_channel_title">Нові оновлення</string>
     <string name="ongoing_channel_title">Поточні завантаження</string>
     <string name="update_failed_channel_title">Помилка оновлення</string>
+    <string name="complete_channel_title">Completed updates</string>
     <string name="info_dialog_title">Чи знаєте ви?</string>
     <string name="info_dialog_message">Оновлення LineageOS — це повні пакети встановлення. Це означає, що ви завжди можете встановити лише останнє оновлення, навіть якщо ви пропустили кілька попередніх!</string>
     <string name="info_dialog_ok">Дякую за інформацію!</string>
@@ -154,6 +154,9 @@
     <string name="local_update_import_progress">Імпорт локального оновлення\u2026</string>
     <string name="local_update_import_success">%1$s Було імпортовано. Бажаєте встановити його?</string>
     <string name="local_update_import_failure">Не вдалося імпортувати локальне оновлення</string>
+    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
+    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
+    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
     <string name="local_update_import_install">Установити</string>
     <string name="local_update_name">Локальне оновлення</string>
     <string name="local_update_import_warning_title">Застереження!</string>
