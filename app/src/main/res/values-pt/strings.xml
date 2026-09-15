@@ -141,7 +141,7 @@
     <string name="new_updates_channel_title">Novas atualizações</string>
     <string name="ongoing_channel_title">Downloads em andamento</string>
     <string name="update_failed_channel_title">Falha na atualização</string>
-    <string name="complete_channel_title">Completed updates</string>
+    <string name="complete_channel_title">Atualizações concluídas</string>
     <string name="info_dialog_title">Você sabia?</string>
     <string name="info_dialog_message">As atualizações do LineageOS são pacotes de instalação completos. Isso significa que você sempre pode instalar apenas a atualização mais recente, mesmo que você tenha ignorado versões anteriores!</string>
     <string name="info_dialog_ok">Obrigado pela informação!</string>
@@ -149,9 +149,9 @@
     <string name="local_update_import_progress">Importando atualização local\u2026</string>
     <string name="local_update_import_success">%1$s foi importado. Você quer instalá-lo?</string>
     <string name="local_update_import_failure">Não foi possível importar o pacote de atualização</string>
-    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
-    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
-    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
+    <string name="local_update_import_failure_signature">Falha ao importar: Incompatibilidade de assinatura. Este pacote foi assinado com uma chave diferente do seu sistema atual.</string>
+    <string name="local_update_import_failure_io">Não foi possível importar: armazenamento esgotado. Por favor, libere um pouco de espaço e tente novamente.</string>
+    <string name="local_update_import_failure_corrupt">Falha ao importar: arquivo corrompido. O pacote ZIP é inválido ou foi danificado durante o download.</string>
     <string name="local_update_import_install">Instalar</string>
     <string name="local_update_name">Atualização local</string>
     <string name="local_update_import_warning_title">Precaução!</string>
