@@ -147,6 +147,7 @@
     <string name="new_updates_channel_title">Доступно обновление</string>
     <string name="ongoing_channel_title">Текущие загрузки</string>
     <string name="update_failed_channel_title">Ошибка обновления</string>
+    <string name="complete_channel_title">Обновления завершены</string>
     <string name="info_dialog_title">Вы знали?</string>
     <string name="info_dialog_message">Обновления LineageOS являются полными пакетами установки. Это означает, что нет необходимости устанавливать все обновления по порядку, достаточно скачать последнее!</string>
     <string name="info_dialog_ok">Спасибо за информацию!</string>
@@ -154,6 +155,9 @@
     <string name="local_update_import_progress">Импорт локального обновления \ U2026</string>
     <string name="local_update_import_success">Обновление %1$s было импортировано. Установить его?</string>
     <string name="local_update_import_failure">Не удалось импортировать локальное обновление</string>
+    <string name="local_update_import_failure_signature">Не удалось импортировать: Несоответствие подписи. Пакет был подписан другим ключом, чем ваша текущая система.</string>
+    <string name="local_update_import_failure_io">Не удалось импортировать: не хватает места. Пожалуйста, освободите место и повторите попытку.</string>
+    <string name="local_update_import_failure_corrupt">Не удалось импортировать: поврежденный файл. ZIP пакет недействителен или был повреждён во время загрузки.</string>
     <string name="local_update_import_install">Установить</string>
     <string name="local_update_name">Локальное обновление</string>
     <string name="local_update_import_warning_title">Внимание!</string>

@@ -140,6 +140,7 @@
     <string name="new_updates_channel_title">Yeni güncellemeler</string>
     <string name="ongoing_channel_title">Devam eden indirmeler</string>
     <string name="update_failed_channel_title">Güncelleme başarısız</string>
+    <string name="complete_channel_title">Güncellemeler tamamlandı</string>
     <string name="info_dialog_title">Biliyor muydunuz?</string>
     <string name="info_dialog_message">LineageOS güncellemeleri tam yükleme paketleridir. Bu demektir ki güncelleme atlamış olsanız bile her zaman sadece son güncellemeyi kurabilirsiniz!</string>
     <string name="info_dialog_ok">Bilgi için teşekkürler!</string>
@@ -147,30 +148,33 @@
     <string name="local_update_import_progress">Yerel güncelleme içe aktarılıyor</string>
     <string name="local_update_import_success">%1$s içe aktarıldı. Yüklemek istiyor musunuz?</string>
     <string name="local_update_import_failure">Yerel güncelleme içe aktarılamadı</string>
+    <string name="local_update_import_failure_signature">İçe aktarma başarısız: İmza uyuşmazlığı. Bu paket, mevcut sisteminizdekinden farklı bir anahtarla imzalanmış.</string>
+    <string name="local_update_import_failure_io">İçe aktarma başarısız: Depolama alanı dolu. Lütfen biraz yer açın ve tekrar deneyin.</string>
+    <string name="local_update_import_failure_corrupt">İçe aktarılamadı: Bozuk dosya. ZIP paketi geçersiz veya indirme sırasında hasar görmüş.</string>
     <string name="local_update_import_install">Yükle</string>
     <string name="local_update_name">Yerel güncelleme</string>
     <string name="local_update_import_warning_title">Dikkat!</string>
     <string name="local_update_import_warning_message">
     Yerel güncelleme mevcut bölümlerin üzerine yazar ve yan yüklenen GApps uygulamalarını veya paketleri geri yüklemez. 
     Bu tür paketler yüklüyse, kurtarma modunda yan yükleme kullanmanız önerilir.    </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">Android Sürümünüz</string>
+    <string name="info_label_build">Derleme tarihi</string>
     <string name="info_label_size">Boyut</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">Güvenlik yaması</string>
     <string name="info_label_type">Tür</string>
     <string name="info_label_status">Durum</string>
     <string name="info_label_eta">Kalan süre</string>
     <string name="info_label_speed">Hız</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">Sürüm %1$s</string>
     <string name="open_beta">AÇIK BETA</string>
-    <string name="check_for_updates">Check for updates</string>
+    <string name="check_for_updates">Güncellemeleri kontrol et</string>
     <string name="speed_kbps">%1$d KB/s</string>
     <string name="eta_seconds_short">%1$ds</string>
     <string name="no_connection_or_service">İnternet bağlantısı yok veya hizmet hazır değil.</string>
     <string name="unable_to_pause">İndirme duraklatılamıyor.</string>
     <string name="notifications_enabled">Bildirimler etkinleştirildi</string>
     <string name="notifications_denied">Bildirim izni reddedildi</string>
-    <string name="action_retry">Retry</string>
+    <string name="action_retry">Tekrar dene</string>
     <string name="welcome_title">Hoş Geldiniz</string>
     <string name="welcome_message">Eğer birden fazla güncelleştirme mevcutsa bunları tek tek yüklemeniz gerekmez. Son güncelleştirmeyi uygulayıp eski güncelleştirmeleri silerek depolama alanınızdan tasarruf edebilirsiniz.</string>
 </resources>
