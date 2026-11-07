@@ -58,7 +58,7 @@
     <string name="preparing_ota_first_boot">最初のブーツの準備</string>
     <string name="dialog_prepare_zip_message">予備更新の準備</string>
     <string name="dialog_battery_low_title">低いバッテリー</string>
-    <string name="dialog_battery_low_message_pct">The battery level is too low, you need at least <xliff:g id="percent_discharging">%1$d</xliff:g>%% of the battery to continue, <xliff:g id="percent_charging">%2$d</xliff:g>%% if charging.</string>
+    <string name="dialog_battery_low_message_pct">バッテリー残量が不足しています。続行するには<xliff:g id="percent_discharging">%1$d</xliff:g>%%、充電時は<xliff:g id="percent_charging">%2$d</xliff:g>%%のバッテリー残量が必要です。</string>
     <string name="dialog_scratch_mounted_message"><![CDATA[次のコマンドを実行し、更新を再試行してください：\ n
         •ADBルート\ n
         •ADB Enable-Verity \ n
@@ -107,8 +107,8 @@
     <string name="confirm_delete_dialog_title">ファイルを削除します</string>
     <string name="confirm_delete_dialog_message">選択した更新ファイルを削除しますか？</string>
     <string name="apply_update_dialog_title">更新を適用します</string>
-    <string name="apply_update_dialog_message">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will restart itself in recovery mode to install the update.\n\nNote: This feature requires a compatible Recovery or updates will need to be installed manually.</string>
-    <string name="apply_update_dialog_message_ab">You are about to install <xliff:g id="update_name">%1$s</xliff:g>.\n\nIf you press <xliff:g id="ok">%2$s</xliff:g>, the device will begin installing in the background.\n\nOnce completed, you will be prompted to reboot.</string>
+    <string name="apply_update_dialog_message"><xliff:g id="update_name">%1$s</xliff:g>にアップデートしようとしています。\n\n<xliff:g id="ok">%2$s</xliff:g>を押すと、アップデートをインストールするために端末をリカバリーモードでに再起動します。\n\n注意: この機能には対応したリカバリーが必要です。なければ手動でインストールする必要があります。</string>
+    <string name="apply_update_dialog_message_ab"><xliff:g id="update_name">%1$s</xliff:g> をインストールしようとしています。\n\n<xliff:g id="ok">%2$s</xliff:g>を押すと、バックグラウンドでインストールを開始します。\n\nインストールが完了したら、再起動を促すプロンプトが表示されます。</string>
     <string name="cancel_installation_dialog_message">インストールをキャンセルしますか？</string>
     <string name="label_download_url">URLをダウンロードします</string>
     <string name="toast_download_url_copied">URLコピー</string>
@@ -131,47 +131,47 @@
     <string name="checkbox_metered_network_warning">二度と見せないでください</string>
     <string name="menu_metered_network_warning">計量ネットワーク警告</string>
     <string name="blocked_update_dialog_title">更新がブロックされました</string>
-    <string name="blocked_update_dialog_message">This update cannot be installed using the updater app.  Please read <xliff:g id="info_url">%1$s</xliff:g> for more information.</string>
+    <string name="blocked_update_dialog_message">このアップデートはアプリからインストールできません。詳しくは <xliff:g id="info_url">%1$s</xliff:g> をご覧ください。</string>
     <string name="export_channel_title">エクスポートの完了</string>
     <string name="new_updates_channel_title">新しい更新</string>
     <string name="ongoing_channel_title">継続的なダウンロード</string>
     <string name="update_failed_channel_title">更新に失敗しました</string>
-    <string name="complete_channel_title">Completed updates</string>
+    <string name="complete_channel_title">更新が完了しました</string>
     <string name="info_dialog_title">知っていましたか？</string>
     <string name="info_dialog_message">Lineageosの更新は、完全なインストールパッケージです。つまり、その間にスキップしたとしても、いつでも最新のアップデートのみをインストールできます。</string>
     <string name="info_dialog_ok">情報をありがとう！</string>
     <string name="local_update_import">ローカルアップデート</string>
     <string name="local_update_import_progress">ローカルアップデートのインポート\ u2026</string>
-    <string name="local_update_import_success">%1$s has been imported. Do you want to install it?</string>
+    <string name="local_update_import_success">%1$sがインポートされました。インストールしますか？</string>
     <string name="local_update_import_failure">ローカルアップデートをインポートできませんでした</string>
-    <string name="local_update_import_failure_signature">Failed to import: Signature mismatch. This package was signed with a different key than your current system.</string>
-    <string name="local_update_import_failure_io">Failed to import: Out of storage. Please free up some space and try again.</string>
-    <string name="local_update_import_failure_corrupt">Failed to import: Corrupt file. The ZIP package is invalid or was damaged during download.</string>
+    <string name="local_update_import_failure_signature">インポートに失敗しました: 署名が一致しません。このパッケージは現在のシステムとは異なるキーで署名されています。</string>
+    <string name="local_update_import_failure_io">インポートに失敗しました: ストレージが不足しています。空き容量を確保してもう一度お試しください。</string>
+    <string name="local_update_import_failure_corrupt">インポートに失敗しました：ファイルが破損しています。ZIPパッケージが無効か、ダウンロード中に破損しています。</string>
     <string name="local_update_import_install">インストール</string>
     <string name="local_update_name">ローカルアップデート</string>
     <string name="local_update_import_warning_title">注意！</string>
     <string name="local_update_import_warning_message">
-    Performing a local update will overwrite existing partitions, and it cannot restore any sideloaded GApps or packages. 
-    If you have sideloaded packages, it is advised to use recovery sideload instead.
+    ローカルアップデートを実行すると、既存のパーティションが上書きされ、サイドロードされたGAppsやパッケージは復元できません。     
+    サイドロードされたパッケージがある場合は、代わりにリカバリサイドロードを使用することをお勧めします。
     </string>
-    <string name="info_label_android">Android version</string>
-    <string name="info_label_build">Build date</string>
+    <string name="info_label_android">Androidバージョン</string>
+    <string name="info_label_build">ビルド日時</string>
     <string name="info_label_size">サイズ</string>
-    <string name="info_label_date">Security patch</string>
+    <string name="info_label_date">セキュリティパッチ</string>
     <string name="info_label_type">タイプ</string>
     <string name="info_label_status">ステータス</string>
     <string name="info_label_eta">残り時間</string>
     <string name="info_label_speed">速度</string>
-    <string name="info_label_version">Version: %1$s</string>
+    <string name="info_label_version">バージョン: %1$s</string>
     <string name="open_beta">オープンベータ</string>
-    <string name="check_for_updates">Check for updates</string>
-    <string name="speed_kbps">%1$d KB/s</string>
-    <string name="eta_seconds_short">%1$ds</string>
+    <string name="check_for_updates">アップデートを確認</string>
+    <string name="speed_kbps">%1$d KB/秒</string>
+    <string name="eta_seconds_short">%1$d 秒</string>
     <string name="no_connection_or_service">インターネット接続がないか、サービスが準備できていません。</string>
     <string name="unable_to_pause">ダウンロードを一時停止できません。</string>
     <string name="notifications_enabled">通知が有効になりました</string>
     <string name="notifications_denied">通知の許可が拒否されました</string>
-    <string name="action_retry">Retry</string>
+    <string name="action_retry">再試行</string>
     <string name="welcome_title">いらっしゃいませ</string>
     <string name="welcome_message">複数の更新が利用可能な場合は、アップデートごとに更新する必要はありません。最新の更新を常に直接インストールしてから、古い更新を安全に削除してストレージスペースを無料で削除できます。</string>
 </resources>
