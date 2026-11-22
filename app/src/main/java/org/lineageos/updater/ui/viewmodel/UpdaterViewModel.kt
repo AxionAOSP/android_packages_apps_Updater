@@ -134,7 +134,7 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
     fun resumeDownload(update: UpdateInfo) {
         val ctx = getApplication<Application>()
         updaterController?.takeIf { Utils.isNetworkAvailable(ctx) }
-            ?.startDownload(update.downloadId)
+            ?.resumeDownload(update.downloadId)
             ?: showToast(ctx.getString(R.string.no_connection_or_service))
     }
 
