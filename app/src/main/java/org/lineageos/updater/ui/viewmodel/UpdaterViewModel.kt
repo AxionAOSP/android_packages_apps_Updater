@@ -69,9 +69,20 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
         val latestUpdate = updaterController
             ?.updates
             ?.maxByOrNull { it.timestamp }
+        val status = latestUpdate?.getStatus() ?: UpdateStatus.UNKNOWN
+        // DELETED/UNKNOWN means there's no on-disk download to show progress for.
+        // Without clearing these, the last DOWNLOADING/PAUSED progress value
+        // lingers in uiState forever (pauseDownload()/deleteUpdate() never reset
+        // it), so the progress bar and the "Delete" button in UpdateCard (both
+        // gated on downloadProgress > 0f) stay stuck on screen after a delete
+        // until the app process is killed and uiState is recreated from scratch.
+        val clearProgress = status == UpdateStatus.DELETED || status == UpdateStatus.UNKNOWN
         uiState.value = uiState.value.copy(
             latestUpdate = latestUpdate,
-            updateStatus = latestUpdate?.getStatus() ?: UpdateStatus.UNKNOWN
+            updateStatus = status,
+            downloadProgress = if (clearProgress) 0f else uiState.value.downloadProgress,
+            downloadedMB = if (clearProgress) 0 else uiState.value.downloadedMB,
+            totalMB = if (clearProgress) 0 else uiState.value.totalMB
         )
     }
 
@@ -123,7 +134,7 @@ class UpdaterViewModel(application: Application) : AndroidViewModel(application)
     fun resumeDownload(update: UpdateInfo) {
         val ctx = getApplication<Application>()
         updaterController?.takeIf { Utils.isNetworkAvailable(ctx) }
-            ?.startDownload(update.downloadId)
+            ?.resumeDownload(update.downloadId)
             ?: showToast(ctx.getString(R.string.no_connection_or_service))
     }
 
